@@ -13,15 +13,20 @@
             <!-- Content Section-->
             <div class="container text-center">
                 <div class="landing-page">
-                    <h1 class="main-head">Calculate the risk of you getting a heart disease.</h1>
-                    <h2 class="sub-head">Heart problems are at an all time high. See if your lifestyle makes you susceptible.</h2>
+                    <h1 class="main-head" (mouseup)="checkforSelection($event)">Calculate the risk of you getting a heart disease.</h1>
+                    <h2 class="sub-head" (mouseup)="checkforSelection()">Heart problems are at an all time high. See if your lifestyle makes you susceptible.</h2>
                     <p class="description"></p>
 					<div class="input-section">
 						<input type="text" class=""  placeholder="Name">
 						<input type="email" class=""  placeholder="Email">
 					</div>
-                    <button class="btn prime-action  next-step sliding-next " data-slide="2">Estimate Costs</button>
+                    <button  class="btn prime-action  next-step sliding-next " data-slide="2">Estimate Costs</button>
                 </div>
             </div>
             <!-- Content Section end-->
         </section>
+        <div id="toolbar-options" class="hidden">
+   <a href="#"><i class="fa fa-plane"></i></a>
+   <a href="#"><i class="fa fa-car"></i></a>
+   <a href="#"><i class="fa fa-bicycle"></i></a>
+</div>
