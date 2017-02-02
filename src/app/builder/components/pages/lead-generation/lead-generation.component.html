@@ -1,32 +1,37 @@
 <section class="main-bg page1 ">
-        <header>
-            <div class="col-md-12 col-sm-12 col-xs-12 p10">
-                <div class="col-md-6 col-sm-6 col-xs-12 logo">
-                    <a href="#">
-                        <img src="assets/images/logo-new.png" alt="Company Logo">
-                    </a>
-                </div>
+    <header>
+        <div class="col-md-12 col-sm-12 col-xs-12 p10">
+            <div class="col-md-6 col-sm-6 col-xs-12 logo">
+                <a href="#">
+                    <img src="assets/images/logo-new.png" alt="Company Logo">
+                </a>
             </div>
-        </header>
-        <!-- Header Section End-->
-        <section class="main-section bg-style">
-            <!-- Content Section-->
-            <div class="container text-center">
-                <div class="landing-page">
-                    <h1 class="main-head" (mouseup)="checkforSelection($event)">Calculate the risk of you getting a heart disease.</h1>
-                    <h2 class="sub-head" (mouseup)="checkforSelection()">Heart problems are at an all time high. See if your lifestyle makes you susceptible.</h2>
-                    <p class="description"></p>
-					<div class="input-section">
-						<input type="text" class=""  placeholder="Name">
-						<input type="email" class=""  placeholder="Email">
-					</div>
-                    <button  class="btn prime-action  next-step sliding-next " data-slide="2">Estimate Costs</button>
+        </div>
+    </header>
+    <!-- Header Section End-->
+    <section class="main-section bg-style">
+        <!-- Content Section-->
+        <div class="container text-center">
+            <div class="landing-page">
+                <h1 class="main-head" (mouseup)="checkforSelection($event)" style="outline: none" contenteditable="true" [textContent]="mainHeading"
+                    (input)="mainHeading=$event.target.textContent">
+                    Calculate the risk of you getting a heart disease.
+                </h1>
+                <h2 class="sub-head" (mouseup)="checkforSelection($event)" style="outline: none" contenteditable="true" [textContent]="subHeading"
+                    (input)="subHeading=$event.target.textContent"></h2>
+                <p class="description"></p>
+                <div class="input-section">
+                    <input type="text" [placeholder]="nameInputBox"
+                           (keyup)="nameInputBox = $event.target.value" (blur)="$event.target.value = ''">
+                    <input type="email" [placeholder]="emailInputBox" (keyup)="emailInputBox=$event.target.value"
+                           (blur)="$event.target.value=''">
                 </div>
+                <button class="btn prime-action  next-step sliding-next " data-slide="2" contenteditable="true"
+                        [textContent]="button" (input)="button=$event.target.textContent">
+                </button>
             </div>
-            <!-- Content Section end-->
-        </section>
-        <div id="toolbar-options" class="hidden">
-   <a href="#"><i class="fa fa-plane"></i></a>
-   <a href="#"><i class="fa fa-car"></i></a>
-   <a href="#"><i class="fa fa-bicycle"></i></a>
-</div>
+        </div>
+        <!-- Content Section end-->
+    </section>
+</section>
+Contact GitHub 

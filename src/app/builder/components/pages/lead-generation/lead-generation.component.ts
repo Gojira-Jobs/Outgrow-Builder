@@ -1,16 +1,33 @@
 import { Component, OnInit,AfterViewInit} from '@angular/core';
 declare var jQuery:any;
 @Component({
-  selector: 'lead-generation',
-  templateUrl: './lead-generation.component.html',
+    selector: 'lead-generation',
+    templateUrl: './lead-generation.component.html',
 })
+
 export class LeadGenerationComponent implements OnInit,AfterViewInit {
-ngAfterViewInit(){
-}
+  
+    mainHeading: string;
+    subHeading: string;
+    nameInputBox: string;
+    emailInputBox: string;
+    button: string;
+
+   
+    private initializeViewContent() {
+        this.mainHeading = "Calculate the risk of you getting a heart disease.";
+        this.subHeading = "Heart problems are at an all time high. See if your lifestyle makes you susceptible.";
+        this.nameInputBox = "John Doe"
+        this.emailInputBox = "John@outgrow.co";
+        this.button = "Estimate Costs";
+    }
+  ngAfterViewInit(){
+  }
   constructor() { }
 
   ngOnInit() {
-  }
+        this.initializeViewContent();
+    }
   checkforSelection(event){
     if(window.getSelection().toString()){
       
@@ -29,15 +46,10 @@ ngAfterViewInit(){
         event:'select'
       });
     }
-  // var start = 0, end = 0;
-  //   var sel, range, priorRange;
-  //   range = window.getSelection().getRangeAt(0);
-  //       priorRange = range.cloneRange();
-  //       priorRange.selectNodeContents(event.target);
-  //       priorRange.setEnd(range.startContainer, range.startOffset);
-  //       start = priorRange.toString().length;
-  //       end = start + range.toString().length;
-  //       console.log(start);
-      
   }
 }
+
+
+    
+
+
