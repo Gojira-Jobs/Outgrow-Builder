@@ -16,13 +16,10 @@ export class AppComponent implements OnInit,AfterViewInit{
 
   }
   ngAfterViewInit(){
-     console.log(jQuery(this.ele.nativeElement));
-    jQuery(this.ele.nativeElement).find('#create_section').on('click',function(){
-      alert("ssjsj");
-     // console.log(jQuery(this.ele));
-    // jQuery(this.ele.nativeElement).find("#content-area").append(" <b>Appended text</b>.")
-    // });
-    });
+    
+}
+abc(){
+  alert("skskd");
 }
 
 
