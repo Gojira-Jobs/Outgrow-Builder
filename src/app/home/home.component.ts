@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.component.html',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
-
+abc(){
+  console.log("Hii");
+  //this.location.replaceState('/'); // clears browser history so they can't navigate with back button
+            this.router.navigate(['/builder']);
+}
 }

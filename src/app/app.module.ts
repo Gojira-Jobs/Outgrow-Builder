@@ -5,10 +5,10 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
-
+import {BuilderModule  } from './builder/builder.module';
 const rootRoute: ModuleWithProviders = RouterModule.forRoot([{
     path: '',
-    component: HomeComponent
+    component:HomeComponent
 }]);
 
 @NgModule({
@@ -20,7 +20,7 @@ const rootRoute: ModuleWithProviders = RouterModule.forRoot([{
         BrowserModule,
         FormsModule,
         HttpModule,
-        rootRoute
+        rootRoute,BuilderModule
     ],
     providers: [],
     bootstrap: [AppComponent]
