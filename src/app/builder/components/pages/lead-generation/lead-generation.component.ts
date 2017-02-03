@@ -7,30 +7,7 @@ declare var filepicker: any;
 @Component({
     selector: 'lead-generation',
     templateUrl: './lead-generation.component.html',
-    styles: [`
-.highlight_menu_animate {
-  transition: top 75ms ease-out,left 75ms ease-out;
-}
-        #replaceid{
-		    background-color:rgba(0,0,0,0.4);
-            display:none;padding:15px;
-	        text-align:center;
-		    }
-        #replace-area{
-	        postion:relative;
-	        padding:0;
-            }
-	    #replace-area:hover #replaceid{
-		    display:inline;
-		    position:absolute;
-		    top:10px;
-		    left:10px;
-		    width:183px;
-		    height:56px;
-            vertical-align:middle;
-		    color:red;		
-		    cursor: pointer
-	}`]
+    styleUrls: ['./assets/style.css']
 })
 export class LeadGenerationComponent implements OnInit {
 
@@ -61,43 +38,45 @@ export class LeadGenerationComponent implements OnInit {
     }
 
     checkforSelection(event) {
-        this.element = event.target;
-        var menu = jQuery("#toolbar-options");
+        var menu = jQuery('#highlight_menu');
         if (window.getSelection() && window.getSelection().toString().length > 0) {
-            console.log(document.getElementById("toolbar-options"))
-            var menu = jQuery("#toolbar-options");
-            var s = document.getSelection();
-            var r = s.getRangeAt(0);
-            console.log(menu);
-            if (r && s.toString()) {
-                var p = r.getBoundingClientRect();
-                if (p.left || p.top) {
-                    menu.css({
-                        display: 'block',
-                        position: 'absolute',
-                        left: (p.left + (p.width / 2)) - (menu.width() / 2),
-                        top: (p.top - menu.height() - 10),
-                        opacity: 0
-                    })
-                        .animate({
-                            opacity: 1
-                        }, 300);
+        
+            this.show();
 
-                    setTimeout(function () {
-                        console.log("dkdk");
-                        menu.addClass('highlight_menu_animate');
-                    }, 10);
-                    return;
-                }
-
-
-            }
         }
         else {
             menu.animate({opacity: 0}, function () {
                 menu.hide().removeClass('highlight_menu_animate');
             });
         }
+    }
+
+    show(){
+      var menu = jQuery('#highlight_menu');
+        var s = document.getSelection(),
+          r = s.getRangeAt(0);
+        if (r && s.toString()) {
+          var p = r.getBoundingClientRect();
+          if (p.left || p.top) {
+            menu.css({
+              left: (p.left + (p.width / 2)) - (menu.width() / 2),
+              top: (p.top - menu.height() - 10),
+              display: 'block',
+              opacity: 0
+          })
+          .animate({
+            opacity:1
+          }, 300);
+          
+          setTimeout(function() {
+            menu.addClass('highlight_menu_animate');
+          }, 10);
+          return;
+          }
+        }
+        menu.animate({ opacity:0 }, function () {
+          menu.hide().removeClass('highlight_menu_animate');
+        });
     }
 
     format(event, type) {

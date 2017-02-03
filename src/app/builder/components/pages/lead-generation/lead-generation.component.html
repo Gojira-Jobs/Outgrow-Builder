@@ -2,12 +2,12 @@
     <header>
         <div class="col-md-12 col-sm-12 col-xs-12 p10">
             <div class="col-md-6 col-sm-6 col-xs-12 logo">
-                <a id="replace-area" (click)="uploadImage(ele)">
+              <div id="image-outlay">
+                <a id="logo" (click)="uploadImage(ele)">
                     <img #ele src="assets/images/logo-new.png" alt="Company Logo"/>
-                    <div id="replaceid">
-                        <i class="fa fa-camera" aria-hidden="true"></i>
-                    </div>
+                    <i class="fa fa-camera" aria-hidden="true"></i>
                 </a>
+              </div>
             </div>
         </div>
     </header>
@@ -31,11 +31,11 @@
                     <input type="email" [placeholder]="emailInputBox" (keyup)="emailInputBox=$event.target.value"
                            (blur)="$event.target.value=''">
                 </div>
-                <div id="toolbar-options" style="display:none">
+               <!--  <div id="highlight_menu" style="display:none">
                   <button (click)="format($event,'bold')"><i class="fa fa-bold"></i></button>
                   <button href="#" (click)="format($event,'italic')"><i class="fa fa-italic"></i></button>
                   <button href="#" (click)="format($event,'underline')"><i class="fa fa-underline"></i></button>
-                </div>
+                </div> -->
                 <button class="btn prime-action  next-step sliding-next " data-slide="2" contenteditable="true"
                         [textContent]="button" (input)="button=$event.target.textContent">
                 </button>
@@ -44,3 +44,11 @@
         <!-- Content Section end-->
     </section>
 </section>
+ <div id="highlight_menu" style="display:none">
+                  <ul class="side-by-side">
+                      <li><span (click)="format($event,'bold')" class="pointer"><i class="fa fa-bold"></i></span></li>
+                      <li><span (click)="format($event,'italic')" class="pointer"><i class="fa fa-italic"></i></span></li>
+                      <li><span (click)="format($event,'underline')" class="pointer"><i class="fa fa-underline"></i></span></li>
+                  </ul>
+  <div class="caret">
+</div>
