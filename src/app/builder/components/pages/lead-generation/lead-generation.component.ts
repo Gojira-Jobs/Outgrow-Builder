@@ -39,16 +39,16 @@ export class LeadGenerationComponent implements OnInit {
 
     checkforSelection(event) {
         var menu = jQuery('#highlight_menu');
-        if (window.getSelection() && window.getSelection().toString().length > 0) {
+        this.show();
+       /* if (window.getSelection() && window.getSelection().toString().length > 0) {
         
-            this.show();
 
         }
         else {
             menu.animate({opacity: 0}, function () {
                 menu.hide().removeClass('highlight_menu_animate');
             });
-        }
+        }*/
     }
 
     show(){
