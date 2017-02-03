@@ -8,6 +8,8 @@ declare var filepicker: any;
     selector: 'lead-generation',
     templateUrl: './lead-generation.component.html',
     styles: [`
+.highlight_menu_animate {
+  transition: top 75ms ease-out,left 75ms ease-out;
         #replaceid{
 		    background-color:rgba(0,0,0,0.4);
             display:none;padding:15px;
@@ -36,6 +38,7 @@ export class LeadGenerationComponent implements OnInit {
     nameInputBox: string;
     emailInputBox: string;
     button: string;
+    element:Object;
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
     constructor(script: Script) {
@@ -55,27 +58,62 @@ export class LeadGenerationComponent implements OnInit {
         this.emailInputBox = "John@outgrow.co";
         this.button = "Estimate Costs";
     }
+  ngAfterViewInit(){
+  }
+  constructor() { }
 
-    checkforSelection(event) {
-        if (window.getSelection().toString()) {
-
-            console.log("jdjd" + window.getSelection().getRangeAt(0).startOffset + window.getSelection);
-            console.log(jQuery(event.target).text().slice(window.getSelection().getRangeAt(0).startOffset,
-                window.getSelection().getRangeAt(0).endOffset));
-            var startIndex = window.getSelection().getRangeAt(0).startOffset;
-            var endIndex = window.getSelection().getRangeAt(0).endOffset;
-            var slicedText = jQuery(event.target).text().slice(startIndex, endIndex);
-            var text = window.getSelection().toString();
-            jQuery(event.target).html(jQuery(event.target).text().replace(slicedText, '<span id='
-                + window.getSelection() + '>' + slicedText + '</span>'));
-
-            console.log(text);
-            jQuery("#" + text).toolbar({
-                content: '#toolbar-options',
-                event: 'select'
-            });
-        }
+  ngOnInit() {
+        this.initializeViewContent();
     }
+  checkforSelection(event){
+        this.element=event.target;
+        var menu=jQuery("#toolbar-options");
+    if(window.getSelection() && window.getSelection().toString().length>0){
+                   console.log(document.getElementById("toolbar-options"))
+          var menu=jQuery("#toolbar-options");
+          var s = document.getSelection();
+		  		var r = s.getRangeAt(0);
+          console.log(menu);
+		  	if (r && s.toString()) {
+			  	var p = r.getBoundingClientRect();
+			  	if (p.left || p.top) {
+				  	menu.css({
+              display: 'block',
+              position:'absolute',
+					  	left: (p.left + (p.width / 2)) - (menu.width() / 2),
+					  	top: (p.top - menu.height() - 10),
+					  	opacity: 0
+					})
+					.animate({
+						opacity:1
+					}, 300);
+
+					setTimeout(function() {
+            console.log("dkdk");
+						menu.addClass('highlight_menu_animate');
+					}, 10);
+					return;
+				}
+
+
+       }
+    }
+    else{
+      menu.animate({ opacity:0 }, function () {
+			  	menu.hide().removeClass('highlight_menu_animate');
+			});
+    }
+}
+format(event,type){
+        var tag;
+        if(type == 'bold') tag='b';
+        if(type == 'italic') tag='i';
+        if(type == 'underline') tag='u';
+        var appended=document.createElement(tag);
+        appended.textContent=window.getSelection().toString();
+        var range = window.getSelection().getRangeAt(0);
+          range.deleteContents();
+          range.insertNode(appended);
 
     uploadImage(control: any) {
         filepicker.setKey(this.filePickerKey);
@@ -94,8 +132,4 @@ export class LeadGenerationComponent implements OnInit {
         );
     }
 }
-
-
-    
-
-
+}

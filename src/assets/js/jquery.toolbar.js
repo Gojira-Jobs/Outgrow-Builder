@@ -92,7 +92,8 @@ if ( typeof Object.create !== 'function' ) {
 
                 $('.tool-container').on({
                     mouseenter: function(event){ clearTimeout(moveTime); },
-                    mouseleave: function(event){ decideTimeout(); }
+                    mouseleave: function(event){ decideTimeout(); },
+                    onselect:function(){console.log("djdj")}
                 });
             }
 
