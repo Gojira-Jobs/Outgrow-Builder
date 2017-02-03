@@ -2,8 +2,11 @@
     <header>
         <div class="col-md-12 col-sm-12 col-xs-12 p10">
             <div class="col-md-6 col-sm-6 col-xs-12 logo">
-                <a href="#">
-                    <img src="assets/images/logo-new.png" alt="Company Logo">
+                <a id="replace-area" (click)="uploadImage(ele)">
+                    <img #ele src="assets/images/logo-new.png" alt="Company Logo"/>
+                    <div id="replaceid">
+                        <i class="fa fa-camera" aria-hidden="true"></i>
+                    </div>
                 </a>
             </div>
         </div>
@@ -13,11 +16,13 @@
         <!-- Content Section-->
         <div class="container text-center">
             <div class="landing-page">
-                <h1 class="main-head" (mouseup)="checkforSelection($event)" style="outline: none" contenteditable="true" [textContent]="mainHeading"
+                <h1 class="main-head" (mouseup)="checkforSelection($event)" style="outline: none" contenteditable="true"
+                    [textContent]="mainHeading"
                     (input)="mainHeading=$event.target.textContent">
                     Calculate the risk of you getting a heart disease.
                 </h1>
-                <h2 class="sub-head" (mouseup)="checkforSelection($event)" style="outline: none" contenteditable="true" [textContent]="subHeading"
+                <h2 class="sub-head" (mouseup)="checkforSelection($event)" style="outline: none" contenteditable="true"
+                    [textContent]="subHeading"
                     (input)="subHeading=$event.target.textContent"></h2>
                 <p class="description"></p>
                 <div class="input-section">
