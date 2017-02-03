@@ -10,6 +10,7 @@ declare var filepicker: any;
     styles: [`
 .highlight_menu_animate {
   transition: top 75ms ease-out,left 75ms ease-out;
+}
         #replaceid{
 		    background-color:rgba(0,0,0,0.4);
             display:none;padding:15px;
@@ -38,17 +39,13 @@ export class LeadGenerationComponent implements OnInit {
     nameInputBox: string;
     emailInputBox: string;
     button: string;
-    element:Object;
+    element: Object;
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
     constructor(script: Script) {
         script.load('filepicker').then(data => {
             console.log('script loaded ', data);
         }).catch(error => console.log(error));
-    }
-
-    ngOnInit() {
-        this.initializeViewContent();
     }
 
     private initializeViewContent() {
@@ -58,62 +55,62 @@ export class LeadGenerationComponent implements OnInit {
         this.emailInputBox = "John@outgrow.co";
         this.button = "Estimate Costs";
     }
-  ngAfterViewInit(){
-  }
-  constructor() { }
 
-  ngOnInit() {
+    ngOnInit() {
         this.initializeViewContent();
     }
-  checkforSelection(event){
-        this.element=event.target;
-        var menu=jQuery("#toolbar-options");
-    if(window.getSelection() && window.getSelection().toString().length>0){
-                   console.log(document.getElementById("toolbar-options"))
-          var menu=jQuery("#toolbar-options");
-          var s = document.getSelection();
-		  		var r = s.getRangeAt(0);
-          console.log(menu);
-		  	if (r && s.toString()) {
-			  	var p = r.getBoundingClientRect();
-			  	if (p.left || p.top) {
-				  	menu.css({
-              display: 'block',
-              position:'absolute',
-					  	left: (p.left + (p.width / 2)) - (menu.width() / 2),
-					  	top: (p.top - menu.height() - 10),
-					  	opacity: 0
-					})
-					.animate({
-						opacity:1
-					}, 300);
 
-					setTimeout(function() {
-            console.log("dkdk");
-						menu.addClass('highlight_menu_animate');
-					}, 10);
-					return;
-				}
+    checkforSelection(event) {
+        this.element = event.target;
+        var menu = jQuery("#toolbar-options");
+        if (window.getSelection() && window.getSelection().toString().length > 0) {
+            console.log(document.getElementById("toolbar-options"))
+            var menu = jQuery("#toolbar-options");
+            var s = document.getSelection();
+            var r = s.getRangeAt(0);
+            console.log(menu);
+            if (r && s.toString()) {
+                var p = r.getBoundingClientRect();
+                if (p.left || p.top) {
+                    menu.css({
+                        display: 'block',
+                        position: 'absolute',
+                        left: (p.left + (p.width / 2)) - (menu.width() / 2),
+                        top: (p.top - menu.height() - 10),
+                        opacity: 0
+                    })
+                        .animate({
+                            opacity: 1
+                        }, 300);
+
+                    setTimeout(function () {
+                        console.log("dkdk");
+                        menu.addClass('highlight_menu_animate');
+                    }, 10);
+                    return;
+                }
 
 
-       }
+            }
+        }
+        else {
+            menu.animate({opacity: 0}, function () {
+                menu.hide().removeClass('highlight_menu_animate');
+            });
+        }
     }
-    else{
-      menu.animate({ opacity:0 }, function () {
-			  	menu.hide().removeClass('highlight_menu_animate');
-			});
-    }
-}
-format(event,type){
+
+    format(event, type) {
         var tag;
-        if(type == 'bold') tag='b';
-        if(type == 'italic') tag='i';
-        if(type == 'underline') tag='u';
-        var appended=document.createElement(tag);
-        appended.textContent=window.getSelection().toString();
+        if (type == 'bold') tag = 'b';
+        if (type == 'italic') tag = 'i';
+        if (type == 'underline') tag = 'u';
+        var appended = document.createElement(tag);
+        appended.textContent = window.getSelection().toString();
         var range = window.getSelection().getRangeAt(0);
-          range.deleteContents();
-          range.insertNode(appended);
+        range.deleteContents();
+        range.insertNode(appended);
+    }
 
     uploadImage(control: any) {
         filepicker.setKey(this.filePickerKey);
@@ -125,11 +122,8 @@ format(event,type){
             (InkBlob: any) => {
                 control.src = InkBlob.url;
                 jQuery('#filepicker_dialog_container').find('a').click();
-            },
-            (FPError: any) => {
+            }, (FPError: any) => {
                 console.log(FPError.toString());
-            }
-        );
+            });
     }
-}
 }
