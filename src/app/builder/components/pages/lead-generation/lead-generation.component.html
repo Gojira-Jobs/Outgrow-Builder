@@ -17,14 +17,20 @@
                     (input)="mainHeading=$event.target.textContent">
                     Calculate the risk of you getting a heart disease.
                 </h1>
-                <h2 class="sub-head" (mouseup)="checkforSelection($event)" style="outline: none" contenteditable="true" [textContent]="subHeading"
-                    (input)="subHeading=$event.target.textContent"></h2>
+                <p class="sub-head" (mouseup)="checkforSelection($event)"
+                 style="outline: none;font-style:normal" contenteditable="true" [textContent]="subHeading"
+                    (input)="subHeading=$event.target.textContent"></p>
                 <p class="description"></p>
                 <div class="input-section">
                     <input type="text" [placeholder]="nameInputBox"
                            (keyup)="nameInputBox = $event.target.value" (blur)="$event.target.value = ''">
                     <input type="email" [placeholder]="emailInputBox" (keyup)="emailInputBox=$event.target.value"
                            (blur)="$event.target.value=''">
+                </div>
+                <div id="toolbar-options" style="display:none">
+                  <button (click)="format($event,'bold')"><i class="fa fa-bold"></i></button>
+                  <button href="#" (click)="format($event,'italic')"><i class="fa fa-italic"></i></button>
+                  <button href="#" (click)="format($event,'underline')"><i class="fa fa-underline"></i></button>
                 </div>
                 <button class="btn prime-action  next-step sliding-next " data-slide="2" contenteditable="true"
                         [textContent]="button" (input)="button=$event.target.textContent">
@@ -35,7 +41,7 @@
     </section>
 </section>
 <div id="toolbar-options" style="display:none">
-   <a href="#"><i class="fa fa-plane"></i></a>
-   <a href="#"><i class="fa fa-car"></i></a>
-   <a href="#"><i class="fa fa-bicycle"></i></a>
+   <a href="#"><i class="fa fa-bold"></i></a>
+   <a href="#"><i class="fa fa-italic"></i></a>
+   <a href="#"><i class="fa fa-underline"></i></a>
 </div>

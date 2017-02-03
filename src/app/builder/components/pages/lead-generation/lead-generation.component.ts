@@ -1,8 +1,12 @@
-import { Component, OnInit,AfterViewInit} from '@angular/core';
+import { Component, OnInit,AfterViewInit,EventEmitter} from '@angular/core';
 declare var jQuery:any;
 @Component({
     selector: 'lead-generation',
     templateUrl: './lead-generation.component.html',
+    styles:[`.highlight_menu_animate {
+  transition: top 75ms ease-out,left 75ms ease-out;
+}
+    `]
 })
 
 export class LeadGenerationComponent implements OnInit,AfterViewInit {
@@ -12,7 +16,8 @@ export class LeadGenerationComponent implements OnInit,AfterViewInit {
     nameInputBox: string;
     emailInputBox: string;
     button: string;
-
+    //idEmmitter:EventEmitter<any> = new EventEmitter<any>();
+   element:Object;
    
     private initializeViewContent() {
         this.mainHeading = "Calculate the risk of you getting a heart disease.";
@@ -21,74 +26,60 @@ export class LeadGenerationComponent implements OnInit,AfterViewInit {
         this.emailInputBox = "John@outgrow.co";
         this.button = "Estimate Costs";
     }
-  ngAfterViewInit(){
-  }
+  ngAfterViewInit(){}
   constructor() { }
 
   ngOnInit() {
         this.initializeViewContent();
     }
   checkforSelection(event){
+        this.element=event.target;
+        var menu=jQuery("#toolbar-options");
     if(window.getSelection() && window.getSelection().toString().length>0){
-          var selection = window.getSelection(),      // get the selection then
-          range = selection.getRangeAt(0),        // the range at first selection group
-          rect = range.getBoundingClientRect();
-          console.log(rect);
-          var div=document.getElementById("toolbar-options");
-          console.log(div);
-          //if(div.style.display == 'none'){
-            div.style.display='block';
-            div.style.position='absolute';
-            div.style.top = Math.abs(rect.top-rect.height) + 'px';       // set coordinates
-            div.style.left = rect.left + 'px';
-            //div.id="abc";
-            div.style.height = rect.height + 'px'; // and size
-            div.style.width = '100px';
-         // }
+                   console.log(document.getElementById("toolbar-options"))
+          var menu=jQuery("#toolbar-options");
+          var s = document.getSelection();
+		  		var r = s.getRangeAt(0);
+          console.log(menu);
+		  	if (r && s.toString()) {
+			  	var p = r.getBoundingClientRect();
+			  	if (p.left || p.top) {
+				  	menu.css({
+              display: 'block',
+              position:'absolute',
+					  	left: (p.left + (p.width / 2)) - (menu.width() / 2),
+					  	top: (p.top - menu.height() - 10),
+					  	opacity: 0
+					})
+					.animate({
+						opacity:1
+					}, 300);
+					
+					setTimeout(function() {
+            console.log("dkdk");
+						menu.addClass('highlight_menu_animate');
+					}, 10);
+					return;
+				}
+        
           
+       }
     }
-//     var div = document.createElement('div'); 
-//       // make box
-// div.style.border = '2px solid black';      // with outline
-// div.style.position = 'absolute';              // fixed positioning = easy mode
-// div.style.top = rect.top + 'px';       // set coordinates
-// div.style.left = rect.left + 'px';
-// div.id="abc";
-// div.style.height = rect.height + 'px'; // and size
-// div.style.width = rect.width + 'px';
-// document.body.appendChild(div);
-// setTimeout(function(){
-//   document.getElementById("abc").remove();
-// },1000);  
-
-    // console.log(jQuery(event.target.selectionStart))
-    // if(window.getSelection().toString()){
-    //   var previousId='';
-    //   console.log("jdjd"+window.getSelection().getRangeAt(0).startOffset+window.getSelection);
-    //  console.log( jQuery(event.target).text().slice(window.getSelection().getRangeAt(0).startOffset,
-    // window.getSelection().getRangeAt(0).endOffset));
-    
-    //     var startIndex = window.getSelection().getRangeAt(0).startOffset;
-    //     var endIndex = window.getSelection().getRangeAt(0).endOffset;
-    //     console.log(startIndex+" "+endIndex);
-    //     var slicedText = jQuery(event.target).text().slice(startIndex, endIndex);
-    //     var text=window.getSelection().toString();
-    //     console.log(slicedText);
-    //     jQuery(event.target)
-    //     .html(jQuery(event.target)
-    //     .text().replace(slicedText,'<span id='+window.
-    //     getSelection()+'>' + slicedText + '</span>'));
-   
-    //  console.log(text);
-    //   jQuery("#"+text).toolbar({
-    //     content: '#toolbar-options'
-    //   });
-
-    //}
-  }
+    else{
+      menu.animate({ opacity:0 }, function () {
+			  	menu.hide().removeClass('highlight_menu_animate');
+			});
+    }
 }
-
-
-    
-
-
+format(event,type){
+        var tag;
+        if(type == 'bold') tag='b';
+        if(type == 'italic') tag='i';
+        if(type == 'underline') tag='u';
+        var appended=document.createElement(tag);
+        appended.textContent=window.getSelection().toString();
+        var range = window.getSelection().getRangeAt(0);
+          range.deleteContents();
+          range.insertNode(appended);
+}
+}
