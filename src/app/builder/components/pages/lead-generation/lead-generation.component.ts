@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Script} from "../../../services/script.service";
 import {EditableDirective} from "../../../editable.directive";
+import {ToolbarComponent } from '../../../toolbar.component';
 declare var jQuery: any
 declare var filepicker: any;
 
@@ -15,6 +16,7 @@ export class LeadGenerationComponent implements OnInit{
     subHeading: string;
     nameInputBox: string;
     emailInputBox: string;
+    nameInputBox1:string;
     button: string;
     element: Object;
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
@@ -30,6 +32,8 @@ export class LeadGenerationComponent implements OnInit{
         this.subHeading = "Heart problems are at an all time high. See if your lifestyle makes you susceptible.";
         this.nameInputBox = "John Doe";
         this.emailInputBox = "John@outgrow.co";
+        this.nameInputBox1=this.nameInputBox;
+        console.log(this.nameInputBox);
         this.button = "Estimate Costs";
     }
 
@@ -38,20 +42,7 @@ export class LeadGenerationComponent implements OnInit{
     }
 
     
-    format(event, type) {
-      
-        console.log(type);
-        var tag;
-        if (type == 'bold') tag = 'b';
-        if (type == 'italic') tag = 'i';
-        if (type == 'underline') tag = 'u';
-        var appended = document.createElement(tag);
-        appended.textContent = window.getSelection().toString();
-        console.log(window.getSelection().toString());
-        var range = window.getSelection().getRangeAt(0);
-        range.deleteContents();
-        range.insertNode(appended);
-    }
+   
 
     uploadImage(control: any) {
         filepicker.setKey(this.filePickerKey);

@@ -17,31 +17,23 @@
         <div class="container text-center">
             <div class="landing-page">
                 <h1 class="main-head no-outline"
-                contenteditable="true" [(editable)]="mainHeading">
-                    {{mainHeading}}
+                contenteditable="true" [textContent]="mainHeading" [(editable)]="mainHeading">
+                   
                 </h1>
                 <h2 class="sub-head no-outline" contenteditable="true"
-                  [(editable)]="subHeading">{{subHeading}}</h2>
+                  [(editable)]="subHeading"[textContent]="subHeading"></h2>
                  <div class="input-section">
-                    <input type="text" [placeholder]="nameInputBox"
-                           (keyup)="nameInputBox = $event.target.value" (blur)="$event.target.value = ''">
+                    <input type="text" [placeholder]="nameInputBox" (keyup)="nameInputBox = $event.target.value" (blur)="$event.target.value = ''">
                     <input type="email" [placeholder]="emailInputBox" (keyup)="emailInputBox=$event.target.value"
                            (blur)="$event.target.value=''">
                 </div>
                 <button class="btn prime-action  next-step sliding-next " 
                     data-slide="2" contenteditable="true"
-                    [(editable)]='button'>{{button}}
+                    [(editable)]='button' [textContent]="button">
                 </button>
             </div>
         </div>
         <!-- Content Section end-->
     </section>
 </section>
- <div id="highlight_menu" style="display:none">
-                  <ul class="side-by-side">
-                      <li class="pointer"><span (click)="format($event,'bold')"><i class="fa fa-bold"></i></span></li>
-                      <li class="pointer"><span (click)="format($event,'italic')"><i class="fa fa-italic"></i></span></li>
-                      <li class="pointer"><span (click)="format($event,'underline')"><i class="fa fa-underline"></i></span></li>
-                  </ul>
-  <div class="caret">
-</div>
+ <toolbar></toolbar>

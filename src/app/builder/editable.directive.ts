@@ -3,8 +3,8 @@ declare var jQuery:any;
 @Directive({
   selector: '[editable]',
   host:{
-    '(input)':'onfocusOut()',
-    '(mouseup)':'onselection()'
+    '(input)':'onTyping()',
+    '(mouseup)':'onselection()',
   }
 })
 export class EditableDirective implements OnChanges{
@@ -62,9 +62,10 @@ previousText:any;
           menu.hide().removeClass('highlight_menu_animate');
         });
     }
-    onfocusOut(){
+    onTyping(){
       this.receivedData=this.ele.nativeElement.innerText;
       this.previousText=this.receivedData;
       this.updatedText.emit(this.receivedData);
     }
+    
 }
