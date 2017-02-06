@@ -1,7 +1,9 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ElementRef, OnChanges, SimpleChanges, DoCheck, AfterViewChecked} from "@angular/core";
 import {Script} from "../../../services/script.service";
+import {SavePage, sectionLeadGeneration} from "../../../services/savePage.service";
+import {Page, MAIN_HEADING, SUB_HEADING, INPUT_NAME, INPUT_EMAIL, SUBMIT_BUTTON} from "../../../models/PageModel";
 
-declare var jQuery: any
+declare var jQuery: any;
 declare var filepicker: any;
 
 @Component({
@@ -11,71 +13,107 @@ declare var filepicker: any;
 })
 export class LeadGenerationComponent implements OnInit {
 
-    mainHeading: string;
-    subHeading: string;
-    nameInputBox: string;
-    emailInputBox: string;
-    button: string;
-    element: Object;
+    imgElement: Object;
+    page: Page = new Page();
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
-    constructor(script: Script) {
+    constructor(script: Script, private savePageService: SavePage) {
         script.load('filepicker').then(data => {
             console.log('script loaded ', data);
         }).catch(error => console.log(error));
     }
 
-    private initializeViewContent() {
-        this.mainHeading = "Calculate the risk of you getting a heart disease.";
-        this.subHeading = "Heart problems are at an all time high. See if your lifestyle makes you susceptible.";
-        this.nameInputBox = "John Doe";
-        this.emailInputBox = "John@outgrow.co";
-        this.button = "Estimate Costs";
+    ngOnInit() {
+        //check if local storage exists
+        if (this.savePageService.getFromLocalStore()) {
+            console.log('init second time');
+            this.page = JSON.parse(this.savePageService.getFromLocalStore());
+        } else {
+            this.initializeViewContent();
+            console.log('init first time');
+        }
+
+        this.savePageService.notifyPageChanges(this.page);
+        this.savePageService.getPageChangeObservable().debounceTime(1000)
+            .subscribe(data => {
+                console.log('saving in local storage', JSON.stringify(data));
+                this.savePageService.saveToLocalStore(JSON.stringify(data));
+            });
     }
 
-    ngOnInit() {
-        this.initializeViewContent();
+    private initializeViewContent() {
+        this.page.pagetype = sectionLeadGeneration;
+        this.page.control[MAIN_HEADING] = "Calculate the risk of you getting a heart disease.";
+        this.page.control[SUB_HEADING] = "Heart problems are at an all time high. See if your lifestyle makes you susceptible.";
+        this.page.control[INPUT_NAME] = "John Doe";
+        this.page.control[INPUT_EMAIL] = "John@outgrow.co";
+        this.page.control[SUBMIT_BUTTON] = "Estimate Costs";
+    }
+
+    setMainHeading(event) {
+        this.page.control[MAIN_HEADING] = event.target.textContent;
+        this.savePageService.notifyPageChanges(this.page);
+    }
+
+    setSubHeading(event) {
+        this.page.control[SUB_HEADING] = event.target.textContent;
+        this.savePageService.notifyPageChanges(this.page);
+    }
+
+    setInputEmail(event) {
+        this.page.control[INPUT_EMAIL] = event.target.value;
+        this.savePageService.notifyPageChanges(this.page);
+    }
+
+    setInputName(event) {
+        this.page.control[INPUT_NAME] = event.target.value;
+        this.savePageService.notifyPageChanges(this.page);
+    }
+
+    setSubmitButton(event) {
+        this.page.control[SUBMIT_BUTTON] = event.target.textContent;
+        this.savePageService.notifyPageChanges(this.page);
     }
 
     checkforSelection(event) {
         var menu = jQuery('#highlight_menu');
         this.show();
-       /* if (window.getSelection() && window.getSelection().toString().length > 0) {
-        
+        /* if (window.getSelection() && window.getSelection().toString().length > 0) {
 
-        }
-        else {
-            menu.animate({opacity: 0}, function () {
-                menu.hide().removeClass('highlight_menu_animate');
-            });
-        }*/
+
+         }
+         else {
+         menu.animate({opacity: 0}, function () {
+         menu.hide().removeClass('highlight_menu_animate');
+         });
+         }*/
     }
 
-    show(){
-      var menu = jQuery('#highlight_menu');
+    show() {
+        var menu = jQuery('#highlight_menu');
         var s = document.getSelection(),
-          r = s.getRangeAt(0);
+            r = s.getRangeAt(0);
         if (r && s.toString()) {
-          var p = r.getBoundingClientRect();
-          if (p.left || p.top) {
-            menu.css({
-              left: (p.left + (p.width / 2)) - (menu.width() / 2),
-              top: (p.top - menu.height() - 10),
-              display: 'block',
-              opacity: 0
-          })
-          .animate({
-            opacity:1
-          }, 300);
-          
-          setTimeout(function() {
-            menu.addClass('highlight_menu_animate');
-          }, 10);
-          return;
-          }
+            var p = r.getBoundingClientRect();
+            if (p.left || p.top) {
+                menu.css({
+                    left: (p.left + (p.width / 2)) - (menu.width() / 2),
+                    top: (p.top - menu.height() - 10),
+                    display: 'block',
+                    opacity: 0
+                })
+                    .animate({
+                        opacity: 1
+                    }, 300);
+
+                setTimeout(function () {
+                    menu.addClass('highlight_menu_animate');
+                }, 10);
+                return;
+            }
         }
-        menu.animate({ opacity:0 }, function () {
-          menu.hide().removeClass('highlight_menu_animate');
+        menu.animate({opacity: 0}, function () {
+            menu.hide().removeClass('highlight_menu_animate');
         });
     }
 

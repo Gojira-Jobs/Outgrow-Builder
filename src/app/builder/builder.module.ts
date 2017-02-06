@@ -6,6 +6,7 @@ import {WelcomeComponent} from "./components/pages/welcome/welcome.component";
 import {RouterModule} from "@angular/router";
 import {BuilderComponent} from "./builder.component";
 import {Script} from "./services/script.service";
+import {SavePage} from "./services/savePage.service";
 
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
@@ -19,7 +20,7 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
         CommonModule, builderRouter
     ],
     declarations: [LeadGenerationComponent, QuestionComponent, WelcomeComponent, BuilderComponent],
-    providers: [Script]
+    providers: [Script, SavePage]
 })
 export class BuilderModule {
 }
