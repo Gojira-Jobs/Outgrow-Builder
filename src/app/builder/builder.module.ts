@@ -6,6 +6,7 @@ import {WelcomeComponent} from "./components/pages/welcome/welcome.component";
 import {RouterModule} from "@angular/router";
 import {BuilderComponent} from "./builder.component";
 import {Script} from "./services/script.service";
+import { EditableDirective } from './editable.directive';
 
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
@@ -18,7 +19,7 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
     imports: [
         CommonModule, builderRouter
     ],
-    declarations: [LeadGenerationComponent, QuestionComponent, WelcomeComponent, BuilderComponent],
+    declarations: [LeadGenerationComponent, QuestionComponent, WelcomeComponent, BuilderComponent, EditableDirective],
     providers: [Script]
 })
 export class BuilderModule {

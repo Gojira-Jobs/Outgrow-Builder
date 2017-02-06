@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Script} from "../../../services/script.service";
-
+import {EditableDirective} from "../../../editable.directive";
 declare var jQuery: any
 declare var filepicker: any;
 
@@ -9,7 +9,7 @@ declare var filepicker: any;
     templateUrl: './lead-generation.component.html',
     styleUrls: ['./assets/style.css']
 })
-export class LeadGenerationComponent implements OnInit {
+export class LeadGenerationComponent implements OnInit{
 
     mainHeading: string;
     subHeading: string;
@@ -24,7 +24,7 @@ export class LeadGenerationComponent implements OnInit {
             console.log('script loaded ', data);
         }).catch(error => console.log(error));
     }
-
+   
     private initializeViewContent() {
         this.mainHeading = "Calculate the risk of you getting a heart disease.";
         this.subHeading = "Heart problems are at an all time high. See if your lifestyle makes you susceptible.";
@@ -37,55 +37,17 @@ export class LeadGenerationComponent implements OnInit {
         this.initializeViewContent();
     }
 
-    checkforSelection(event) {
-        var menu = jQuery('#highlight_menu');
-        this.show();
-       /* if (window.getSelection() && window.getSelection().toString().length > 0) {
-        
-
-        }
-        else {
-            menu.animate({opacity: 0}, function () {
-                menu.hide().removeClass('highlight_menu_animate');
-            });
-        }*/
-    }
-
-    show(){
-      var menu = jQuery('#highlight_menu');
-        var s = document.getSelection(),
-          r = s.getRangeAt(0);
-        if (r && s.toString()) {
-          var p = r.getBoundingClientRect();
-          if (p.left || p.top) {
-            menu.css({
-              left: (p.left + (p.width / 2)) - (menu.width() / 2),
-              top: (p.top - menu.height() - 10),
-              display: 'block',
-              opacity: 0
-          })
-          .animate({
-            opacity:1
-          }, 300);
-          
-          setTimeout(function() {
-            menu.addClass('highlight_menu_animate');
-          }, 10);
-          return;
-          }
-        }
-        menu.animate({ opacity:0 }, function () {
-          menu.hide().removeClass('highlight_menu_animate');
-        });
-    }
-
+    
     format(event, type) {
+      
+        console.log(type);
         var tag;
         if (type == 'bold') tag = 'b';
         if (type == 'italic') tag = 'i';
         if (type == 'underline') tag = 'u';
         var appended = document.createElement(tag);
         appended.textContent = window.getSelection().toString();
+        console.log(window.getSelection().toString());
         var range = window.getSelection().getRangeAt(0);
         range.deleteContents();
         range.insertNode(appended);
