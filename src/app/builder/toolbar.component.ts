@@ -32,5 +32,5 @@ export class ToolbarComponent implements OnInit {
         // sel.addRange(range2);
        // window.getSelection().getRangeAt(0).commonAncestorContainer.parentNode.focus()
         
-    }
+    } 
 }
