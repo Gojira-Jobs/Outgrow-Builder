@@ -1,8 +1,7 @@
-import {Component, OnInit,AfterViewInit} from "@angular/core";
-import {Component, OnInit, ElementRef, OnChanges, SimpleChanges, DoCheck, AfterViewChecked} from "@angular/core";
 import {Script} from "../../../services/script.service";
-import {EditableDirective} from "../../../editable.directive";
-import {ToolbarComponent } from '../../../toolbar.component';
+import {Page, SUBMIT_BUTTON, INPUT_NAME, INPUT_EMAIL, SUB_HEADING, MAIN_HEADING} from "../../../models/PageModel";
+import {SavePage, sectionLeadGeneration} from "../../../services/savePage.service";
+import {Component, OnInit} from "@angular/core";
 declare var jQuery: any
 declare var filepicker: any;
 
@@ -11,7 +10,7 @@ declare var filepicker: any;
     templateUrl: './lead-generation.component.html',
     styleUrls: ['./assets/style.css']
 })
-export class LeadGenerationComponent implements OnInit,AfterViewInit{
+export class LeadGenerationComponent implements OnInit {
 
     imgElement: Object;
     page: Page = new Page();
@@ -22,7 +21,6 @@ export class LeadGenerationComponent implements OnInit,AfterViewInit{
             console.log('script loaded ', data);
         }).catch(error => console.log(error));
     }
-   ngAfterViewInit(){
 
     ngOnInit() {
         //check if local storage exists
@@ -75,9 +73,6 @@ export class LeadGenerationComponent implements OnInit,AfterViewInit{
         this.page.control[SUBMIT_BUTTON] = event.target.textContent;
         this.savePageService.notifyPageChanges(this.page);
     }
-
-
-
 
     uploadImage(control: any) {
         filepicker.setKey(this.filePickerKey);
