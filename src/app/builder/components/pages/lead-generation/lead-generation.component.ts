@@ -34,10 +34,10 @@ export class LeadGenerationComponent implements OnInit {
 
         this.savePageService.notifyPageChanges(this.page);
         this.savePageService.getPageChangeObservable().debounceTime(1000)
-            .subscribe(data => {
-                console.log('saving in local storage', JSON.stringify(data));
-                this.savePageService.saveToLocalStore(JSON.stringify(data));
-            });
+            .distinctUntilChanged((x: string, y: string) => (x == y),
+                (x: Page) => (JSON.stringify(x.control))).subscribe(data => {
+            this.savePageService.saveToLocalStore(JSON.stringify(data));
+        });
     }
 
     private initializeViewContent() {
