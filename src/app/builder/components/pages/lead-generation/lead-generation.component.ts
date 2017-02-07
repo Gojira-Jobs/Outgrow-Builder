@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit,AfterViewInit} from "@angular/core";
 import {Script} from "../../../services/script.service";
 import {EditableDirective} from "../../../editable.directive";
 import {ToolbarComponent } from '../../../toolbar.component';
@@ -10,14 +10,14 @@ declare var filepicker: any;
     templateUrl: './lead-generation.component.html',
     styleUrls: ['./assets/style.css']
 })
-export class LeadGenerationComponent implements OnInit{
+export class LeadGenerationComponent implements OnInit,AfterViewInit{
 
     mainHeading: any;
-    subHeading: string;
+    subHeading: any;
     nameInputBox: string;
     emailInputBox: string;
     nameInputBox1:string;
-    button: string;
+    button:any;
     element: Object;
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
@@ -26,7 +26,12 @@ export class LeadGenerationComponent implements OnInit{
             console.log('script loaded ', data);
         }).catch(error => console.log(error));
     }
-   
+   ngAfterViewInit(){
+
+        // var element=document.getElementsByClassName("main-section");
+        // var html = element.innerHTML;
+
+   }
     private initializeViewContent() {
         this.mainHeading = "Calculate the <u>risk</u> of you getting a heart disease.";
         this.subHeading = "Heart problems are at an all time high. See if your lifestyle makes you susceptible.";

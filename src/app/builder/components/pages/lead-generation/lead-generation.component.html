@@ -21,7 +21,7 @@
                    
                 </h1>
                 <h2 class="sub-head no-outline" contenteditable="true"
-                  [(editable)]="subHeading"[textContent]="subHeading"></h2>
+                  [(editable)]="subHeading"[innerHTML]="subHeading"></h2>
                  <div class="input-section">
                     <input type="text" [placeholder]="nameInputBox" (keyup)="nameInputBox = $event.target.value" (blur)="$event.target.value = ''">
                     <input type="email" [placeholder]="emailInputBox" (keyup)="emailInputBox=$event.target.value"
@@ -29,7 +29,7 @@
                 </div>
                 <button class="btn prime-action  next-step sliding-next " 
                     data-slide="2" contenteditable="true"
-                    [(editable)]='button' [textContent]="button">
+                    [(editable)]='button' [innerHTML]="button">
                 </button>
             </div>
         </div>

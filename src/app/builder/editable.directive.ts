@@ -5,6 +5,7 @@ declare var jQuery:any;
   host:{
     '(input)':'onTyping()',
     '(mouseup)':'onselection()',
+    '(blur)':'onfocusOut()'
   }
 })
 export class EditableDirective implements OnChanges{
@@ -15,7 +16,7 @@ previousText:any;
     ngOnChanges(changes){
         if(changes.values !=undefined && changes.values.currentValue != this.previousText){
           this.previousText=this.receivedData;
-        this.ele.nativeElement.innerText=this.receivedData;
+        this.ele.nativeElement.innerHTML=this.receivedData;
         }
     }
     constructor(private ele:ElementRef) { }
@@ -63,7 +64,16 @@ previousText:any;
         });
     }
     onTyping(){
+
+     // this.sendChanges();
+    }
+    onfocusOut(){
+      console.log("fkf");
+      //this.sendChanges();
+    }
+    sendChanges(){
       this.receivedData=this.ele.nativeElement.innerHTML;
+
       this.previousText=this.receivedData;
       this.updatedText.emit(this.receivedData);
     }
