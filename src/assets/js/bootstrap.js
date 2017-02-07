@@ -172,7 +172,7 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: button.js v3.3.6
+ * Bootstrap: submitButton.js v3.3.6
  * http://getbootstrap.com/javascript/#buttons
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -183,7 +183,7 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   'use strict';
 
-  // BUTTON PUBLIC CLASS DEFINITION
+  // SUBMIT_BUTTON PUBLIC CLASS DEFINITION
   // ==============================
 
   var Button = function (element, options) {
@@ -245,48 +245,48 @@ if (typeof jQuery === 'undefined') {
   }
 
 
-  // BUTTON PLUGIN DEFINITION
+  // SUBMIT_BUTTON PLUGIN DEFINITION
   // ========================
 
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.button')
+      var data    = $this.data('bs.submitButton')
       var options = typeof option == 'object' && option
 
-      if (!data) $this.data('bs.button', (data = new Button(this, options)))
+      if (!data) $this.data('bs.submitButton', (data = new Button(this, options)))
 
       if (option == 'toggle') data.toggle()
       else if (option) data.setState(option)
     })
   }
 
-  var old = $.fn.button
+  var old = $.fn.submitButton
 
   $.fn.button             = Plugin
-  $.fn.button.Constructor = Button
+  $.fn.submitButton.Constructor = Button
 
 
-  // BUTTON NO CONFLICT
+  // SUBMIT_BUTTON NO CONFLICT
   // ==================
 
-  $.fn.button.noConflict = function () {
+  $.fn.submitButton.noConflict = function () {
     $.fn.button = old
     return this
   }
 
 
-  // BUTTON DATA-API
+  // SUBMIT_BUTTON DATA-API
   // ===============
 
   $(document)
-    .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+    .on('click.bs.submitButton.data-api', '[data-toggle^="submitButton"]', function (e) {
       var $btn = $(e.target)
       if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
       Plugin.call($btn, 'toggle')
       if (!($(e.target).is('input[type="radio"]') || $(e.target).is('input[type="checkbox"]'))) e.preventDefault()
     })
-    .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+    .on('focus.bs.button.data-api blur.bs.submitButton.data-api', '[data-toggle^="submitButton"]', function (e) {
       $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
     })
 

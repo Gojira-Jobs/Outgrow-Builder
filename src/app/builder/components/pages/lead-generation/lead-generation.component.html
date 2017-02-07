@@ -2,12 +2,12 @@
     <header>
         <div class="col-md-12 col-sm-12 col-xs-12 p10">
             <div class="col-md-6 col-sm-6 col-xs-12 logo">
-              <div id="image-outlay">
-                <a id="logo" (click)="uploadImage(ele)">
-                    <img #ele src="assets/images/logo-new.png" alt="Company Logo"/>
-                    <i class="fa fa-camera" aria-hidden="true"></i>
-                </a>
-              </div>
+                <div id="image-outlay">
+                    <a id="logo" (click)="uploadImage(imgElement)">
+                        <img #imgElement src="assets/images/logo-new.png" alt="Company Logo"/>
+                        <i class="fa fa-camera" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -17,19 +17,19 @@
         <div class="container text-center">
             <div class="landing-page">
                 <h1 class="main-head no-outline"
-                contenteditable="true" [innerHTML]="mainHeading" [(editable)]="mainHeading">
-                   
+                contenteditable="true" [innerHTML]="page.control?.mainheading" [(editable)]="page.control?.mainheading">
+
                 </h1>
                 <h2 class="sub-head no-outline" contenteditable="true"
-                  [(editable)]="subHeading"[innerHTML]="subHeading"></h2>
+                  [(editable)]="page.control?.subheading"[innerHTML]="page.control?.subheading"></h2>
                  <div class="input-section">
                     <input type="text" [placeholder]="nameInputBox" (keyup)="nameInputBox = $event.target.value" (blur)="$event.target.value = ''">
                     <input type="email" [placeholder]="emailInputBox" (keyup)="emailInputBox=$event.target.value"
                            (blur)="$event.target.value=''">
                 </div>
-                <button class="btn prime-action  next-step sliding-next " 
+                <button class="btn prime-action  next-step sliding-next "
                     data-slide="2" contenteditable="true"
-                    [(editable)]='button' [innerHTML]="button">
+                    [(editable)]='page.control?.submitButton' [innerHTML]="page.control?.submitButton">
                 </button>
             </div>
         </div>

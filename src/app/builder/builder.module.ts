@@ -8,6 +8,7 @@ import {BuilderComponent} from "./builder.component";
 import {Script} from "./services/script.service";
 import { EditableDirective } from './editable.directive';
 import { ToolbarComponent } from './toolbar.component';
+import {SavePage} from "./services/savePage.service";
 
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
@@ -21,7 +22,7 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
         CommonModule, builderRouter
     ],
     declarations: [LeadGenerationComponent, QuestionComponent, WelcomeComponent, BuilderComponent, EditableDirective, ToolbarComponent],
-    providers: [Script]
+    providers: [Script, SavePage]
 })
 export class BuilderModule {
 }

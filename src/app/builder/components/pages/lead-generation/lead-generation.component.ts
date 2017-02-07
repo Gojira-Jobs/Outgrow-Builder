@@ -1,4 +1,5 @@
 import {Component, OnInit,AfterViewInit} from "@angular/core";
+import {Component, OnInit, ElementRef, OnChanges, SimpleChanges, DoCheck, AfterViewChecked} from "@angular/core";
 import {Script} from "../../../services/script.service";
 import {EditableDirective} from "../../../editable.directive";
 import {ToolbarComponent } from '../../../toolbar.component';
@@ -12,42 +13,71 @@ declare var filepicker: any;
 })
 export class LeadGenerationComponent implements OnInit,AfterViewInit{
 
-    mainHeading: any;
-    subHeading: any;
-    nameInputBox: string;
-    emailInputBox: string;
-    nameInputBox1:string;
-    button:any;
-    element: Object;
+    imgElement: Object;
+    page: Page = new Page();
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
-    constructor(script: Script) {
+    constructor(script: Script, private savePageService: SavePage) {
         script.load('filepicker').then(data => {
             console.log('script loaded ', data);
         }).catch(error => console.log(error));
     }
    ngAfterViewInit(){
 
-        // var element=document.getElementsByClassName("main-section");
-        // var html = element.innerHTML;
-
-   }
-    private initializeViewContent() {
-        this.mainHeading = "Calculate the <u>risk</u> of you getting a heart disease.";
-        this.subHeading = "Heart problems are at an all time high. See if your lifestyle makes you susceptible.";
-        this.nameInputBox = "John Doe";
-        this.emailInputBox = "John@outgrow.co";
-        this.nameInputBox1=this.nameInputBox;
-        console.log(this.nameInputBox1);
-        this.button = "Estimate Costs";
-    }
-
     ngOnInit() {
-        this.initializeViewContent();
+        //check if local storage exists
+        if (this.savePageService.getFromLocalStore()) {
+            console.log('init second time');
+            this.page = JSON.parse(this.savePageService.getFromLocalStore());
+        } else {
+            this.initializeViewContent();
+            console.log('init first time');
+        }
+
+        this.savePageService.notifyPageChanges(this.page);
+        this.savePageService.getPageChangeObservable().debounceTime(1000)
+            .subscribe(data => {
+                console.log('saving in local storage', JSON.stringify(data));
+                this.savePageService.saveToLocalStore(JSON.stringify(data));
+            });
     }
 
-    
-   
+    private initializeViewContent() {
+        this.page.pagetype = sectionLeadGeneration;
+        this.page.control[MAIN_HEADING] = "Calculate the risk of you getting a heart disease.";
+        this.page.control[SUB_HEADING] = "Heart problems are at an all time high. See if your lifestyle makes you susceptible.";
+        this.page.control[INPUT_NAME] = "John Doe";
+        this.page.control[INPUT_EMAIL] = "John@outgrow.co";
+        this.page.control[SUBMIT_BUTTON] = "Estimate Costs";
+    }
+
+    setMainHeading(event) {
+        this.page.control[MAIN_HEADING] = event.target.textContent;
+        this.savePageService.notifyPageChanges(this.page);
+    }
+
+    setSubHeading(event) {
+        this.page.control[SUB_HEADING] = event.target.textContent;
+        this.savePageService.notifyPageChanges(this.page);
+    }
+
+    setInputEmail(event) {
+        this.page.control[INPUT_EMAIL] = event.target.value;
+        this.savePageService.notifyPageChanges(this.page);
+    }
+
+    setInputName(event) {
+        this.page.control[INPUT_NAME] = event.target.value;
+        this.savePageService.notifyPageChanges(this.page);
+    }
+
+    setSubmitButton(event) {
+        this.page.control[SUBMIT_BUTTON] = event.target.textContent;
+        this.savePageService.notifyPageChanges(this.page);
+    }
+
+
+
 
     uploadImage(control: any) {
         filepicker.setKey(this.filePickerKey);
