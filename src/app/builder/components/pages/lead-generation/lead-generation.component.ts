@@ -12,7 +12,7 @@ declare var filepicker: any;
 })
 export class LeadGenerationComponent implements OnInit{
 
-    mainHeading: string;
+    mainHeading: any;
     subHeading: string;
     nameInputBox: string;
     emailInputBox: string;
@@ -28,12 +28,12 @@ export class LeadGenerationComponent implements OnInit{
     }
    
     private initializeViewContent() {
-        this.mainHeading = "Calculate the risk of you getting a heart disease.";
+        this.mainHeading = "Calculate the <u>risk</u> of you getting a heart disease.";
         this.subHeading = "Heart problems are at an all time high. See if your lifestyle makes you susceptible.";
         this.nameInputBox = "John Doe";
         this.emailInputBox = "John@outgrow.co";
         this.nameInputBox1=this.nameInputBox;
-        console.log(this.nameInputBox);
+        console.log(this.nameInputBox1);
         this.button = "Estimate Costs";
     }
 

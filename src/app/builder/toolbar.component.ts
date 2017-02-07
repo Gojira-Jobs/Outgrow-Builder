@@ -25,6 +25,7 @@ export class ToolbarComponent implements OnInit {
         var range = window.getSelection().getRangeAt(0);
         range.deleteContents();
         range.insertNode(appended);
+        console.log(window.getSelection().getRangeAt(0).commonAncestorContainer.parentNode.textContent);
         // var range2=document.createRange();
         // range2.setStart(window.getSelection().getRangeAt(0).commonAncestorContainer.parentNode.childNodes[0],window.getSelection().getRangeAt(0).startOffset-1);
         // range2.collapse(true);

@@ -63,7 +63,7 @@ previousText:any;
         });
     }
     onTyping(){
-      this.receivedData=this.ele.nativeElement.innerText;
+      this.receivedData=this.ele.nativeElement.innerHTML;
       this.previousText=this.receivedData;
       this.updatedText.emit(this.receivedData);
     }
