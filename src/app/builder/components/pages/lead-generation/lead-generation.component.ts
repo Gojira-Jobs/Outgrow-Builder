@@ -1,9 +1,7 @@
 import {Script} from "../../../services/script.service";
 import {Page, SUBMIT_BUTTON, INPUT_NAME, INPUT_EMAIL, SUB_HEADING, MAIN_HEADING} from "../../../models/PageModel";
 import {SavePage, sectionLeadGeneration} from "../../../services/savePage.service";
-import {Component, OnInit, ElementRef} from "@angular/core";
-import {DomEventsPlugin} from "@angular/platform-browser/src/dom/events/dom_events";
-import {noop} from "@angular/core/src/linker/view_utils";
+import {Component, OnInit} from "@angular/core";
 declare var jQuery: any
 declare var filepicker: any;
 
@@ -49,10 +47,6 @@ export class LeadGenerationComponent implements OnInit {
         this.page.control[INPUT_NAME] = "John Doe";
         this.page.control[INPUT_EMAIL] = "John@outgrow.co";
         this.page.control[SUBMIT_BUTTON] = "Estimate Costs";
-    }
-
-    change(event) {
-        console.log('kamelot', event);
     }
 
     setMainHeading(event) {
@@ -115,8 +109,8 @@ export class LeadGenerationComponent implements OnInit {
                 caretOffset = preCaretRange.toString().length;
             }
         } else if ((sel = doc.selection) && sel.type != "Control") {
-            var textRange = sel.createRange();
-            var preCaretTextRange = doc.body.createTextRange();
+            let textRange = sel.createRange();
+            let preCaretTextRange = doc.body.createTextRange();
             preCaretTextRange.moveToElementText(element);
             preCaretTextRange.setEndPoint("EndToEnd", textRange);
             caretOffset = preCaretTextRange.text.length;

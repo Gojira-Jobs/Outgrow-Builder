@@ -17,7 +17,7 @@
         <div class="container text-center">
             <div class="landing-page">
                 <h1 class="main-head" [(editable)]="page.control.mainheading" style="outline: none"
-                    contenteditable="true" [innerHTML]="page.control.mainheading">
+                    contenteditable="true" [innerHTML]="page.control.mainheading" (input)="setMainHeading($event)">
                 </h1>
                 <p class="sub-head" [(editable)]="page.control.subheading"
                    style="outline: none;font-style:normal" contenteditable="true"
@@ -25,9 +25,10 @@
                 <p class="description"></p>
                 <div class="input-section">
                     <input type="text" [placeholder]="page.control.inputname"
+                           (click)="$event.target.value = $event.target.placeholder;"
                            (keyup)="setInputName($event)" (blur)="$event.target.value = ''">
                     <input type="email" [placeholder]="page.control.inputemail" (keyup)="setInputEmail($event)"
-                           (blur)="$event.target.value=''">
+                           (blur)="$event.target.value=''" (click)="$event.target.value = $event.target.placeholder;">
                 </div>
                 <button class="btn prime-action  next-step sliding-next" contenteditable="true"
                         [(editable)]="page.control.submitbutton"
