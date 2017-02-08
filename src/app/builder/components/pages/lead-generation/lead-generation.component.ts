@@ -34,10 +34,10 @@ export class LeadGenerationComponent implements OnInit {
 
         this.savePageService.notifyPageChanges(this.page);
         this.savePageService.getPageChangeObservable().debounceTime(1000)
-            .subscribe(data => {
-                console.log('saving in local storage', JSON.stringify(data));
-                this.savePageService.saveToLocalStore(JSON.stringify(data));
-            });
+            .distinctUntilChanged((x: string, y: string) => (x == y),
+                (x: Page) => (JSON.stringify(x.control))).subscribe(data => {
+            this.savePageService.saveToLocalStore(JSON.stringify(data));
+        });
     }
 
     private initializeViewContent() {
@@ -50,12 +50,13 @@ export class LeadGenerationComponent implements OnInit {
     }
 
     setMainHeading(event) {
-        this.page.control[MAIN_HEADING] = event.innerHTML;
+        console.log('innerhtml', event.target.innerHTML);
+        this.page.control[MAIN_HEADING] = event.target.innerHTML;
         this.savePageService.notifyPageChanges(this.page);
     }
 
     setSubHeading(event) {
-        this.page.control[SUB_HEADING] = event.target.textContent;
+        this.page.control[SUB_HEADING] = event.target.innerHTML;
         this.savePageService.notifyPageChanges(this.page);
     }
 
@@ -70,8 +71,51 @@ export class LeadGenerationComponent implements OnInit {
     }
 
     setSubmitButton(event) {
-        this.page.control[SUBMIT_BUTTON] = event.target.textContent;
+        this.page.control[SUBMIT_BUTTON] = event.target.innerHTML;
         this.savePageService.notifyPageChanges(this.page);
+    }
+
+    insertSpace(event) {
+        if (event.code == "Space") {
+            let index = LeadGenerationComponent.getCaretCharacterOffsetWithin(event.target);
+            let content = event.target.textContent;
+            event.target.innerHTML = content.slice(0, index) + "&nbsp;" + content.slice(index);
+
+            let node = document.querySelector("button");
+            node.focus();
+            let textNode = node.firstChild;
+
+            let range = document.createRange();
+            range.setStart(textNode, index + 1);
+            range.setEnd(textNode, index + 1);
+            let sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+    }
+
+    static getCaretCharacterOffsetWithin(element) {
+        let caretOffset = 0;
+        let doc = element.ownerDocument || element.document;
+        let win = doc.defaultView || doc.parentWindow;
+        let sel;
+        if (typeof win.getSelection != "undefined") {
+            sel = win.getSelection();
+            if (sel.rangeCount > 0) {
+                let range = win.getSelection().getRangeAt(0);
+                let preCaretRange = range.cloneRange();
+                preCaretRange.selectNodeContents(element);
+                preCaretRange.setEnd(range.endContainer, range.endOffset);
+                caretOffset = preCaretRange.toString().length;
+            }
+        } else if ((sel = doc.selection) && sel.type != "Control") {
+            let textRange = sel.createRange();
+            let preCaretTextRange = doc.body.createTextRange();
+            preCaretTextRange.moveToElementText(element);
+            preCaretTextRange.setEndPoint("EndToEnd", textRange);
+            caretOffset = preCaretTextRange.text.length;
+        }
+        return caretOffset;
     }
 
     uploadImage(control: any) {
