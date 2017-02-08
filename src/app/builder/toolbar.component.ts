@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'toolbar',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./assets/style.css']
 })
 export class ToolbarComponent implements OnInit {
-
+@Output('updatedDom') update:EventEmitter<any>=new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +18,8 @@ export class ToolbarComponent implements OnInit {
         if (type == 'bold') tag = 'b';
         if (type == 'italic') tag = 'i';
         if (type == 'underline') tag = 'u';
+        if(type=='h1') tag='h1';
+        if(type=='h2') tag='h2';
         var appended = document.createElement(tag);
         var sel=window.getSelection();
         appended.textContent = window.getSelection().toString();
@@ -25,6 +27,9 @@ export class ToolbarComponent implements OnInit {
         var range = window.getSelection().getRangeAt(0);
         range.deleteContents();
         range.insertNode(appended);
+        var element=window.getSelection().getRangeAt(0).commonAncestorContainer.parentNode;
+        console.log(element);
+        this.update.emit(element);
       //  console.log(window.getSelection().getRangeAt(0));
         // var range2=document.createRange();
         // range2.setStart(window.getSelection().getRangeAt(0).commonAncestorContainer.parentNode.childNodes[0],window.getSelection().getRangeAt(0).startOffset-1);

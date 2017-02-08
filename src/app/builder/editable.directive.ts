@@ -6,6 +6,8 @@ import {
     EventEmitter,
     ElementRef
 } from '@angular/core';
+
+
 import {SavePage} from "./services/savePage.service";
 declare var jQuery: any;
 @Directive({
@@ -13,6 +15,7 @@ declare var jQuery: any;
     host: {
         '(input)': 'onTyping()',
         '(mouseup)': 'onselection()',
+        '(dblclick)':'onselection1()',
         '(blur)': 'onfocusOut()'
     }
 })
@@ -33,8 +36,10 @@ export class EditableDirective implements OnChanges {
     }
 
     onselection() {
+        //console.log("in mouse");
         var menu = jQuery('#highlight_menu');
         if (window.getSelection() && window.getSelection().toString().length > 0) {
+            console.log("ffhhfhhhhfhhfhf");
             this.showMenu(menu);
         }
         else {
@@ -43,7 +48,7 @@ export class EditableDirective implements OnChanges {
     }
 
     showMenu(menu) {
-
+        console.log(document.getSelection().toString());
         var s = document.getSelection(),
             r = s.getRangeAt(0);
         if (r && s.toString()) {
@@ -79,7 +84,7 @@ export class EditableDirective implements OnChanges {
     }
 
     onTyping() {
-        this.sendChanges();
+       // this.sendChanges();
     }
 
     onfocusOut() {

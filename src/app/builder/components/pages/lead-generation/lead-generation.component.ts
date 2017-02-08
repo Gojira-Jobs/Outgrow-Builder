@@ -50,7 +50,7 @@ export class LeadGenerationComponent implements OnInit {
     }
 
     setMainHeading(event) {
-        this.page.control[MAIN_HEADING] = event.target.textContent;
+        this.page.control[MAIN_HEADING] = event.innerHTML;
         this.savePageService.notifyPageChanges(this.page);
     }
 
@@ -87,5 +87,9 @@ export class LeadGenerationComponent implements OnInit {
             }, (FPError: any) => {
                 console.log(FPError.toString());
             });
+    }
+    textReceived(event){
+        console.log(event.innerHTML);
+        this.setMainHeading(event);
     }
 }
