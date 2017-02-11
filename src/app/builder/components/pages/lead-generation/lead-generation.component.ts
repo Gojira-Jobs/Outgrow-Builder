@@ -1,9 +1,9 @@
 import {Script} from "../../../services/script.service";
 import {SavePage, sectionLeadGeneration} from "../../../services/savePage.service";
 import {Component, OnInit, OnDestroy} from "@angular/core";
-import {Page} from "../../../models/PageModel";
 import {LEAD_GENERATION_CONTROL_KEYS} from "../../../models/Control";
 import {Subscription} from "rxjs";
+import {Page} from "../../../models/PageModel";
 declare var jQuery: any
 declare var filepicker: any;
 
