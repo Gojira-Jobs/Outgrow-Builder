@@ -11,7 +11,18 @@ declare var filepicker: any;
     styleUrls: ['./assets/style.css']
 })
 export class LeadGenerationComponent implements OnInit {
+    public options:Object={
+   placeholderText: 'Edit Your Content Here!',
+  toolbarInline: true,
+      charCounterCount: false,
+      toolbarButtons: ['bold', 'italic', 'underline','color','html','clearFormatting'],
+      events:{
+            'froalaEditor.contentChanged':function(e,editor){
+                console.log(e);
+            }
+      }
 
+ }
     imgElement: Object;
     page: Page = new Page();
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
@@ -134,6 +145,6 @@ export class LeadGenerationComponent implements OnInit {
     }
     textReceived(event){
         console.log(event.innerHTML);
-        this.setMainHeading(event);
+     //   this.setMainHeading(event);
     }
 }
