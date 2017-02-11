@@ -25,19 +25,23 @@
                    (froalaModelChange)="updateModel(leadGenerationControlKeys.SUB_HEADING,$event)"></p>
                 <p class="description"></p>
                 <div class="input-section">
+
                     <input type="text" [placeholder]="page.control.inputname"
-                     (click)="$event.target.value = $event.target.placeholder;"
-                           (keyup)="setInputName($event)" (blur)="$event.target.value = ''">
-                    <input type="email" [placeholder]="page.control.inputemail" (keyup)="setInputEmail($event)"
-                           (blur)="$event.target.value=''" (click)="$event.target.value = $event.target.placeholder;">
+                           (click)="$event.target.value = $event.target.placeholder;"
+                           (keyup)="updateModel(leadGenerationControlKeys.INPUT_NAME,$event.target.value)"
+                           (blur)="$event.target.value = ''">
+                    <input type="email" [placeholder]="page.control.inputemail"
+                           (click)="$event.target.value = $event.target.placeholder;"
+                           (keyup)="updateModel(leadGenerationControlKeys.INPUT_EMAIL,$event.target.value)"
+                           (blur)="$event.target.value=''">
+
                 </div>
                 <button class="btn prime-action  next-step sliding-next"
-                [innerHTML]="page.control.submitButton"
-                 [froalaEditor]="options" >
-                 </button>
+                        [innerHTML]="page.control.submitButton"
+                        [froalaEditor]="options">
+                </button>
             </div>
         </div>
         <!-- Content Section end-->
     </section>
 </section>
-<toolbar (updatedDom)="textReceived($event)"></toolbar>
