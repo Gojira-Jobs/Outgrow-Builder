@@ -11,20 +11,23 @@ declare var filepicker: any;
     styleUrls: ['./assets/style.css']
 })
 export class LeadGenerationComponent implements OnInit {
-    public options:Object={
-   placeholderText: 'Edit Your Content Here!',
-  toolbarInline: true,
-      charCounterCount: false,
-      toolbarButtons: ['bold', 'italic', 'underline','color','html','clearFormatting'],
-      events:{
-            'froalaEditor.contentChanged':function(e,editor){
-                console.log(e);
-            }
-      }
 
- }
     imgElement: Object;
     page: Page = new Page();
+    public options:Object={
+        placeholderText:'Enter Text...',
+        toolbarInline: true,
+        htmlAllowedTags: ['h1', 'h2'],
+        charCounterCount: false,
+        toolbarButtons: ['bold', 'italic', 'underline','color','clearFormatting','paragraphFormat'],
+        events:{
+            'froalaEditor.contentChanged':function(e,editor){
+               LeadGenerationComponent.setMainHeading(e);
+             }
+        }
+        
+
+    }
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
     constructor(script: Script, private savePageService: SavePage) {
@@ -60,10 +63,10 @@ export class LeadGenerationComponent implements OnInit {
         this.page.control[SUBMIT_BUTTON] = "Estimate Costs";
     }
 
-    setMainHeading(event) {
-        console.log('innerhtml', event.target.innerHTML);
-        this.page.control[MAIN_HEADING] = event.target.innerHTML;
-        this.savePageService.notifyPageChanges(this.page);
+   static setMainHeading(event) {
+         console.log('innerhtml',$(event.target).find('.main-head').html());
+        // this.page.control[MAIN_HEADING] = event.target.innerHTML;
+        // this.savePageService.notifyPageChanges(this.page);
     }
 
     setSubHeading(event) {

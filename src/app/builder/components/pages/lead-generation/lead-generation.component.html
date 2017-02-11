@@ -21,17 +21,16 @@
                 <p #subHead class="sub-head" [froalaEditor]="options" [(froalaModel)]="page.control.subheading"></p>
                 <p class="description"></p>
                 <div class="input-section">
-                    <input type="text" [placeholder]="page.control.inputname"
-                           (click)="$event.target.value = $event.target.placeholder;"
+                    <input type="text" [placeholder]="page.control.inputname" 
+                     (click)="$event.target.value = $event.target.placeholder;"
                            (keyup)="setInputName($event)" (blur)="$event.target.value = ''">
                     <input type="email" [placeholder]="page.control.inputemail" (keyup)="setInputEmail($event)"
                            (blur)="$event.target.value=''" (click)="$event.target.value = $event.target.placeholder;">
                 </div>
-                <button class="btn prime-action  next-step sliding-next" contenteditable="true"
-                        [(editable)]="page.control.submitbutton"
-                        [innerHTML]="page.control.submitButton"
-                        (input)="setSubmitButton($event)" (keypress)="insertSpace($event,submitButton)">
-                </button>
+                <button class="btn prime-action  next-step sliding-next"
+                [innerHTML]="page.control.submitButton"
+                 [froalaEditor]="options" >
+                 </button>
             </div>
         </div>
         <!-- Content Section end-->
