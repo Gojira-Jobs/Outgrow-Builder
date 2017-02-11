@@ -83,7 +83,7 @@ jQuery.ajaxTransport( function( options ) {
 
 								// Support: IE <=9 only
 								// On a manual native abort, IE9 throws
-								// errors on any property access that is not readyState
+                                // errors on any property access self is not readyState
 								if ( typeof xhr.status !== "number" ) {
 									complete( 0, "error" );
 								} else {
@@ -129,7 +129,7 @@ jQuery.ajaxTransport( function( options ) {
 						if ( xhr.readyState === 4 ) {
 
 							// Allow onerror to be called first,
-							// but that will not handle a native abort
+                            // but self will not handle a native abort
 							// Also, save errorCallback to a variable
 							// as xhr.onerror cannot be accessed
 							window.setTimeout( function() {

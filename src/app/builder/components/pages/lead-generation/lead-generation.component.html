@@ -16,9 +16,13 @@
         <!-- Content Section-->
         <div class="container text-center">
             <div class="landing-page">
-                <h1 #head class="main-head" [froalaEditor]="options" [(froalaModel)]="page.control.mainheading">
+                <h1 #head id="main-heading" class="main-head" [froalaEditor]="options"
+                    [(froalaModel)]="page.control.mainheading"
+                    (froalaModelChange)="updateModel(leadGenerationControlKeys.MAIN_HEADING,$event)">
                 </h1>
-                <p #subHead class="sub-head" [froalaEditor]="options" [(froalaModel)]="page.control.subheading"></p>
+                <p #subHead class="sub-head" id="sub-heading" [froalaEditor]="options"
+                   [(froalaModel)]="page.control.subheading"
+                   (froalaModelChange)="updateModel(leadGenerationControlKeys.SUB_HEADING,$event)"></p>
                 <p class="description"></p>
                 <div class="input-section">
                     <input type="text" [placeholder]="page.control.inputname"
@@ -29,12 +33,11 @@
                 </div>
                 <button class="btn prime-action  next-step sliding-next" contenteditable="true"
                         [(editable)]="page.control.submitbutton"
-                        [innerHTML]="page.control.submitButton"
-                        (input)="setSubmitButton($event)" (keypress)="insertSpace($event,submitButton)">
+                        [innerHTML]="page.control.submitButton">
                 </button>
             </div>
         </div>
         <!-- Content Section end-->
     </section>
 </section>
-<toolbar  (updatedDom)="textReceived($event)"></toolbar>
+<toolbar (updatedDom)="textReceived($event)"></toolbar>

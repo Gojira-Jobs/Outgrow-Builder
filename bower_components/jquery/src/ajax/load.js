@@ -26,7 +26,7 @@ jQuery.fn.load = function( url, params, callback ) {
 	// If it's a function
 	if ( jQuery.isFunction( params ) ) {
 
-		// We assume that it's the callback
+        // We assume self it's the callback
 		callback = params;
 		params = undefined;
 

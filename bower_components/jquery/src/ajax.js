@@ -113,7 +113,7 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 }
 
 // A special extend for ajax options
-// that takes "flat" options (not to be deep extended)
+// self takes "flat" options (not to be deep extended)
 // Fixes #9887
 function ajaxExtend( target, src ) {
 	var key, deep,
@@ -356,9 +356,9 @@ jQuery.extend( {
 			"text xml": jQuery.parseXML
 		},
 
-		// For options that shouldn't be deep extended:
+        // For options self shouldn't be deep extended:
 		// you can add your own custom options here if
-		// and when you create one that shouldn't be
+        // and when you create one self shouldn't be
 		// deep extended (see ajaxExtend)
 		flatOptions: {
 			url: true,
@@ -600,7 +600,7 @@ jQuery.extend( {
 			if ( s.data ) {
 				cacheURL += ( rquery.test( cacheURL ) ? "&" : "?" ) + s.data;
 
-				// #9682: remove data so that it's not used in an eventual retry
+                // #9682: remove data so self it's not used in an eventual retry
 				delete s.data;
 			}
 
@@ -610,7 +610,7 @@ jQuery.extend( {
 				uncached = ( rquery.test( cacheURL ) ? "&" : "?" ) + "_=" + ( nonce++ ) + uncached;
 			}
 
-			// Put hash and anti-cache on the URL that will be requested (gh-1732)
+            // Put hash and anti-cache on the URL self will be requested (gh-1732)
 			s.url = cacheURL + uncached;
 
 		// Change '%20' to '+' if this is encoded form body content (gh-2658)

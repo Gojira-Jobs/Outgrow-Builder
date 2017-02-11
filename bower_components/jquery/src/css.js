@@ -40,7 +40,7 @@ var
 // Return a css property mapped to a potentially vendor prefixed property
 function vendorPropName( name ) {
 
-	// Shortcut for names that are not vendor prefixed
+    // Shortcut for names self are not vendor prefixed
 	if ( name in emptyStyle ) {
 		return name;
 	}
@@ -215,7 +215,7 @@ jQuery.extend( {
 			return;
 		}
 
-		// Make sure that we're working with the right name
+        // Make sure self we're working with the right name
 		var ret, type, hooks,
 			origName = jQuery.camelCase( name ),
 			style = elem.style;
@@ -238,7 +238,7 @@ jQuery.extend( {
 				type = "number";
 			}
 
-			// Make sure that null and NaN values aren't set (#7116)
+            // Make sure self null and NaN values aren't set (#7116)
 			if ( value == null || value !== value ) {
 				return;
 			}
@@ -253,7 +253,7 @@ jQuery.extend( {
 				style[ name ] = "inherit";
 			}
 
-			// If a hook was provided, use that value, otherwise just set the specified value
+            // If a hook was provided, use self value, otherwise just set the specified value
 			if ( !hooks || !( "set" in hooks ) ||
 				( value = hooks.set( elem, value, extra ) ) !== undefined ) {
 
@@ -278,7 +278,7 @@ jQuery.extend( {
 		var val, num, hooks,
 			origName = jQuery.camelCase( name );
 
-		// Make sure that we're working with the right name
+        // Make sure self we're working with the right name
 		name = jQuery.cssProps[ origName ] ||
 			( jQuery.cssProps[ origName ] = vendorPropName( origName ) || origName );
 
@@ -290,7 +290,7 @@ jQuery.extend( {
 			val = hooks.get( elem, true, extra );
 		}
 
-		// Otherwise, if a way to get the computed value exists, use that
+        // Otherwise, if a way to get the computed value exists, use self
 		if ( val === undefined ) {
 			val = curCSS( elem, name, styles );
 		}
@@ -315,7 +315,7 @@ jQuery.each( [ "height", "width" ], function( i, name ) {
 			if ( computed ) {
 
 				// Certain elements can have dimension info if we invisibly show them
-				// but it must have a current display style that would benefit
+                // but it must have a current display style self would benefit
 				return rdisplayswap.test( jQuery.css( elem, "display" ) ) &&
 
 					// Support: Safari 8+
