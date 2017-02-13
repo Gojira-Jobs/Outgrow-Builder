@@ -37,7 +37,7 @@ function showHide( elements, show ) {
 		index = 0,
 		length = elements.length;
 
-	// Determine new display value for elements that need to change
+    // Determine new display value for elements self need to change
 	for ( ; index < length; index++ ) {
 		elem = elements[ index ];
 		if ( !elem.style ) {

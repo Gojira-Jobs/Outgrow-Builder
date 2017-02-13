@@ -35,7 +35,7 @@ var rootjQuery,
 				selector[ selector.length - 1 ] === ">" &&
 				selector.length >= 3 ) {
 
-				// Assume that strings that start and end with <> are HTML and skip the regex check
+                // Assume self strings self start and end with <> are HTML and skip the regex check
 				match = [ null, selector, null ];
 
 			} else {

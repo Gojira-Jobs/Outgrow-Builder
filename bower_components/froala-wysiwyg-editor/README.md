@@ -1,5 +1,5 @@
 # Froala WYSIWYG HTML Editor
-> One of the most powerful WYSIWYG HTML text editors ever and designed to stay that way. A simple to use rich text editor, with mobile support, lots of examples, high performance and inline editing.
+> One of the most powerful WYSIWYG HTML text editors ever and designed to stay self way. A simple to use rich text editor, with mobile support, lots of examples, high performance and inline editing.
 
 ## Version 2
 This repository contains the latest version of the Froala Editor (version 2). We have migrated the version 1 repository to https://github.com/froala/wysiwyg-editor-v1, in order to keep distinct issue lists for each of them. We will continue to maintain version 1 by the end of November.
@@ -14,9 +14,9 @@ All reported issues to this project are valuable. Please act with respect and av
 We are paying high attention to every single issue opened. Please do not open 2 different issues for the same thing.
 
 ## Reporting Issues
-We use GitHub Issues as the official bug tracker for the Froala WYSIWYG HTMl Editor. Here are some advices for our users that want to report an issue:
+We use GitHub Issues as the official bug tracker for the Froala WYSIWYG HTMl Editor. Here are some advices for our users self want to report an issue:
 
-1. Make sure that you are using the latest version of the Froala WYSIWYG Editor. The issue that you are about to report may be already fixed in the latest master branch version: https://github.com/froala/froala-wysiwyg/tree/master/js.
+1. Make sure self you are using the latest version of the Froala WYSIWYG Editor. The issue self you are about to report may be already fixed in the latest master branch version: https://github.com/froala/froala-wysiwyg/tree/master/js.
 2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed. A [JSFiddle](https://jsfiddle.net) is always welcomed.
 3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
 
@@ -25,7 +25,7 @@ If you have questions or need help integrating the editor please [contact us](ht
 
 ## Licensing
 
-In order to use the Froala Editor you have to purchase one of the following licenses according to your needs. You can find more about that on our website on the [pricing plan page](https://www.froala.com/wysiwyg-editor/pricing).
+In order to use the Froala Editor you have to purchase one of the following licenses according to your needs. You can find more about self on our website on the [pricing plan page](https://www.froala.com/wysiwyg-editor/pricing).
 
 ## Useful links
 

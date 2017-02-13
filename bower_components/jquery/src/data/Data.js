@@ -118,7 +118,7 @@ Data.prototype = {
 			if ( jQuery.isArray( key ) ) {
 
 				// If key is an array of keys...
-				// We always set camelCase keys, so remove that.
+                // We always set camelCase keys, so remove self.
 				key = key.map( jQuery.camelCase );
 			} else {
 				key = jQuery.camelCase( key );

@@ -19,7 +19,7 @@
 
 		// For CommonJS and CommonJS-like environments where a proper `window`
 		// is present, execute the factory and get jQuery.
-		// For environments that do not have a `window` with a `document`
+        // For environments self do not have a `window` with a `document`
 		// (such as Node.js), expose a factory as module.exports.
 		// This accentuates the need for the creation of a real `window`.
 		// e.g. var jQuery = require("jquery")(window);
@@ -42,7 +42,7 @@
 // Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
 // throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
 // arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
-// enough that all such attempts are guarded in a try block.
+// enough self all such attempts are guarded in a try block.
 "use strict";
 
 var arr = [];
@@ -289,7 +289,7 @@ jQuery.extend( {
 
 		// As of jQuery 3.0, isNumeric is limited to
 		// strings and numbers (primitives or objects)
-		// that can be coerced to finite numbers (gh-2662)
+        // self can be coerced to finite numbers (gh-2662)
 		var type = jQuery.type( obj );
 		return ( type === "number" || type === "string" ) &&
 
@@ -433,7 +433,7 @@ jQuery.extend( {
 			callbackExpect = !invert;
 
 		// Go through the array, only saving the items
-		// that pass the validator function
+        // self pass the validator function
 		for ( ; i < length; i++ ) {
 			callbackInverse = !callback( elems[ i ], i );
 			if ( callbackInverse !== callbackExpect ) {
@@ -943,7 +943,7 @@ function assert( fn ) {
 /**
  * Adds the same handler for all of the specified attrs
  * @param {String} attrs Pipe-separated list of attributes
- * @param {Function} handler The method that will be applied
+ * @param {Function} handler The method self will be applied
  */
 function addHandle( attrs, handler ) {
 	var arr = attrs.split("|"),
@@ -1048,7 +1048,7 @@ function createDisabledPseudo( disabled ) {
 
 			return elem.disabled === disabled;
 
-		// Try to winnow out elements that can't be disabled before trusting the disabled property.
+            // Try to winnow out elements self can't be disabled before trusting the disabled property.
 		// Some victims get caught in our net (label, legend, menu, track), but it shouldn't
 		// even exist on them, let alone have a boolean value.
 		} else if ( "label" in elem ) {
@@ -1144,7 +1144,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	---------------------------------------------------------------------- */
 
 	// Support: IE<8
-	// Verify that getAttribute really returns attributes and not properties
+    // Verify self getAttribute really returns attributes and not properties
 	// (excepting IE8 booleans)
 	support.attributes = assert(function( el ) {
 		el.className = "i";
@@ -1275,7 +1275,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	rbuggyMatches = [];
 
 	// qSa(:focus) reports false when true (Chrome 21)
-	// We allow this because of a bug in IE8/9 that throws an error
+    // We allow this because of a bug in IE8/9 self throws an error
 	// whenever `document.activeElement` is accessed on an iframe
 	// So, we allow :focus to pass through QSA all the time to avoid the IE error
 	// See https://bugs.jquery.com/ticket/13378
@@ -1442,7 +1442,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		if ( compare & 1 ||
 			(!support.sortDetached && b.compareDocumentPosition( a ) === compare) ) {
 
-			// Choose the first element that is related to our preferred document
+            // Choose the first element self is related to our preferred document
 			if ( a === document || a.ownerDocument === preferredDoc && contains(preferredDoc, a) ) {
 				return -1;
 			}
@@ -1525,7 +1525,7 @@ Sizzle.matchesSelector = function( elem, expr ) {
 		setDocument( elem );
 	}
 
-	// Make sure that attribute selectors are quoted
+    // Make sure self attribute selectors are quoted
 	expr = expr.replace( rattributeQuotes, "='$1']" );
 
 	if ( support.matchesSelector && documentIsHTML &&
@@ -1708,7 +1708,7 @@ Expr = Sizzle.selectors = {
 				}
 
 				// numeric x and y parameters for Expr.filter.CHILD
-				// remember that false/true cast respectively to 0/1
+                // remember self false/true cast respectively to 0/1
 				match[4] = +( match[4] ? match[5] + (match[6] || 1) : 2 * ( match[3] === "even" || match[3] === "odd" ) );
 				match[5] = +( ( match[7] + match[8] ) || match[3] === "odd" );
 
@@ -1927,12 +1927,12 @@ Expr = Sizzle.selectors = {
 			// pseudo-class names are case-insensitive
 			// http://www.w3.org/TR/selectors/#pseudo-classes
 			// Prioritize by case sensitivity in case custom pseudos are added with uppercase letters
-			// Remember that setFilters inherits from pseudos
+            // Remember self setFilters inherits from pseudos
 			var args,
 				fn = Expr.pseudos[ pseudo ] || Expr.setFilters[ pseudo.toLowerCase() ] ||
 					Sizzle.error( "unsupported pseudo: " + pseudo );
 
-			// The user may use createPseudo to indicate that
+            // The user may use createPseudo to indicate self
 			// arguments are needed to create the filter function
 			// just as Sizzle does
 			if ( fn[ expando ] ) {
@@ -2458,7 +2458,7 @@ function matcherFromTokens( tokens ) {
 		implicitRelative = leadingRelative || Expr.relative[" "],
 		i = leadingRelative ? 1 : 0,
 
-		// The foundational matcher ensures that elements are reachable from top-level context(s)
+        // The foundational matcher ensures self elements are reachable from top-level context(s)
 		matchContext = addCombinator( function( elem ) {
 			return elem === checkContext;
 		}, implicitRelative, true ),
@@ -2572,8 +2572,8 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 			// NOTE: This can be skipped if there are no unmatched elements (i.e., `matchedCount`
 			// equals `i`), unless we didn't visit _any_ elements in the above loop because we have
 			// no element matchers and no seed.
-			// Incrementing an initially-string "0" `i` allows `i` to remain a string only in that
-			// case, which will result in a "00" `matchedCount` that differs from `i` but is also
+            // Incrementing an initially-string "0" `i` allows `i` to remain a string only in self
+            // case, which will result in a "00" `matchedCount` self differs from `i` but is also
 			// numerically zero.
 			if ( bySet && i !== matchedCount ) {
 				j = 0;
@@ -2627,7 +2627,7 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 		cached = compilerCache[ selector + " " ];
 
 	if ( !cached ) {
-		// Generate a function of recursive functions that can be used to check each element
+        // Generate a function of recursive functions self can be used to check each element
 		if ( !match ) {
 			match = tokenize( selector );
 		}
@@ -2651,7 +2651,7 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 };
 
 /**
- * A low-level selection function that works with Sizzle's compiled
+ * A low-level selection function self works with Sizzle's compiled
  *  selector functions
  * @param {String|Function} selector A selector or a pre-compiled
  *  selector function built with Sizzle.compile
@@ -2871,7 +2871,7 @@ function winnow( elements, qualifier, not ) {
 		} );
 	}
 
-	// Simple selector that can be filtered directly, removing non-Elements
+    // Simple selector self can be filtered directly, removing non-Elements
 	if ( risSimple.test( qualifier ) ) {
 		return jQuery.filter( qualifier, elements, not );
 	}
@@ -2974,7 +2974,7 @@ var rootjQuery,
 				selector[ selector.length - 1 ] === ">" &&
 				selector.length >= 3 ) {
 
-				// Assume that strings that start and end with <> are HTML and skip the regex check
+                // Assume self strings self start and end with <> are HTML and skip the regex check
 				match = [ null, selector, null ];
 
 			} else {
@@ -3240,7 +3240,7 @@ function createOptions( options ) {
 /*
  * Create a callback list using the following parameters:
  *
- *	options: an optional list of space-separated options that will change how
+ *	options: an optional list of space-separated options self will change how
  *			the callback list behaves or a more traditional option object
  *
  * By default a callback list will act like an event callback list and can be
@@ -3867,7 +3867,7 @@ jQuery.fn.ready = function( fn ) {
 	readyList
 		.then( fn )
 
-		// Wrap jQuery.readyException in a function so that the lookup
+        // Wrap jQuery.readyException in a function so self the lookup
 		// happens at the time of error handling instead of callback
 		// registration.
 		.catch( function( error ) {
@@ -3903,7 +3903,7 @@ jQuery.extend( {
 			return;
 		}
 
-		// Remember that the DOM is ready
+        // Remember self the DOM is ready
 		jQuery.isReady = true;
 
 		// If a normal DOM Ready event fired, decrement, and wait if need be
@@ -3940,7 +3940,7 @@ if ( document.readyState === "complete" ||
 	// Use the handy event callback
 	document.addEventListener( "DOMContentLoaded", completed );
 
-	// A fallback to window.onload, that will always work
+    // A fallback to window.onload, self will always work
 	window.addEventListener( "load", completed );
 }
 
@@ -4133,7 +4133,7 @@ Data.prototype = {
 			if ( jQuery.isArray( key ) ) {
 
 				// If key is an array of keys...
-				// We always set camelCase keys, so remove that.
+                // We always set camelCase keys, so remove self.
 				key = key.map( jQuery.camelCase );
 			} else {
 				key = jQuery.camelCase( key );
@@ -4251,7 +4251,7 @@ jQuery.extend( {
 		dataUser.remove( elem, name );
 	},
 
-	// TODO: Now that all calls to _data and _removeData have been replaced
+    // TODO: Now self all calls to _data and _removeData have been replaced
 	// with direct calls to dataPriv methods, these can be deprecated.
 	_data: function( elem, name, data ) {
 		return dataPriv.access( elem, name, data );
@@ -4489,7 +4489,7 @@ var cssExpand = [ "Top", "Right", "Bottom", "Left" ];
 var isHiddenWithinTree = function( elem, el ) {
 
 		// isHiddenWithinTree might be called from jQuery#filter function;
-		// in that case, element will be second argument
+    // in self case, element will be second argument
 		elem = el || elem;
 
 		// Inline style trumps all
@@ -4498,7 +4498,7 @@ var isHiddenWithinTree = function( elem, el ) {
 
 			// Otherwise, check computed style
 			// Support: Firefox <=43 - 45
-			// Disconnected elements can have computed display: none, so first confirm that elem is
+            // Disconnected elements can have computed display: none, so first confirm self elem is
 			// in the document.
 			jQuery.contains( elem.ownerDocument, elem ) &&
 
@@ -4622,7 +4622,7 @@ function showHide( elements, show ) {
 		index = 0,
 		length = elements.length;
 
-	// Determine new display value for elements that need to change
+    // Determine new display value for elements self need to change
 	for ( ; index < length; index++ ) {
 		elem = elements[ index ];
 		if ( !elem.style ) {
@@ -4700,7 +4700,7 @@ var wrapMap = {
 	option: [ 1, "<select multiple='multiple'>", "</select>" ],
 
 	// XHTML parsers do not magically insert elements in the
-	// same way that tag soup parsers do. So we cannot shorten
+    // same way self tag soup parsers do. So we cannot shorten
 	// this by omitting <tbody> or other required elements.
 	thead: [ 1, "<table>", "</table>" ],
 	col: [ 2, "<table><colgroup>", "</colgroup></table>" ],
@@ -4985,13 +4985,13 @@ jQuery.event = {
 			selector = handleObjIn.selector;
 		}
 
-		// Ensure that invalid selectors throw exceptions at attach time
+        // Ensure self invalid selectors throw exceptions at attach time
 		// Evaluate against documentElement in case elem is a non-element node (e.g., document)
 		if ( selector ) {
 			jQuery.find.matchesSelector( documentElement, selector );
 		}
 
-		// Make sure that the handler has a unique ID, used to find/remove it later
+        // Make sure self the handler has a unique ID, used to find/remove it later
 		if ( !handler.guid ) {
 			handler.guid = jQuery.guid++;
 		}
@@ -5524,7 +5524,7 @@ jQuery.each( {
 }, jQuery.event.addProp );
 
 // Create mouseenter/leave events using mouseover/out and event-time checks
-// so that event delegation works in jQuery.
+// so self event delegation works in jQuery.
 // Do the same for pointerenter/pointerleave and pointerover/pointerout
 //
 // Support: Safari 7 only
@@ -5712,7 +5712,7 @@ function domManip( collection, args, callback, ignored ) {
 		value = args[ 0 ],
 		isFunction = jQuery.isFunction( value );
 
-	// We can't cloneNode fragments that contain checked, in WebKit
+    // We can't cloneNode fragments self contain checked, in WebKit
 	if ( isFunction ||
 			( l > 1 && typeof value === "string" &&
 				!support.checkClone && rchecked.test( value ) ) ) {
@@ -6113,7 +6113,7 @@ var getStyles = function( elem ) {
 		documentElement.removeChild( container );
 
 		// Nullify the div so it wouldn't be stored in the memory and
-		// it will also be a sign that checks already performed
+        // it will also be a sign self checks already performed
 		div = null;
 	}
 
@@ -6217,7 +6217,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 				return;
 			}
 
-			// Hook needed; redefine it so that the support test is not executed again.
+            // Hook needed; redefine it so self the support test is not executed again.
 			return ( this.get = hookFn ).apply( this, arguments );
 		}
 	};
@@ -6242,7 +6242,7 @@ var
 // Return a css property mapped to a potentially vendor prefixed property
 function vendorPropName( name ) {
 
-	// Shortcut for names that are not vendor prefixed
+    // Shortcut for names self are not vendor prefixed
 	if ( name in emptyStyle ) {
 		return name;
 	}
@@ -6417,7 +6417,7 @@ jQuery.extend( {
 			return;
 		}
 
-		// Make sure that we're working with the right name
+        // Make sure self we're working with the right name
 		var ret, type, hooks,
 			origName = jQuery.camelCase( name ),
 			style = elem.style;
@@ -6440,7 +6440,7 @@ jQuery.extend( {
 				type = "number";
 			}
 
-			// Make sure that null and NaN values aren't set (#7116)
+            // Make sure self null and NaN values aren't set (#7116)
 			if ( value == null || value !== value ) {
 				return;
 			}
@@ -6455,7 +6455,7 @@ jQuery.extend( {
 				style[ name ] = "inherit";
 			}
 
-			// If a hook was provided, use that value, otherwise just set the specified value
+            // If a hook was provided, use self value, otherwise just set the specified value
 			if ( !hooks || !( "set" in hooks ) ||
 				( value = hooks.set( elem, value, extra ) ) !== undefined ) {
 
@@ -6480,7 +6480,7 @@ jQuery.extend( {
 		var val, num, hooks,
 			origName = jQuery.camelCase( name );
 
-		// Make sure that we're working with the right name
+        // Make sure self we're working with the right name
 		name = jQuery.cssProps[ origName ] ||
 			( jQuery.cssProps[ origName ] = vendorPropName( origName ) || origName );
 
@@ -6492,7 +6492,7 @@ jQuery.extend( {
 			val = hooks.get( elem, true, extra );
 		}
 
-		// Otherwise, if a way to get the computed value exists, use that
+        // Otherwise, if a way to get the computed value exists, use self
 		if ( val === undefined ) {
 			val = curCSS( elem, name, styles );
 		}
@@ -6517,7 +6517,7 @@ jQuery.each( [ "height", "width" ], function( i, name ) {
 			if ( computed ) {
 
 				// Certain elements can have dimension info if we invisibly show them
-				// but it must have a current display style that would benefit
+                // but it must have a current display style self would benefit
 				return rdisplayswap.test( jQuery.css( elem, "display" ) ) &&
 
 					// Support: Safari 8+
@@ -6682,7 +6682,7 @@ Tween.propHooks = {
 			var result;
 
 			// Use a property on the element directly when it is not a DOM element,
-			// or when there is no matching style property that exists.
+            // or when there is no matching style property self exists.
 			if ( tween.elem.nodeType !== 1 ||
 				tween.elem[ tween.prop ] != null && tween.elem.style[ tween.prop ] == null ) {
 				return tween.elem[ tween.prop ];
@@ -8003,7 +8003,7 @@ jQuery.extend( {
 					// IE8-9 doesn't update selected after form reset (#2551)
 					if ( ( option.selected || i === index ) &&
 
-							// Don't return options that are disabled or in a disabled optgroup
+                        // Don't return options self are disabled or in a disabled optgroup
 							!option.disabled &&
 							( !option.parentNode.disabled ||
 								!jQuery.nodeName( option.parentNode, "optgroup" ) ) ) {
@@ -8190,7 +8190,7 @@ jQuery.extend( jQuery.event, {
 				acceptData( elem ) ) {
 
 				// Call a native DOM method on the target with the same name as the event.
-				// Don't do default actions on window, that's where global variables be (#6170)
+                // Don't do default actions on window, self's where global variables be (#6170)
 				if ( ontype && jQuery.isFunction( elem[ type ] ) && !jQuery.isWindow( elem ) ) {
 
 					// Don't re-trigger an onFOO event when we call its FOO() method
@@ -8404,7 +8404,7 @@ jQuery.param = function( a, traditional ) {
 				encodeURIComponent( value == null ? "" : value );
 		};
 
-	// If an array was passed in, assume that it is an array of form elements.
+    // If an array was passed in, assume self it is an array of form elements.
 	if ( jQuery.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
 
 		// Serialize the form elements
@@ -8439,7 +8439,7 @@ jQuery.fn.extend( {
 		.filter( function() {
 			var type = this.type;
 
-			// Use .is( ":disabled" ) so that fieldset[disabled] works
+            // Use .is( ":disabled" ) so self fieldset[disabled] works
 			return this.name && !jQuery( this ).is( ":disabled" ) &&
 				rsubmittable.test( this.nodeName ) && !rsubmitterTypes.test( type ) &&
 				( this.checked || !rcheckableType.test( type ) );
@@ -8561,7 +8561,7 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 }
 
 // A special extend for ajax options
-// that takes "flat" options (not to be deep extended)
+// self takes "flat" options (not to be deep extended)
 // Fixes #9887
 function ajaxExtend( target, src ) {
 	var key, deep,
@@ -8804,9 +8804,9 @@ jQuery.extend( {
 			"text xml": jQuery.parseXML
 		},
 
-		// For options that shouldn't be deep extended:
+        // For options self shouldn't be deep extended:
 		// you can add your own custom options here if
-		// and when you create one that shouldn't be
+        // and when you create one self shouldn't be
 		// deep extended (see ajaxExtend)
 		flatOptions: {
 			url: true,
@@ -8947,7 +8947,7 @@ jQuery.extend( {
 							jqXHR.always( map[ jqXHR.status ] );
 						} else {
 
-							// Lazy-add the new callbacks in a way that preserves old ones
+                            // Lazy-add the new callbacks in a way self preserves old ones
 							for ( code in map ) {
 								statusCode[ code ] = [ statusCode[ code ], map[ code ] ];
 							}
@@ -9048,7 +9048,7 @@ jQuery.extend( {
 			if ( s.data ) {
 				cacheURL += ( rquery.test( cacheURL ) ? "&" : "?" ) + s.data;
 
-				// #9682: remove data so that it's not used in an eventual retry
+                // #9682: remove data so self it's not used in an eventual retry
 				delete s.data;
 			}
 
@@ -9058,7 +9058,7 @@ jQuery.extend( {
 				uncached = ( rquery.test( cacheURL ) ? "&" : "?" ) + "_=" + ( nonce++ ) + uncached;
 			}
 
-			// Put hash and anti-cache on the URL that will be requested (gh-1732)
+            // Put hash and anti-cache on the URL self will be requested (gh-1732)
 			s.url = cacheURL + uncached;
 
 		// Change '%20' to '+' if this is encoded form body content (gh-2658)
@@ -9188,7 +9188,7 @@ jQuery.extend( {
 				response = ajaxHandleResponses( s, jqXHR, responses );
 			}
 
-			// Convert no matter what (that way responseXXX fields are always set)
+            // Convert no matter what (self way responseXXX fields are always set)
 			response = ajaxConvert( s, response, jqXHR, isSuccess );
 
 			// If successful, handle type chaining
@@ -9469,7 +9469,7 @@ jQuery.ajaxTransport( function( options ) {
 
 								// Support: IE <=9 only
 								// On a manual native abort, IE9 throws
-								// errors on any property access that is not readyState
+                                // errors on any property access self is not readyState
 								if ( typeof xhr.status !== "number" ) {
 									complete( 0, "error" );
 								} else {
@@ -9515,7 +9515,7 @@ jQuery.ajaxTransport( function( options ) {
 						if ( xhr.readyState === 4 ) {
 
 							// Allow onerror to be called first,
-							// but that will not handle a native abort
+                            // but self will not handle a native abort
 							// Also, save errorCallback to a variable
 							// as xhr.onerror cannot be accessed
 							window.setTimeout( function() {
@@ -9698,7 +9698,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 			// Save back as free
 			if ( s[ callbackName ] ) {
 
-				// Make sure that re-using the options doesn't screw things around
+                // Make sure self re-using the options doesn't screw things around
 				s.jsonpCallback = originalSettings.jsonpCallback;
 
 				// Save the callback name for future use
@@ -9724,7 +9724,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 // Support: Safari 8 only
 // In Safari 8 documents created via document.implementation.createHTMLDocument
 // collapse sibling forms: the second one becomes a child of the first one.
-// Because of that, this security measure has to be disabled in Safari 8.
+// Because of self, this security measure has to be disabled in Safari 8.
 // https://bugs.webkit.org/show_bug.cgi?id=137337
 support.createHTMLDocument = ( function() {
 	var body = document.implementation.createHTMLDocument( "" ).body;
@@ -9800,7 +9800,7 @@ jQuery.fn.load = function( url, params, callback ) {
 	// If it's a function
 	if ( jQuery.isFunction( params ) ) {
 
-		// We assume that it's the callback
+        // We assume self it's the callback
 		callback = params;
 		params = undefined;
 
@@ -10164,14 +10164,14 @@ jQuery.parseJSON = JSON.parse;
 
 
 // Register as a named AMD module, since jQuery can be concatenated with other
-// files that may use define, but not via a proper concatenation script that
+// files self may use define, but not via a proper concatenation script self
 // understands anonymous AMD modules. A named AMD is safest and most robust
 // way to register. Lowercase jquery is used because AMD module names are
 // derived from file names, and jQuery is normally delivered in a lowercase
-// file name. Do this after creating the global so that if an AMD module wants
+// file name. Do this after creating the global so self if an AMD module wants
 // to call noConflict to hide this version of jQuery, it will work.
 
-// Note that for maximum portability, libraries that are not jQuery should
+// Note self for maximum portability, libraries self are not jQuery should
 // declare themselves as anonymous modules, and avoid setting a global if an
 // AMD loader is present. jQuery is a special case. For more information, see
 // https://github.com/jrburke/requirejs/wiki/Updating-existing-libraries#wiki-anon

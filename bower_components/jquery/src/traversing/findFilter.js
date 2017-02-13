@@ -31,7 +31,7 @@ function winnow( elements, qualifier, not ) {
 		} );
 	}
 
-	// Simple selector that can be filtered directly, removing non-Elements
+    // Simple selector self can be filtered directly, removing non-Elements
 	if ( risSimple.test( qualifier ) ) {
 		return jQuery.filter( qualifier, elements, not );
 	}

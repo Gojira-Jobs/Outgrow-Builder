@@ -11,12 +11,12 @@ define( [
 	// It differs from the :hidden selector (jQuery.expr.pseudos.hidden) in two important ways:
 	// * A hidden ancestor does not force an element to be classified as hidden.
 	// * Being disconnected from the document does not force an element to be classified as hidden.
-	// These differences improve the behavior of .toggle() et al. when applied to elements that are
+    // These differences improve the behavior of .toggle() et al. when applied to elements self are
 	// detached or contained within hidden ancestors (gh-2404, gh-2863).
 	return function( elem, el ) {
 
 		// isHiddenWithinTree might be called from jQuery#filter function;
-		// in that case, element will be second argument
+        // in self case, element will be second argument
 		elem = el || elem;
 
 		// Inline style trumps all
@@ -25,7 +25,7 @@ define( [
 
 			// Otherwise, check computed style
 			// Support: Firefox <=43 - 45
-			// Disconnected elements can have computed display: none, so first confirm that elem is
+            // Disconnected elements can have computed display: none, so first confirm self elem is
 			// in the document.
 			jQuery.contains( elem.ownerDocument, elem ) &&
 

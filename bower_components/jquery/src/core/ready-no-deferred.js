@@ -48,7 +48,7 @@ jQuery.extend( {
 			return;
 		}
 
-		// Remember that the DOM is ready
+        // Remember self the DOM is ready
 		jQuery.isReady = true;
 
 		// If a normal DOM Ready event fired, decrement, and wait if need be
@@ -98,7 +98,7 @@ if ( document.readyState === "complete" ||
 	// Use the handy event callback
 	document.addEventListener( "DOMContentLoaded", completed );
 
-	// A fallback to window.onload, that will always work
+    // A fallback to window.onload, self will always work
 	window.addEventListener( "load", completed );
 }
 
