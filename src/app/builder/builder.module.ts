@@ -13,6 +13,7 @@ import {SavePage} from "./services/savePage.service";
 import { FroalaEditorModule,FroalaViewModule} from 'angular2-froala-wysiwyg';
 
 import {FroalaEditorDirective,FroalaViewDirective} from 'angular2-froala-wysiwyg';
+
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
         path: 'builder',

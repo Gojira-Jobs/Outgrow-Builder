@@ -1,8 +1,16 @@
-<div class="container-fluid main-bg" style="display: none">
-    <div class="row main-section bg-style text-center" style="color: white;padding:70px">
-        <div class="col-xs-4 col-sm-4"></div>
-        <div class="col-xs-4 col-sm-4">abc</div>
-        <div class="col-xs-4 col-sm-4">abc</div>
+<template [ngIf]="variable==true">
+<div class="container-fluid">
+    <div class="row main-section bg-style text-center">
+        <div class="col-xs-4 col-sm-4">
+            <div class="linkCard" (click)='createPage("wcpage")'> welcome Page </div>
+        </div>
+        <div class="col-xs-4 col-sm-4">
+            <div class="linkCard" (click)="createPage('quespage')">Question Page </div>
+        </div>
+        <div class="col-xs-4 col-sm-4" (click)="createPage('resPage')">
+            <div class="linkCard"> Result Page </div>
+        </div>
     </div>
+    
 </div>
-<question></question>
+</template>
