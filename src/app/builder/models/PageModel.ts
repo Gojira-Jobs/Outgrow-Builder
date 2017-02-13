@@ -5,7 +5,6 @@ export class Page {
     pagetype: string;
     visible: boolean = true;
     bgImage: string = '';
-
     sections: Section[] = [];
 
     control: Control = {};
