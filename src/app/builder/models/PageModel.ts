@@ -4,12 +4,15 @@ import {Section} from "./Section";
 export class Page {
     pagetype: string;
     visible: boolean = true;
+    bgImage: string = '';
+
     sections: Section[] = [];
 
     control: Control = {};
 
-    constructor(type?: string) {
+    constructor(type?: string, bgImage?: string) {
         this.pagetype = type;
+        this.bgImage = bgImage;
     }
 
     //add sections to page
