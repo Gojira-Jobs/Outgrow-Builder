@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 
 @Component({
-  selector: 'textfield',
-  template: `
+    selector: 'textfield',
+    template: `
     <p>
       textfield Works!
     </p>
   `,
-  styles: []
+    styles: []
 })
 export class Textfield implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }
