@@ -9,7 +9,7 @@ export class DefaultJSON {
     getJson(template: string): App {
 
         let app = new App("outgrow builder");
-        let landingPage = new Page("Landing",'../../assets/bg-new.jpg');
+        let landingPage = new Page("Landing",'https://res.cloudinary.com/ajitjain/image/upload/v1487051060/bg-new_vk8qjg.jpg');
 
         let sectionHead = new Section('Logo Heading');
         let logoItem = new Item('logo', 'https://www.filestackapi.com/api/file/jJx4Amp9SjiYVGsOA1uK');
