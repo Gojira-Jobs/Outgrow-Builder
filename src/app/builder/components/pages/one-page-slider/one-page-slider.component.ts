@@ -1,29 +1,20 @@
-import {Component, OnInit, Input, OnChanges} from "@angular/core";
-import {App} from "../../../models/App";
+import {Component, OnInit, Input} from "@angular/core";
+import {Page} from "../../../models/PageModel";
 
 
 @Component({
     selector: 'one-page-slider',
     templateUrl: './one-page-slider.component.html',
 })
-export class OnePageSliderComponent implements OnInit,OnChanges {
+export class OnePageSliderComponent implements OnInit {
+
     @Input()
-    jsonTemplate: App;
+    pages: Page;
 
     constructor() {
 
     }
 
     ngOnInit() {
-    }
-
-    ngOnChanges(changes) {
-        if (this.jsonTemplate != undefined) {
-
-            console.log('hello', this.jsonTemplate);
-            //  this.jsonTemplate = this.jsonTemplate.jsonTemplate;
-
-        }
-
     }
 }

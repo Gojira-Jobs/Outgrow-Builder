@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, SimpleChanges} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {DefaultJSON} from "./services/DefaultJSON.service";
 import {App} from "./models/App";
 
@@ -18,11 +18,10 @@ import {App} from "./models/App";
     }
     `]
 })
-export class BuilderComponent implements OnInit,OnChanges {
+export class BuilderComponent implements OnInit {
 
     variable: boolean = true;
     jsonTemplate: App;
-    pages = new Array();
 
     constructor(private service: DefaultJSON) {
     }
@@ -32,14 +31,8 @@ export class BuilderComponent implements OnInit,OnChanges {
     }
 
     createPage(type: string) {
-        this.pages.push(this.service.getJson(type).pages);
-        this.jsonTemplate = new App();
-        this.jsonTemplate.templateType = type;
-        this.jsonTemplate.pages = this.pages;
-        console.log(this.jsonTemplate);
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
+        this.jsonTemplate.pages = this.jsonTemplate.pages.concat(this.service.getJson(type).pages);
+        this.jsonTemplate.templateType = "Landing";
         console.log(this.jsonTemplate);
     }
 }

@@ -1,23 +1,22 @@
-
 <div *ngFor="let page of pages" [ngStyle]="{'background-image': 'url(' + page.bgImage + ')'}">
-  <div *ngIf="page.pagetype=='Landing'">
+    <div *ngIf="page.pagetype=='Landing'">
         <div *ngFor="let section of page.sections;let i=index">
-              <div *ngFor="let control of page.sections[i].items">
-                  <control [page]="page" [data]="control">
-                  </control>
-              </div>
-          <!--<control [page] ="page" [data]="control"
-                   (mousedown)="selectpage(page)"
-                   (click)="selectModel($event,'Page')"
-                   (controlOutput)="onLeadFormSubmit($event,'page_'+(pageIndex+1),'page_'+(pageIndex))"
-                   [devMode]="devMode"   *ngIf="control.visible && control.type == 'leadform'" >
-          </control>
-          <control  [data]="control"
+            <div *ngFor="let control of page.sections[i].items">
+                <control [page]="page" [data]="control">
+                </control>
+            </div>
+            <!--<control [page] ="page" [data]="control"
+                     (mousedown)="selectpage(page)"
+                     (click)="selectModel($event,'Page')"
+                     (controlOutput)="onLeadFormSubmit($event,'page_'+(pageIndex+1),'page_'+(pageIndex))"
+                     [devMode]="devMode"   *ngIf="control.visible && control.type == 'leadform'" >
+            </control>
+            <control  [data]="control"
 
-                    [devMode]="devMode"
-                    (controlOutput)="onLeadFormSubmit($event,'page_'+(pageIndex+1),'page_'+(pageIndex))"
-                    *ngIf="control.visible && control.type !== 'leadform'" >
-          </control>-->
+                      [devMode]="devMode"
+                      (controlOutput)="onLeadFormSubmit($event,'page_'+(pageIndex+1),'page_'+(pageIndex))"
+                      *ngIf="control.visible && control.type !== 'leadform'" >
+            </control>-->
 
         </div>
     </div>
