@@ -1,4 +1,4 @@
-import { OutgrowBuilderPage } from './app.po';
+import {OutgrowBuilderPage} from "./app.po";
 
 describe('outgrow-builder App', function() {
   let page: OutgrowBuilderPage;

@@ -1,17 +1,18 @@
 <template [ngIf]="variable==true">
-<div class="container-fluid">
-    <div class="row main-section bg-style text-center">
-        <div class="col-xs-4 col-sm-4">
-            <div class="linkCard" (click)='createPage("wcpage")'> welcome Page </div>
+    <div class="container-fluid">
+        <div class="row main-section bg-style text-center">
+            <div class="col-xs-4 col-sm-4">
+                <div class="linkCard" (click)='createPage("Landing")'> welcome Page</div>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+                <div class="linkCard" (click)="createPage('quespage')">Question Page</div>
+            </div>
+            <div class="col-xs-4 col-sm-4" (click)="createPage('resPage')">
+                <div class="linkCard"> Result Page</div>
+            </div>
         </div>
-        <div class="col-xs-4 col-sm-4">
-            <div class="linkCard" (click)="createPage('quespage')">Question Page </div>
-        </div>
-        <div class="col-xs-4 col-sm-4" (click)="createPage('resPage')">
-            <div class="linkCard"> Result Page </div>
-        </div>
+
     </div>
-    
-</div>
 </template>
-<one-page-slider [app]="app"></one-page-slider>
+
+<one-page-slider [jsonTemplate]="jsonTemplate"></one-page-slider>

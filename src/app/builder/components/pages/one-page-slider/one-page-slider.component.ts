@@ -1,28 +1,29 @@
-import { Component, OnInit,Input,OnChanges } from '@angular/core';
-import { Page } from '../../../models/PageModel';
-import {App} from '../../../models/App';
+import {Component, OnInit, Input, OnChanges} from "@angular/core";
+import {App} from "../../../models/App";
+
+
 @Component({
-  selector: 'one-page-slider',
-  templateUrl: './one-page-slider.component.html',
+    selector: 'one-page-slider',
+    templateUrl: './one-page-slider.component.html',
 })
 export class OnePageSliderComponent implements OnInit,OnChanges {
-  pages:any;
-  @Input() app:any;
-  constructor() {
-    
-   }
+    @Input()
+    jsonTemplate: App;
 
-  ngOnInit() {
-  }
-ngOnChanges(changes)
-{
-//console.log(JSON.parse(this.app));
-if(this.app!=undefined){
+    constructor() {
 
-console.log('hello',this.app);
-this.pages=this.app.pages;
+    }
 
-}
-}
+    ngOnInit() {
+    }
 
+    ngOnChanges(changes) {
+        if (this.jsonTemplate != undefined) {
+
+            console.log('hello', this.jsonTemplate);
+            //  this.jsonTemplate = this.jsonTemplate.jsonTemplate;
+
+        }
+
+    }
 }

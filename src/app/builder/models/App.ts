@@ -1,8 +1,7 @@
 import {Page} from "./PageModel";
 
 export class App {
-    name: string = '';
-    templateType: string = 'Numerical';
+    templateType: string;
     public pages: Page[] = [];
 
     constructor(type?: string) {

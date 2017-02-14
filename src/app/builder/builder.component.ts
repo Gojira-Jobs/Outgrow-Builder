@@ -1,10 +1,12 @@
-import {Component, OnInit} from "@angular/core";
-import {DefaultJSON} from './services/DefaultJSON.service';
-import {App} from './models/App';
+import {Component, OnInit, OnChanges, SimpleChanges} from "@angular/core";
+import {DefaultJSON} from "./services/DefaultJSON.service";
+import {App} from "./models/App";
+
+
 @Component({
     selector: 'app-builder',
-    templateUrl:'./builder.component.html',
-    styles:[`
+    templateUrl: './builder.component.html',
+    styles: [`
     .main-section{
         color: white;
         padding:70px;
@@ -16,15 +18,28 @@ import {App} from './models/App';
     }
     `]
 })
-export class BuilderComponent implements OnInit {
-variable:boolean=true;
-    constructor(private service:DefaultJSON) {
+export class BuilderComponent implements OnInit,OnChanges {
+
+    variable: boolean = true;
+    jsonTemplate: App;
+    pages = new Array();
+
+    constructor(private service: DefaultJSON) {
     }
-app:App;
+
     ngOnInit() {
+        this.jsonTemplate = new App();
     }
-    createPage(type:string){
-        this.app=this.service.getJson('');
-        console.log(this.app.pages[0].bgImage);
+
+    createPage(type: string) {
+        this.pages.push(this.service.getJson(type).pages);
+        this.jsonTemplate = new App();
+        this.jsonTemplate.templateType = type;
+        this.jsonTemplate.pages = this.pages;
+        console.log(this.jsonTemplate);
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log(this.jsonTemplate);
     }
 }
