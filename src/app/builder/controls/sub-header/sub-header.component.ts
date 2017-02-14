@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input} from '@angular/core';
+import {FroalaOptions} from '../froala-options';
 
 @Component({
-  selector: 'app-sub-header',
+  selector: 'sub-header',
   template: `
-    <p>
-      sub-header Works!
-    </p>
+    <div class="sub-head" [froalaEditor]="options"
+                    [(froalaModel)]="data.name">
+    </div> 
   `,
   styles: []
 })
-export class SubHeader implements OnInit {
-
-  constructor() { }
+export class SubHeader extends FroalaOptions implements OnInit {
+@Input() data:any;
+constructor() { super(); }
 
   ngOnInit() {
   }
