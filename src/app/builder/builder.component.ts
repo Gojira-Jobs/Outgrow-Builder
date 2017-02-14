@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-
+import {DefaultJSON} from './services/DefaultJSON.service';
+import {App} from './models/App';
 @Component({
     selector: 'app-builder',
     templateUrl:'./builder.component.html',
@@ -17,12 +18,13 @@ import {Component, OnInit} from "@angular/core";
 })
 export class BuilderComponent implements OnInit {
 variable:boolean=true;
-    constructor() {
+    constructor(private service:DefaultJSON) {
     }
-
+app:App;
     ngOnInit() {
     }
     createPage(type:string){
-        console.log(type);
+        this.app=this.service.getJson('');
+        console.log(this.app.pages[0].bgImage);
     }
 }

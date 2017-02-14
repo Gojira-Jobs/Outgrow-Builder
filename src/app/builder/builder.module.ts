@@ -8,8 +8,10 @@ import {RouterModule} from "@angular/router";
 import {BuilderComponent} from "./builder.component";
 import {Script} from "./services/script.service";
 import {SavePage} from "./services/savePage.service";
-import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
-
+//import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
+import { OnePageSliderComponent } from './components/pages/one-page-slider/one-page-slider.component';
+import {DefaultJSON} from './services/DefaultJSON.service';
+import {ControlsModule} from './controls/controls.module';
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
         path: 'builder',
@@ -21,13 +23,13 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
     imports: [
         CommonModule,
         builderRouter,
-        FroalaEditorModule,
-        FroalaViewModule
+        ControlsModule
     ],
     declarations: [LeadGenerationComponent,
         QuestionComponent, WelcomeComponent,
-        BuilderComponent],
-    providers: [Script, SavePage]
+        BuilderComponent,
+        OnePageSliderComponent],
+    providers: [Script,DefaultJSON, SavePage]
 })
 export class BuilderModule {
 }
