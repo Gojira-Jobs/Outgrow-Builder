@@ -128,7 +128,47 @@ header {padding: 0px;}
 header .logo {float: left;padding: 15px 10px;}
 header .logo span {color: #fff;font-size: 18px;margin-left: 15px;font-family: montserratregular;}
 
+::selection {
+  background: #B0B0B0; 
+  color: #fff;
+}
 
+::-moz-selection {
+  background: #B0B0B0; 
+  color: #fff;
+}
+
+
+
+#logo:hover img{
+	background:rgba(0,0,0,.75);
+	cursor: pointer;
+	-webkit-transition: opacity .25s ease;
+}
+
+#logo{
+	position: relative;
+	display: inline-block;
+}
+
+#logo i{
+	display: none;
+	color: white;
+}
+
+#logo:hover i{
+	position: absolute;
+	top:40%;
+	left: 50%;
+	display: block;
+}
+
+.pointer {
+	cursor: pointer;
+}
+.no-outline{
+  outline: none;
+}
 /*header section end*/
 
 /*Content section */

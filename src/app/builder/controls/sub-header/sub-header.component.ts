@@ -1,17 +1,30 @@
-import { Component, OnInit,Input} from '@angular/core';
+import { Component, OnInit,Input,OnChanges} from '@angular/core';
 import {FroalaOptions} from '../froala-options';
 
 @Component({
   selector: 'sub-header',
   template: `
-    <div class="sub-head" [froalaEditor]="options"
-                    [(froalaModel)]="data.name">
-    </div> 
+    <div class="row sub-head">
+      <div class="col-xs-2 col-sm-2">&nbsp;</div>
+      <h2 class="col-sm-8 col-xs-8" [froalaEditor]="options"
+                    [(froalaModel)]="subHeading">
+      </h2>
+      <div class="col-xs-2 col-sm-2">&nbsp;</div>
+    </div>
   `,
-  styles: []
+  styles: [`
+    .sub-head {
+      color:rgba(0,0,0,0.8);
+    }
+  `]
 })
-export class SubHeader extends FroalaOptions implements OnInit {
+export class SubHeader extends FroalaOptions implements OnInit,OnChanges {
+  ngOnChanges(){
+    if(this.data != undefined)
+    this.subHeading=this.data.name;
+  }
 @Input() data:any;
+subHeading:any;
 constructor() { super(); }
 
   ngOnInit() {

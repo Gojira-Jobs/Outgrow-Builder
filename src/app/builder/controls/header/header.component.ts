@@ -1,17 +1,28 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,OnChanges } from '@angular/core';
 import {FroalaOptions} from '../froala-options';
 @Component({
   selector: 'og-header',
   template: `
-    <div >
-      <h1 id="main-heading" class="main-head" [froalaEditor]="options"
-                    [(froalaModel)]="data.name">
+    <div class="row main-head">
+      <div class="col-xs-2 col-sm-2">&nbsp;</div>
+      <h1 class=" col-sm-8 col-xs-8" [froalaEditor]="options"
+                    [(froalaModel)]="mainheading">
       </h1>
+      <div class="col-xs-2 col-sm-2">&nbsp;</div>
     </div>
   `,
-  styles: []
+  styles: [`
+    .main-head{
+      color:aqua;
+    }
+  `]
 })
-export class Header extends FroalaOptions implements OnInit {
+export class Header extends FroalaOptions implements OnInit,OnChanges {
+  ngOnChanges(){
+    if(this.data!=undefined){
+      this.mainheading=this.data.name;
+    }
+  }
   @Input() data:any;
   mainheading:any="";
   constructor() { super(); }
