@@ -2,7 +2,7 @@
     <div *ngIf="page.pagetype=='Landing'" style="margin:15px 0">
         <div *ngFor="let section of page.sections;let i=index">
             <div *ngFor="let control of page.sections[i].items">
-                <control [page]="page" [data]="control">
+                <control [page]="page" [data]="control" [index]="i">
                 </control>
             </div>
             <!--<control [page] ="page" [data]="control"

@@ -1,10 +1,10 @@
-import { Component, OnInit,Input} from '@angular/core';
-import {Script} from '../../services/script.service';
+import {Component, OnInit, Input} from "@angular/core";
+import {Script} from "../../services/script.service";
 declare var jQuery: any
 declare var filepicker: any;
 @Component({
-  selector: 'logo',
-  template: `
+    selector: 'logo',
+    template: `
   
    <header>
         <div class="col-md-12 col-sm-12 col-xs-12 p10">
@@ -20,7 +20,7 @@ declare var filepicker: any;
         </div>
     </header>
   `,
-  styles: [`
+    styles: [`
         #logo:hover img{
             background:rgba(0,0,0,.75);
             cursor: pointer;
@@ -47,18 +47,20 @@ declare var filepicker: any;
   `]
 })
 export class Logo implements OnInit {
-@Input() data:any='';
+    @Input() data: any = '';
 
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
-  constructor(script: Script) {
+    constructor(script: Script) {
         script.load('filepicker').then(data => {
             console.log('script loaded ', data);
         }).catch(error => console.log(error));
     }
-  ngOnInit() {
-  }
-  uploadImage(control: any) {
+
+    ngOnInit() {
+    }
+
+    uploadImage(control: any) {
         filepicker.setKey(this.filePickerKey);
         filepicker.pick(
             {

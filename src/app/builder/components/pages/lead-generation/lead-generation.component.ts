@@ -42,13 +42,14 @@ export class LeadGenerationComponent implements OnInit,OnDestroy {
             console.log('init first time');
         }
 
-        this.savePageService.notifyPageChanges(this.page);
-        this.pageChangeSubscription = this.savePageService.getPageChangeObservable().debounceTime(1000)
-            .distinctUntilChanged((x: string, y: string) => (x == y),
-                (x: Page) => (JSON.stringify(x.control))).subscribe(data => {
-                console.log('saving data');
-                this.savePageService.saveToLocalStore(JSON.stringify(data));
-            });
+        /*   this.savePageService.notifyPageChanges(this.page);
+         this.pageChangeSubscription = this.savePageService.getPageChangeObservable().debounceTime(1000)
+         .distinctUntilChanged((x: string, y: string) => (x == y),
+         (x: Page) => (JSON.stringify(x.control))).subscribe(data => {
+         console.log('saving data');
+         this.savePageService.saveToLocalStore(JSON.stringify(data));
+         });
+         */
     }
 
     ngOnDestroy(): void {
@@ -66,9 +67,10 @@ export class LeadGenerationComponent implements OnInit,OnDestroy {
     }
 
     updateModel(controlType: string, innerHTML) {
-        console.log(controlType, innerHTML);
-        this.page.control[controlType] = innerHTML;
-        this.savePageService.notifyPageChanges(this.page);
+        /*    console.log(controlType, innerHTML);
+         this.page.control[controlType] = innerHTML;
+         this.savePageService.notifyPageChanges(this.page);
+         */
     }
 
     uploadImage(control: any) {
