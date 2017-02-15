@@ -1,7 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {DefaultJSON} from "./services/DefaultJSON.service";
 import {App} from "./models/App";
-
+import {SavePage} from "./services/savePage.service";
+import {Subscription} from "rxjs";
 
 @Component({
     selector: 'app-builder',
@@ -20,19 +21,47 @@ import {App} from "./models/App";
 })
 export class BuilderComponent implements OnInit {
 
-    variable: boolean = true;
     jsonTemplate: App;
+    pageChangeSubscription: Subscription;
 
-    constructor(private service: DefaultJSON) {
+    constructor(private serviceDefaultJSON: DefaultJSON, private savePageService: SavePage) {
     }
 
     ngOnInit() {
+        console.log('creating');
         this.jsonTemplate = new App();
     }
 
     createPage(type: string) {
-        this.jsonTemplate.pages = this.jsonTemplate.pages.concat(this.service.getJson(type).pages);
+
+        //check if local storage exists
+        if (this.savePageService.getFromLocalStore()) {
+            console.log('init second time');
+            this.jsonTemplate = JSON.parse(this.savePageService.getFromLocalStore());
+            this.jsonTemplate.pages = this.jsonTemplate.pages
+                .concat(this.serviceDefaultJSON.getJson("Landing").pages);
+        } else {
+            console.log('init first time');
+            this.initializeViewContent();
+        }
+
+        this.savePageService.notifyPageChanges(this.jsonTemplate);
+        this.pageChangeSubscription = this.savePageService.getPageChangeObservable().debounceTime(1000)
+            .distinctUntilChanged((x: string, y: string) => (x == y),
+                (x) => (JSON.stringify(x))).subscribe(data => {
+                console.log('saving data');
+                //TODO
+                this.savePageService.saveToLocalStore(JSON.stringify(data));
+            });
+    }
+
+
+    private initializeViewContent() {
+        this.jsonTemplate = this.serviceDefaultJSON.getJson("Landing");
+
         this.jsonTemplate.templateType = "Landing";
         console.log(this.jsonTemplate);
     }
+
+
 }
