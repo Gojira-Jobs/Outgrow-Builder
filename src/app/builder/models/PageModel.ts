@@ -3,9 +3,15 @@ import {Section} from "./Section";
 
 export class Page {
     pagetype: string;
-    visible: boolean = true;
-    bgImage: string = '';
-    sections: Section[] = [];
+    _id: string = '';
+	description: string = '';
+	defaultClass: string = '';
+	bgImage: string = '';
+	bgImageVisible: boolean = true;
+	bgColor: string = '';
+	type: string = '';
+	visible: boolean = true;
+	sections: Section[] = [];
 
     control: Control = {};
 

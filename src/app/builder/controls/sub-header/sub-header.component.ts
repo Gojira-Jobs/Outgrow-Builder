@@ -6,7 +6,7 @@ import {FroalaOptions} from '../froala-options';
   template: `
     <div class="row sub-head">
       <div class="col-xs-2 col-sm-2">&nbsp;</div>
-      <h2 class="col-sm-8 col-xs-8" [froalaEditor]="options"
+      <h2 class="col-sm-8 col-xs-8"  style="margin-top:0" [froalaEditor]="options"
                     [(froalaModel)]="subHeading">
       </h2>
       <div class="col-xs-2 col-sm-2">&nbsp;</div>

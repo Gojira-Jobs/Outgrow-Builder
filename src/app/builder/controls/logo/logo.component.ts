@@ -9,10 +9,10 @@ declare var filepicker: any;
    <header>
         <div class="col-md-12 col-sm-12 col-xs-12 p10">
             <div class="col-md-6 col-sm-6 col-xs-12 logo">
-                <div id="image-outlay">
-                    <a id="logo"  (click)="uploadImage(imgElement)">
+                <div id="image-outlay" >
+                    <a id="logo"   (click)="uploadImage(imgElement)">
                                     
-                        <img #imgElement src="{{data.name}}" alt="abc..">
+                        <img style="height:90px;width:90px;border-radius:50%"  #imgElement src="{{data.name}}" alt="abc..">
                         <i class="fa fa-camera" aria-hidden="true"></i>
                     </a>
                 </div>
