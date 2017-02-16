@@ -30,11 +30,23 @@ export class BuilderComponent implements OnInit {
     ngOnInit() {
         console.log('creating');
         this.jsonTemplate = new App();
+
+        if (this.savePageService.getFromLocalStore()) {
+            console.log('loading previous state from local store');
+            this.jsonTemplate = JSON.parse(this.savePageService.getFromLocalStore());
+        }
+
+        this.pageChangeSubscription = this.savePageService.getPageChangeObservable().debounceTime(1000)
+            .distinctUntilChanged((x: string, y: string) => (x == y),
+                (x) => (JSON.stringify(x))).subscribe(data => {
+                console.log('saving data');
+                this.savePageService.saveToLocalStore(JSON.stringify(data));
+            });
     }
 
     createPage(type: string) {
 
-        //check if local storage exists
+        //check if app exists in local storage
         if (this.savePageService.getFromLocalStore()) {
             console.log('init second time');
             this.jsonTemplate = JSON.parse(this.savePageService.getFromLocalStore());
@@ -44,15 +56,7 @@ export class BuilderComponent implements OnInit {
             console.log('init first time');
             this.initializeViewContent();
         }
-
         this.savePageService.notifyPageChanges(this.jsonTemplate);
-        this.pageChangeSubscription = this.savePageService.getPageChangeObservable().debounceTime(1000)
-            .distinctUntilChanged((x: string, y: string) => (x == y),
-                (x) => (JSON.stringify(x))).subscribe(data => {
-                console.log('saving data');
-                //TODO
-                this.savePageService.saveToLocalStore(JSON.stringify(data));
-            });
     }
 
 

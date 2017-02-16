@@ -1,26 +1,29 @@
-import {Component, OnInit, Input,OnChanges} from "@angular/core";
-import {Page} from "../../../models/PageModel";
+import {Component, OnInit, Input, OnChanges} from "@angular/core";
+import {SavePage} from "../../../services/savePage.service";
+import {App} from "../../../models/App";
 @Component({
     selector: 'one-page-slider',
     templateUrl: './one-page-slider.component.html',
 })
-export class OnePageSliderComponent  implements OnInit,OnChanges {
-ngOnChanges(){
-    console.log(this.pages);
-}
+export class OnePageSliderComponent implements OnInit,OnChanges {
+    ngOnChanges() {
+        //     console.log(this.jsonTemplate);
+    }
+
     @Input()
-    pages: Page;
+    jsonTemplate: App;
 
-    constructor() {
+    constructor(private savePageService: SavePage) {
+        //  super();
 
-      //  super();
     }
 
     ngOnInit() {
     }
-    setChanges(event){
-        console.log(this.pages);
-        //console.log(this.pages[event.p_id].sections[event.sec_id].items[event.item_id]);
+
+    notifyChanges(event) {
+        console.log('changes made');
+        this.savePageService.notifyPageChanges(this.jsonTemplate);
     }
 
 }
