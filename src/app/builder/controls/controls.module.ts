@@ -4,13 +4,14 @@ import {ControlComponent} from './control.component';
 import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 import {CONTROLS} from './controls';
 import { RadiobuttonComponent } from './radiobutton/radiobutton.component';
+import { LeadformComponent } from './leadform/leadform.component';
 @NgModule({
   imports: [
     CommonModule,
         FroalaEditorModule,
         FroalaViewModule,
   ],
-  declarations: [ControlComponent,CONTROLS, RadiobuttonComponent],
+  declarations: [ControlComponent,CONTROLS, RadiobuttonComponent, LeadformComponent],
   exports:[ControlComponent]
 })
 export class ControlsModule { }

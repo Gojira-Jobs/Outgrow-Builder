@@ -1,5 +1,6 @@
 import {NgModule, ModuleWithProviders} from "@angular/core";
 
+import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 import {CommonModule} from "@angular/common";
 import {LeadGenerationComponent} from "./components/pages/lead-generation/lead-generation.component";
 import {QuestionComponent} from "./components/pages/question/question.component";
@@ -24,7 +25,8 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
     imports: [
         CommonModule,
         builderRouter,
-        ControlsModule
+        ControlsModule, FroalaEditorModule,
+        FroalaViewModule
     ],
     declarations: [LeadGenerationComponent,
         QuestionComponent, WelcomeComponent,

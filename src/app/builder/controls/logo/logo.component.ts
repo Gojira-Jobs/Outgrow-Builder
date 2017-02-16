@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {Script} from "../../services/script.service";
+import {Helper} from '../helpers/helper';
 declare var jQuery: any
 declare var filepicker: any;
 @Component({
@@ -12,7 +13,7 @@ declare var filepicker: any;
                 <div id="image-outlay" >
                     <a id="logo"   (click)="uploadImage(imgElement)">
                                     
-                        <img style="height:90px;width:90px;border-radius:50%"  #imgElement src="{{data.name}}" alt="abc..">
+                        <img style=""  #imgElement src="{{data.name}}" alt="abc..">
                         <i class="fa fa-camera" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -46,12 +47,13 @@ declare var filepicker: any;
 
   `]
 })
-export class Logo implements OnInit {
+export class Logo extends Helper implements OnInit {
     @Input() data: any = '';
 
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
     constructor(script: Script) {
+    super();
         script.load('filepicker').then(data => {
             console.log('script loaded ', data);
         }).catch(error => console.log(error));
@@ -70,6 +72,7 @@ export class Logo implements OnInit {
             (InkBlob: any) => {
                 control.src = InkBlob.url;
                 jQuery('#filepicker_dialog_container').find('a').click();
+                this.emitChanges('done');
             }, (FPError: any) => {
                 console.log(FPError.toString());
             });

@@ -29,7 +29,7 @@ export class Section {
     //add items to page
     public addItems(...items: any[]) {
         for (let item in items) {
-            console.log(items[item]);
+            //console.log(items[item]);
     //       items[item].order = this.items.length + 1;
             this.items.push(items[item]);
         }

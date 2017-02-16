@@ -1,33 +1,24 @@
-import {Component, OnInit, Input} from "@angular/core";
-
+import {Component, OnInit, Input,OnChanges,EventEmitter,Output} from "@angular/core";
+import  {Helper} from './helpers/helper';
 @Component({
     selector: 'control',
     template: `
-    <logo *ngIf="data.type=='logo'" [data]="data" ></logo>
-    <og-header *ngIf="data.type=='header'" [data]="data" [froalaEditor]="options"
-     [froalaModel]="jsonTemplate?.pages[index]"
-                    (froalaModelChange)="updateModel($event)"></og-header>
-    <sub-header *ngIf="data.type=='sub-header'" [data]="data"></sub-header>
+    <logo *ngIf="data.type=='logo'" [data]="data" (Updater)="emitChanges($event)"></logo>
+    <og-header  *ngIf="data.type=='header'" [data]="data" (Updater)="emitChanges($event)"></og-header>
+    <sub-header *ngIf="data.type=='sub-header'" [data]="data" (Updater)="emitChanges($event)"></sub-header>
   `,
     styles: []
 })
-export class ControlComponent implements OnInit {
+export class ControlComponent extends Helper implements OnInit,OnChanges{
     @Input() page: any;
     @Input() data: any;
-    @Input() index: number;
-
+    ngOnChanges(){}
 
     constructor() {
+        super();
     }
 
     ngOnInit() {
     }
-
-    updateModel(event) {
-        console.log('hello', event);
-        //this.page.control[controlType] = innerHTML;
-        //    this.savePageService.notifyPageChanges(this.page);
-
-    }
-
+    
 }

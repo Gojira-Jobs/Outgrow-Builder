@@ -20,8 +20,10 @@ export class DefaultJSON {
         let contentSection = new Section('Content Area');
         let header = new Item('header', `<strong>Where to build your Startup?</strong>`);
         let subHeader = new Item('sub-header', `See which emerging tech hub you should head to!`);
-
-        contentSection.addItems(header, subHeader);
+        let textField= new Item('leadform', 'Let’s Find Out');
+        let button = new Item('click_button', 'Let’s Find Out');
+        contentSection.addItems(header, subHeader,textField,button);
+        
         landingPage.addSections(sectionHead, contentSection);
 
         app.addPages(landingPage);
