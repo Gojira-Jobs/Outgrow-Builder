@@ -10,25 +10,26 @@ export class DefaultJSON {
 
 
         let app = new App("outgrow builder");
-        let landingPage = new Page("Landing",'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
+        let landingPage = new Page("Landing", 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
 
         let sectionHead = new Section('Logo Heading');
-        let logoItem = new Item('logo', 'https://www.filestackapi.com/api/file/jJx4Amp9SjiYVGsOA1uK');
+        let logoItem = new Item('logo');
+        logoItem.imageURL = "https://www.filestackapi.com/api/file/jJx4Amp9SjiYVGsOA1uK";
         sectionHead.addItems(logoItem);
 
         // content area of LANDING page
         let contentSection = new Section('Content Area');
         let header = new Item('header', `<strong>Where to build your Startup?</strong>`);
         let subHeader = new Item('sub-header', `See which emerging tech hub you should head to!`);
-        let leadform= new Item('leadform', 'Let’s Find Out');
-        
-        contentSection.addItems(header, subHeader,leadform);
-        
+        let leadform = new Item('leadform', 'Let’s Find Out');
+
+        contentSection.addItems(header, subHeader, leadform);
+
         landingPage.addSections(sectionHead, contentSection);
 
         app.addPages(landingPage);
 
-    //    console.log(JSON.stringify(app));
+        //    console.log(JSON.stringify(app));
         return app;
     }
 }

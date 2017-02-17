@@ -3,6 +3,7 @@ import {DefaultJSON} from "./services/DefaultJSON.service";
 import {App} from "./models/App";
 import {SavePage} from "./services/savePage.service";
 import {Subscription} from "rxjs";
+import {Script} from "./services/script.service";
 
 @Component({
     selector: 'app-builder',
@@ -24,11 +25,17 @@ export class BuilderComponent implements OnInit {
     jsonTemplate: App;
     pageChangeSubscription: Subscription;
 
-    constructor(private serviceDefaultJSON: DefaultJSON, private savePageService: SavePage) {
+    constructor(private serviceDefaultJSON: DefaultJSON, private savePageService: SavePage,
+                private script: Script) {
     }
 
     ngOnInit() {
         console.log('creating');
+        //load filepicker script
+        this.script.load('filepicker').then(data => {
+            console.log('script loaded ', data);
+        }).catch(error => console.log(error));
+
         this.jsonTemplate = new App();
 
         if (this.savePageService.getFromLocalStore()) {
