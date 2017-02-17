@@ -1,3 +1,62 @@
-<p>
-  leadform works!
-</p>
+<div class="row">
+    <div class="col-xs-1 col-sm-2">&nbsp;</div>
+    <div class="col-xs-10 col-sm-8">
+       <form [formGroup]="leadform" novalidate>
+            <div *ngFor="let field of data.fields">
+       
+                <div class="col-xs-6 col-sm-6" [ngClass]="{'has-error': leadform.controls[field.name].touched && !leadform.controls[field.name].valid }">
+                    <input type="{{field.type}}" 
+                    class="form-control input-lg" 
+                    placeholder="{{field.placeholder}}"
+                    formControlName="{{field.name}}"
+                    required>
+                </div>
+            </div>
+
+      </form>
+    </div>
+   
+    <div class="col-xs-1 col-sm-2">&nbsp;</div>
+</div>
+<!--<form (ngSubmit)="onSubmit(formGroup())" [formGroup]="formGroup()"
+ >-->
+<!--  
+      <div class="input-section">
+        <div *ngFor="let field of data.fields, let i=index" class="input-outer" [class.w100]="data.fields.length==1">
+            <i class="material-icons">{{iconObj[field.type]}}</i>
+            <input tabindex="0" placeholder="{{field.placeholder}}"
+             type="{{field.type}}" (blur)="onTouched(i)" [formControlName]="i"
+              [(ngModel)]="field.value">
+            <div *ngIf="formGroup().controls[i].touched">
+                      <span
+                        *ngIf="formGroup().controls[i].errors && formGroup().controls[i].errors['required']">
+                        {{(field.type=='name'?'Name':(field.type=='tel'?'Phone Number':(field.type=='email'?'Email':(field.title)?field.title:'Field')))}} is required.
+                      </span>
+              <span *ngIf="formGroup().controls[i].errors && !formGroup().controls[i].errors['required'] && formGroup().controls[i].errors['EmailError']">
+                        Not a valid Email!
+                      </span>
+              <span *ngIf="formGroup().controls[i].errors && !formGroup().controls[i].errors['required'] && formGroup().controls[i].errors['PhoneNumberError']">
+                        Not a valid Phone Number!
+                      </span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-temp text-center">-->
+    <!--<button class="btn prime-action" *ngIf="page.type !=='Result'">
+      {{data.props.title}}
+    </button>-->
+    <!--<button type="button" class="btn prime-action lf-skip-btn"
+        *ngIf="page.type =='Landing' && data.props.scale"
+        (click) = "skip($event)">
+      Skip
+    </button>-->
+    <!--<a class="btn prime-action" *ngIf="page.type ==='Result'">
+       {{data.props.title}}
+    </a>-->
+  <!--</div>-->
+<!--</form>-->
+<!--<div class="lf-submitted hide" *ngIf="page.type ==='Result'">
+  Submitted
+</div>-->

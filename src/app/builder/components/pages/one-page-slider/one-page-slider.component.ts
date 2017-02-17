@@ -19,6 +19,7 @@ ngOnChanges(){
     ngOnInit() {
     }
     setChanges(event){
+        console.log(typeof event);
         console.log(this.pages);
         //console.log(this.pages[event.p_id].sections[event.sec_id].items[event.item_id]);
     }

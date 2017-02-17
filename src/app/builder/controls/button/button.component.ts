@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'button',
+  selector: 'click-button',
   template: `
     <p>
       button Works!

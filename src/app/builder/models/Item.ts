@@ -71,7 +71,7 @@ _id: string = '';
   ];
   fields: any = [
     {
-      type: 'firstName',
+      type: 'text',
       name: 'Name',
       placeholder: 'John Doe',
       value: '',

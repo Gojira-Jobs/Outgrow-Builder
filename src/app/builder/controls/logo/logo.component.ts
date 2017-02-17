@@ -71,8 +71,10 @@ export class Logo extends Helper implements OnInit {
             },
             (InkBlob: any) => {
                 control.src = InkBlob.url;
+                console.log(InkBlob.url);
+                this.data.name=InkBlob.url;
                 jQuery('#filepicker_dialog_container').find('a').click();
-                this.emitChanges('done');
+                this.emitChanges({});
             }, (FPError: any) => {
                 console.log(FPError.toString());
             });
