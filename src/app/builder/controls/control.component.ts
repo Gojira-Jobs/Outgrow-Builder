@@ -1,5 +1,5 @@
-import {Component, OnInit, Input,OnChanges,EventEmitter,Output} from "@angular/core";
-import  {Helper} from './helpers/helper';
+import {Component, OnInit, Input} from "@angular/core";
+import {Helper} from "./helpers/helper";
 @Component({
     selector: 'control',
     template: `
@@ -11,10 +11,10 @@ import  {Helper} from './helpers/helper';
   `,
     styles: []
 })
-export class ControlComponent extends Helper implements OnInit,OnChanges{
+export class ControlComponent extends Helper implements OnInit {
+
     @Input() page: any;
     @Input() data: any;
-    ngOnChanges(){}
 
     constructor() {
         super();
@@ -22,5 +22,5 @@ export class ControlComponent extends Helper implements OnInit,OnChanges{
 
     ngOnInit() {
     }
-    
+
 }

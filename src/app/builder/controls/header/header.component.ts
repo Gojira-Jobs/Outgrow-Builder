@@ -1,6 +1,5 @@
-import {Component, OnInit, Input, OnChanges,Output,EventEmitter} from "@angular/core";
-import {FroalaOptions} from "../froala-options";
-import {Helper} from '../helpers/helper';
+import {Component, OnInit, Input, OnChanges} from "@angular/core";
+import {Helper} from "../helpers/helper";
 @Component({
     selector: 'og-header',
     template: `
@@ -19,11 +18,16 @@ import {Helper} from '../helpers/helper';
   `]
 })
 export class Header extends Helper implements OnInit,OnChanges {
- 
-   @Input() data:any;
-    ngOnChanges() { }
-    
-    constructor() { super(); }
+
+    @Input() data: any;
+
+    ngOnChanges() {
+    }
+
+    constructor() {
+        super();
+    }
+
     ngOnInit() {
     }
 

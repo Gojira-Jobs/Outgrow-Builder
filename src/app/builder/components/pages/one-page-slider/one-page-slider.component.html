@@ -1,10 +1,10 @@
-<div *ngFor="let page of pages;let page_index=index" [ngStyle]="{'background-image': 'url(' + page.bgImage + ')'}" >
+<div *ngFor="let page of jsonTemplate.pages;let page_index=index"
+     [ngStyle]="{'background-image': 'url(' + page.bgImage + ')'}">
     <div *ngIf="page.pagetype=='Landing'" style="margin:15px 0">
         <div *ngFor="let section of page.sections;let sec_index=index">
             <div *ngFor="let control of page.sections[sec_index].items;let item_index=index">
-                <control [page]="page" 
-                 [data]="control" (Updater)="setChanges($event)" >
-                  <!-- [secIndex]="sec_index" [index]="item_index">-->
+                <control [page]="page" [data]="control" (controlOutput)="notifyChanges($event)">
+                    <!-- [secIndex]="sec_index" [index]="item_index">-->
                 </control>
             </div>
             <!--<control [page] ="page" [data]="control"
