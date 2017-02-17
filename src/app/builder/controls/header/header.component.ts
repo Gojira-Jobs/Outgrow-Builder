@@ -3,18 +3,13 @@ import {Helper} from "../helpers/helper";
 @Component({
     selector: 'og-header',
     template: `
-    <div class="row main-head">
-      <div class="col-xs-2 col-sm-2">&nbsp;</div>
-      <h1 class=" col-sm-8 col-xs-8"  style="margin-top:0" [froalaEditor]="options"
+    
+      <h1 class="main-head"  style="margin-top:0" [froalaEditor]="options"
                     [(froalaModel)]="data.name" (froalaModelChange)="emitChanges($event)">
       </h1>
-      <div class="col-xs-2 col-sm-2">&nbsp;</div>
-    </div>
+     
   `,
-    styles: [`
-    .main-head{
-      color:aqua;
-    }
+    styles: [`.main-head {font-family: montserratregular;font-size: 48px;color: #00e3d8;word-wrap: break-word;}
   `]
 })
 export class Header extends Helper implements OnInit,OnChanges {

@@ -3,18 +3,13 @@ import {Helper} from "../helpers/helper";
 @Component({
     selector: 'sub-header',
     template: `
-    <div class="row sub-head">
-      <div class="col-xs-2 col-sm-2">&nbsp;</div>
-      <h2 class="col-sm-8 col-xs-8"  style="margin-top:0" [froalaEditor]="options"
+    
+      <h2 class="sub-head" [froalaEditor]="options"
                     [(froalaModel)]="data.name" (froalaModelChange)="emitChanges($event)">
       </h2>
-      <div class="col-xs-2 col-sm-2">&nbsp;</div>
-    </div>
   `,
     styles: [`
-    .sub-head {
-      color:rgba(0,0,0,0.8);
-    }
+    .sub-head {font-family: montserratregular;font-size: 24px;color: #e5e5e6;word-wrap: break-word;}
   `]
 })
 export class SubHeader extends Helper implements OnInit,OnChanges {

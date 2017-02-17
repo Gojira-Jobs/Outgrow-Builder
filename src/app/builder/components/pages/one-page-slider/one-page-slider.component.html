@@ -1,25 +1,21 @@
 <div *ngFor="let page of jsonTemplate.pages;let page_index=index"
      [ngStyle]="{'background-image': 'url(' + page.bgImage + ')'}">
-    <div *ngIf="page.pagetype=='Landing'" style="margin:15px 0">
+    <div *ngIf="page.pagetype=='Landing'">
         <div *ngFor="let section of page.sections;let sec_index=index">
-            <div *ngFor="let control of page.sections[sec_index].items;let item_index=index">
-                <control [page]="page" [data]="control" (controlOutput)="notifyChanges($event)">
-                    <!-- [secIndex]="sec_index" [index]="item_index">-->
-                </control>
-            </div>
-            <!--<control [page] ="page" [data]="control"
-                     (mousedown)="selectpage(page)"
-                     (click)="selectModel($event,'Page')"
-                     (controlOutput)="onLeadFormSubmit($event,'page_'+(pageIndex+1),'page_'+(pageIndex))"
-                     [devMode]="devMode"   *ngIf="control.visible && control.type == 'leadform'" >
-            </control>
-            <control  [data]="control"
-
-                      [devMode]="devMode"
-                      (controlOutput)="onLeadFormSubmit($event,'page_'+(pageIndex+1),'page_'+(pageIndex))"
-                      *ngIf="control.visible && control.type !== 'leadform'" >
-            </control>-->
-
+            <div class="container" *ngIf="page.sections[sec_index].title!='Logo Heading'">
+                <div class="landing-page">
+                    <div *ngFor="let control of page.sections[sec_index].items;let item_index=index">
+                        <control [page]="page" [data]="control" (controlOutput)="notifyChanges($event)">
+                        </control>
+                    </div>
+                </div>
+            </div> 
+            <div *ngIf="page.sections[sec_index].title=='Logo Heading'">
+                <div *ngFor="let control of page.sections[sec_index].items;let item_index=index">
+                        <control [page]="page" [data]="control" (controlOutput)="notifyChanges($event)">
+                        </control>
+                 </div>
+            </div>   
         </div>
     </div>
 </div>

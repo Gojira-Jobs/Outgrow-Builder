@@ -44,7 +44,9 @@ declare var filepicker: any;
             left: 50%;
             display: block;
         }
-
+        header {padding: 0px;}
+        header .logo {float: left;padding: 15px 10px;}
+        header .logo span {color: #fff;font-size: 18px;margin-left: 15px;font-family: montserratregular;}
   `]
 })
 export class Logo extends Helper implements OnInit {
