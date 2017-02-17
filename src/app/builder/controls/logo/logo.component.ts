@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {Script} from "../../services/script.service";
-import {Helper} from '../helpers/helper';
+import {Helper} from "../helpers/helper";
 declare var jQuery: any
 declare var filepicker: any;
 @Component({
@@ -13,7 +13,7 @@ declare var filepicker: any;
                 <div id="image-outlay" >
                     <a id="logo"   (click)="uploadImage(imgElement)">
                                     
-                        <img style=""  #imgElement src="{{data.name}}" alt="abc..">
+                        <img style=""  #imgElement src="{{data.imageURL}}" alt="abc..">
                         <i class="fa fa-camera" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -54,17 +54,15 @@ export class Logo extends Helper implements OnInit {
 
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
-    constructor(script: Script) {
-    super();
-        script.load('filepicker').then(data => {
-            console.log('script loaded ', data);
-        }).catch(error => console.log(error));
+    constructor() {
+        super();
     }
 
     ngOnInit() {
     }
 
     uploadImage(control: any) {
+        console.log('hello', control);
         filepicker.setKey(this.filePickerKey);
         filepicker.pick(
             {
@@ -74,9 +72,10 @@ export class Logo extends Helper implements OnInit {
             (InkBlob: any) => {
                 control.src = InkBlob.url;
                 console.log(InkBlob.url);
-                this.data.name=InkBlob.url;
+                this.data.imageURL = InkBlob.url;
                 jQuery('#filepicker_dialog_container').find('a').click();
-                this.emitChanges({});
+                console.log('hello world');
+                this.emitChanges(control);
             }, (FPError: any) => {
                 console.log(FPError.toString());
             });
