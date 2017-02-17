@@ -3,8 +3,7 @@
     <div *ngIf="page.pagetype=='Landing'" style="margin:15px 0">
         <div *ngFor="let section of page.sections;let sec_index=index">
             <div *ngFor="let control of page.sections[sec_index].items;let item_index=index">
-                <control [page]="page"
-                         [data]="control" (controlOutput)="notifyChanges($event)">
+                <control [page]="page" [data]="control" (controlOutput)="notifyChanges($event)">
                     <!-- [secIndex]="sec_index" [index]="item_index">-->
                 </control>
             </div>

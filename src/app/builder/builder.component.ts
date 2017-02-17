@@ -34,6 +34,7 @@ export class BuilderComponent implements OnInit {
         if (this.savePageService.getFromLocalStore()) {
             console.log('loading previous state from local store');
             this.jsonTemplate = JSON.parse(this.savePageService.getFromLocalStore());
+            this.savePageService.notifyPageChanges(this.jsonTemplate);
         }
 
         this.pageChangeSubscription = this.savePageService.getPageChangeObservable().debounceTime(1000)
