@@ -13,7 +13,8 @@ import { LeadformComponent } from './leadform/leadform.component';
         FroalaViewModule,
         ReactiveFormsModule
   ],
-  declarations: [ControlComponent,CONTROLS, RadiobuttonComponent, LeadformComponent],
+  declarations: [ControlComponent,CONTROLS, RadiobuttonComponent,
+   LeadformComponent],
   exports:[ControlComponent]
 })
 export class ControlsModule { }

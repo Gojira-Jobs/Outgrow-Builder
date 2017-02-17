@@ -13,7 +13,8 @@ export class DefaultJSON {
         let landingPage = new Page("Landing",'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
 
         let sectionHead = new Section('Logo Heading');
-        let logoItem = new Item('logo', 'https://www.filestackapi.com/api/file/jJx4Amp9SjiYVGsOA1uK');
+        let logoItem = new Item('logo');
+        logoItem.imageURL= 'https://www.filestackapi.com/api/file/jJx4Amp9SjiYVGsOA1uK';
         sectionHead.addItems(logoItem);
 
         // content area of LANDING page
@@ -23,8 +24,10 @@ export class DefaultJSON {
         let leadform= new Item('leadform', 'Let’s Find Out');
         let button=new Item('click-button','Get Started');
         contentSection.addItems(header, subHeader,leadform,button);
-        
-        landingPage.addSections(sectionHead, contentSection);
+        let footerSection= new Section('Footer');
+        let powered = new Item('poweredby', 'This is powered by');
+        footerSection.addItems(powered);
+        landingPage.addSections(sectionHead, contentSection,footerSection);
 
         app.addPages(landingPage);
 
