@@ -55,7 +55,7 @@ header .logo span {color: #fff;font-size: 18px;margin-left: 15px;font-family: mo
 .landing-page .sub-head {font-family: montserratregular;font-size: 24px;color: #e5e5e6;word-wrap: break-word;}
 .landing-page .description {font-family: montserratregular;font-size: 14px;color: #b8b9bb;margin-top: 25px;word-wrap: break-word; padding: 0 20%;}
 .input-section{ width:65%; margin:50px auto 0 auto ;}
-.input-section input{ width: 43% !important; margin: 8px !important; border:2px solid #c4c4c6 !important; color:#fefeff; font-family:montserratregular; font-size:14px !important;}
+.input-section input{ float:left;width: 43% !important; margin: 8px !important; border:2px solid #c4c4c6 !important; color:#fefeff; font-family:montserratregular; font-size:14px !important;}
 .input-section ::-webkit-input-placeholder {color: #c4c4c6;}
 .input-section :-moz-placeholder { /* Firefox 18- */ color: #c4c4c6;  }
 .input-section ::-moz-placeholder {  /* Firefox 19+ */color: #c4c4c6; }
@@ -573,7 +573,38 @@ span{
 
 .bg-style{background: rgba(0,0,0,0.7);}
 .p10{padding:10px;}
+.prime-action {font-family: montserratregular;
+      font-size: 18px;color: #fff;
+      margin-top: 20px;
+       padding: 10px 4%;
+       background: #00aea5;
+       border-radius: 0 !important;}  
+      #logo:hover img{
+            background:rgba(0,0,0,.75);
+            cursor: pointer;
+            -webkit-transition: opacity .25s ease;
+        }
 
+        #logo{
+            position: relative;
+            display: inline-block;
+        }
+
+        #logo i{
+            display: none;
+            color: white;
+        }
+
+        #logo:hover i{
+            position: absolute;
+            top:40%;
+            left: 50%;
+            display: block;
+        }
+        header {padding: 0px;}
+        header .logo {float: left;padding: 15px 10px;}
+        header .logo span {color: #fff;font-size: 18px;margin-left: 15px;font-family: montserratregular;}
+  
 
 
 

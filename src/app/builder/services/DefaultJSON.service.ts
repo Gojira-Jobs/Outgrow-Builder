@@ -10,11 +10,11 @@ export class DefaultJSON {
 
 
         let app = new App("outgrow builder");
-        let landingPage = new Page("Landing",'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
+        let landingPage = new Page("Landing", 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
 
         let sectionHead = new Section('Logo Heading');
         let logoItem = new Item('logo');
-        logoItem.imageURL= 'https://www.filestackapi.com/api/file/jJx4Amp9SjiYVGsOA1uK';
+        logoItem.imageURL = 'https://www.filestackapi.com/api/file/jJx4Amp9SjiYVGsOA1uK';
         sectionHead.addItems(logoItem);
 
         // content area of LANDING page

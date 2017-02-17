@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges} from "@angular/core";
+import {Component, OnInit, Input, OnChanges,ViewEncapsulation} from "@angular/core";
 import {Helper} from "../helpers/helper";
 @Component({
     selector: 'og-header',
@@ -9,8 +9,7 @@ import {Helper} from "../helpers/helper";
       </h1>
      
   `,
-    styles: [`.main-head {font-family: montserratregular;font-size: 48px;color: #00e3d8;word-wrap: break-word;}
-  `]
+    encapsulation:ViewEncapsulation.None
 })
 export class Header extends Helper implements OnInit,OnChanges {
 

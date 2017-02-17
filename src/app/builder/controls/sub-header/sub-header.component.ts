@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges} from "@angular/core";
+import {Component, OnInit, Input, OnChanges,ViewEncapsulation} from "@angular/core";
 import {Helper} from "../helpers/helper";
 @Component({
     selector: 'sub-header',
@@ -8,9 +8,8 @@ import {Helper} from "../helpers/helper";
                     [(froalaModel)]="data.name" (froalaModelChange)="emitChanges($event)">
       </h2>
   `,
-    styles: [`
-    .sub-head {font-family: montserratregular;font-size: 24px;color: #e5e5e6;word-wrap: break-word;}
-  `]
+    encapsulation:ViewEncapsulation.None
+
 })
 export class SubHeader extends Helper implements OnInit,OnChanges {
     ngOnChanges() {

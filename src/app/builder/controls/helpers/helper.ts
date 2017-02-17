@@ -11,6 +11,6 @@ export class Helper {
         placeholderText: 'Edit Your Content Here!',
         toolbarInline: true,
         charCounterCount: false,
-        toolbarButtons: ['bold', 'italic', 'underline', 'color', 'html', 'clearFormatting', 'paragraphFormat'],
+        toolbarButtons: ['bold', 'italic','paragraphStyle', 'underline', 'color', 'html', 'clearFormatting', 'paragraphFormat'],
     };
 }
