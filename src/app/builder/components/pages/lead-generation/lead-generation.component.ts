@@ -1,7 +1,6 @@
 import {Script} from "../../../services/script.service";
 import {SavePage, sectionLeadGeneration} from "../../../services/savePage.service";
 import {Component, OnInit, OnDestroy} from "@angular/core";
-import {LEAD_GENERATION_CONTROL_KEYS} from "../../../models/Control";
 import {Subscription} from "rxjs";
 import {Page} from "../../../models/PageModel";
 declare var jQuery: any
@@ -20,7 +19,6 @@ export class LeadGenerationComponent implements OnInit,OnDestroy {
         charCounterCount: false,
         toolbarButtons: ['bold', 'italic', 'underline', 'color', 'html', 'clearFormatting'],
     };
-    leadGenerationControlKeys = LEAD_GENERATION_CONTROL_KEYS;
     pageChangeSubscription: Subscription;
     imgElement: Object;
     page: Page = new Page();
@@ -38,7 +36,6 @@ export class LeadGenerationComponent implements OnInit,OnDestroy {
             console.log('init second time');
             this.page = JSON.parse(this.savePageService.getFromLocalStore());
         } else {
-            this.initializeViewContent();
             console.log('init first time');
         }
 
@@ -55,15 +52,6 @@ export class LeadGenerationComponent implements OnInit,OnDestroy {
     ngOnDestroy(): void {
         if (this.pageChangeSubscription)
             this.pageChangeSubscription.unsubscribe();
-    }
-
-    private initializeViewContent() {
-        this.page.pagetype = sectionLeadGeneration;
-        this.page.control[this.leadGenerationControlKeys.MAIN_HEADING] = "Calculate the risk of you getting a heart disease.";
-        this.page.control[this.leadGenerationControlKeys.SUB_HEADING] = "Heart problems are at an all time high. See if your lifestyle makes you susceptible.";
-        this.page.control[this.leadGenerationControlKeys.INPUT_NAME] = "John Doe";
-        this.page.control[this.leadGenerationControlKeys.INPUT_EMAIL] = "John@outgrow.co";
-        this.page.control[this.leadGenerationControlKeys.SUBMIT_BUTTON] = "Estimate Costs";
     }
 
     updateModel(controlType: string, innerHTML) {

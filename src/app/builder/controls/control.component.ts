@@ -4,10 +4,12 @@ import {Helper} from "./helpers/helper";
     selector: 'control',
     template: `
     <logo *ngIf="data.type=='logo'" [data]="data" (controlOutput)="emitChanges($event)"></logo>
+    <menu *ngIf="data.type=='menu'" [data]="data" (controlOutput)="emitChanges($event)"></menu>
     <og-header  *ngIf="data.type=='header'" [data]="data" (controlOutput)="emitChanges($event)"></og-header>
     <sub-header *ngIf="data.type=='sub-header'" [data]="data" (controlOutput)="emitChanges($event)"></sub-header>
      <leadform *ngIf="data.type=='leadform'" [data]="data" [page]="page" (controlOutput)="emitChanges($event)"></leadform>
-     <click-button *ngIf="data.type=='click-button'" [data]="data" (controlOutput)="emitChanges($event)"></click-button>  \
+     <click-button *ngIf="data.type=='click-button'" [data]="data" (controlOutput)="emitChanges($event)"></click-button>
+     
      `,
     styles: []
 })

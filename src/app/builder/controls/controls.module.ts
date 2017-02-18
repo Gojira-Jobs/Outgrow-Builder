@@ -6,6 +6,7 @@ import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 import {CONTROLS} from './controls';
 import { RadiobuttonComponent } from './radiobutton/radiobutton.component';
 import { LeadformComponent } from './leadform/leadform.component';
+import { MenuComponent } from './menu/menu.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +15,8 @@ import { LeadformComponent } from './leadform/leadform.component';
         ReactiveFormsModule
   ],
   declarations: [ControlComponent,CONTROLS, RadiobuttonComponent,
-   LeadformComponent],
+   LeadformComponent,
+   MenuComponent],
   exports:[ControlComponent]
 })
 export class ControlsModule { }
