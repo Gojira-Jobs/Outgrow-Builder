@@ -1,6 +1,7 @@
 <div *ngFor="let page of jsonTemplate.pages;let page_index=index"
-     [ngStyle]="{'background-image': 'url(' + page.bgImage + ')'}">
-    <div *ngIf="page.pagetype=='Landing'" style="margin-bottom:5px">
+     [ngStyle]="{'background-image': 'url(' + page.bgImage + ')'}" >
+    <div *ngIf="page.pagetype=='Landing'" id="page{{page_index}}" class="pageSetter">
+        
         <div *ngFor="let section of page.sections;let sec_index=index">
             <div  [ngClass]="{'container':page.sections[sec_index].title!='Logo Heading' && page.sections[sec_index].title!='Footer'}">
                 <div [ngClass]="{'landing-page':page.sections[sec_index].title!='Logo Heading' && page.sections[sec_index].title!='Footer'}">
@@ -14,5 +15,6 @@
         </div>
     </div>
 </div>
+
 
 

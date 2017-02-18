@@ -11,7 +11,7 @@ declare var filepicker: any;
         <div class="col-md-12 col-sm-12 col-xs-12 p10">
             <div class="col-md-6 col-sm-6 col-xs-12 logo">
                 <div id="image-outlay" >
-                    <a id="logo"   (click)="uploadImage(imgElement)">
+                    <a id="logo" [froalaEditor]="options"  (click)="uploadImage(imgElement)">
                                     
                         <img style=""  #imgElement src="{{data.imageURL}}" alt="abc..">
                         <i class="fa fa-camera" aria-hidden="true"></i>
@@ -33,6 +33,9 @@ export class Logo extends Helper implements OnInit {
     }
 
     ngOnInit() {
+        this.options={
+            imageResize:true
+        }
     }
 
     uploadImage(control: any) {
