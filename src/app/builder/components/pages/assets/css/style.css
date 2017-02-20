@@ -1,0 +1,44 @@
+::selection {
+  background: #B0B0B0; 
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #B0B0B0; 
+  color: #fff;
+}
+
+
+
+#logo:hover img{
+	background:rgba(0,0,0,.75);
+	cursor: pointer;
+	-webkit-transition: opacity .25s ease;
+}
+
+#logo{
+	position: relative;
+	display: inline-block;
+}
+
+#logo i{
+	display: none;
+	color: white;
+}
+
+#logo:hover i{
+	position: absolute;
+	top:40%;
+	left: 50%;
+	display: block;
+}
+
+.pointer {
+	cursor: pointer;
+}
+.no-outline{
+  outline: none;
+}
+.main-head,.sub-head{
+    color:aqua;
+}

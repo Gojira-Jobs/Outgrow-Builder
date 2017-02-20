@@ -1,4 +1,6 @@
 import {NgModule, ModuleWithProviders} from "@angular/core";
+
+import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 import {CommonModule} from "@angular/common";
 import {LeadGenerationComponent} from "./components/pages/lead-generation/lead-generation.component";
 import {QuestionComponent} from "./components/pages/question/question.component";
@@ -6,10 +8,11 @@ import {WelcomeComponent} from "./components/pages/welcome/welcome.component";
 import {RouterModule} from "@angular/router";
 import {BuilderComponent} from "./builder.component";
 import {Script} from "./services/script.service";
-import { EditableDirective } from './editable.directive';
-import { ToolbarComponent } from './toolbar.component';
 import {SavePage} from "./services/savePage.service";
-
+import { OnePageSliderComponent } from './components/pages/one-page-slider/one-page-slider.component';
+import {DefaultJSON} from './services/DefaultJSON.service';
+import {ControlsModule} from './controls/controls.module';
+//import {ScrollTo} from 'ng2-scroll-to';
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
         path: 'builder',
@@ -19,10 +22,19 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
 
 @NgModule({
     imports: [
-        CommonModule, builderRouter
+        CommonModule,
+        builderRouter,
+        ControlsModule, FroalaEditorModule,
+        FroalaViewModule,
+    
     ],
-    declarations: [LeadGenerationComponent, QuestionComponent, WelcomeComponent, BuilderComponent, EditableDirective, ToolbarComponent],
-    providers: [Script, SavePage]
+    declarations: [LeadGenerationComponent,
+        QuestionComponent, WelcomeComponent,
+        BuilderComponent,
+        OnePageSliderComponent],
+    providers: [Script,
+    DefaultJSON, SavePage]
 })
 export class BuilderModule {
+
 }

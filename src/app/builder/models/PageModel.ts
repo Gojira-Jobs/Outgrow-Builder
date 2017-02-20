@@ -1,14 +1,27 @@
-import {Control} from "./Control";
 
-export const MAIN_HEADING = "mainheading";
-export const SUB_HEADING = "subheading";
-export const INPUT_NAME = "inputname";
-export const INPUT_EMAIL = "inputemail";
-export const SUBMIT_BUTTON = "submitButton";
-export const IMAGE_URL = "imageurl"
-
+import {Section} from "./Section";
 
 export class Page {
     pagetype: string;
-    control: Control = {};
+    _id: string = '';
+	description: string = '';
+	defaultClass: string = '';
+	bgImage: string = '';
+	bgImageVisible: boolean = true;
+	bgColor: string = '';
+	type: string = '';
+	visible: boolean = true;
+	sections: Section[] = [];
+
+    constructor(type?: string, bgImage?: string) {
+        this.pagetype = type;
+        this.bgImage = bgImage;
+    }
+
+    //add sections to page
+    public addSections(...sections: any[]) {
+        for (let section in sections) {
+            this.sections.push(sections[section]);
+        }
+    }
 }

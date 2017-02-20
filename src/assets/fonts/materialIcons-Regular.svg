@@ -3,7 +3,7 @@
 <!--
 2016-2-8: Created with FontForge (http://fontforge.org)
 -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 <metadata>
 Created by FontForge 20151118 at Mon Feb  8 11:58:02 2016
  By shyndman
@@ -1433,8 +1433,8 @@ d="M256 299l85 -86h-64v-128h-42v128h-64zM405 427c24 0 43 -20 43 -43v-256c0 -23 -
 d="M299 448h149v-149h-43v76l-209 -209l-30 30l209 209h-76v43zM405 107v149h43v-149c0 -23 -20 -43 -43 -43h-298c-24 0 -43 20 -43 43v298c0 23 19 43 43 43h149v-43h-149v-298h298z" />
     <glyph glyph-name="open_with" unicode="open_with" 
 d="M299 192v-64h64l-107 -107l-107 107h64v64h86zM491 256l-107 -107v64h-64v86h64v64zM192 299v-86h-64v-64l-107 107l107 107v-64h64zM213 320v64h-64l107 107l107 -107h-64v-64h-86z" />
-    <glyph glyph-name="pages" unicode="pages" 
-d="M405 448c23 0 43 -20 43 -43v-128h-107l22 86l-86 -22v107h128zM363 149l-22 86h107v-128c0 -23 -20 -43 -43 -43h-128v107zM171 235l-22 -86l86 22v-107h-128c-23 0 -43 20 -43 43v128h107zM64 405c0 23 20 43 43 43h128v-107l-86 22l22 -86h-107v128z" />
+  <glyph glyph-name="pages" unicode="pages"
+         d="M405 448c23 0 43 -20 43 -43v-128h-107l22 86l-86 -22v107h128zM363 149l-22 86h107v-128c0 -23 -20 -43 -43 -43h-128v107zM171 235l-22 -86l86 22v-107h-128c-23 0 -43 20 -43 43v128h107zM64 405c0 23 20 43 43 43h128v-107l-86 22l22 -86h-107v128z" />
     <glyph glyph-name="pageview" unicode="pageview" 
 d="M358 124l30 30l-62 62c9 15 15 32 15 51c0 53 -43 96 -96 96s-96 -43 -96 -96s43 -96 96 -96c19 0 36 6 51 15zM427 427c23 0 42 -20 42 -43v-256c0 -23 -19 -43 -42 -43h-342c-23 0 -42 20 -42 43v256c0 23 19 43 42 43h342zM245 320c29 0 54 -24 54 -53
 s-25 -54 -54 -54s-53 25 -53 54s24 53 53 53z" />

@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
-import {Page} from "../models/PageModel";
 import {BehaviorSubject, Observable} from "rxjs";
+import {App} from "../models/App";
 
 export const sectionLeadGeneration = "lead-generation";
 const page_state_key = 'state';
@@ -8,10 +8,10 @@ const page_state_key = 'state';
 @Injectable()
 export class SavePage {
 
-    pageChangesSubject: BehaviorSubject<Page>;
+    pageChangesSubject: BehaviorSubject<App>;
 
     constructor() {
-        this.pageChangesSubject = new BehaviorSubject(new Page());
+        this.pageChangesSubject = new BehaviorSubject(new App());
     }
 
     saveToLocalStore(data: string) {
@@ -24,11 +24,11 @@ export class SavePage {
         }
     }
 
-    notifyPageChanges(page: Page) {
+    notifyPageChanges(page: App) {
         this.pageChangesSubject.next(page);
     }
 
-    getPageChangeObservable(): Observable<Page> {
+    getPageChangeObservable(): Observable<App> {
         return this.pageChangesSubject.asObservable();
     }
 
