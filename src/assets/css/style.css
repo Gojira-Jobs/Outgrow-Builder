@@ -54,6 +54,7 @@ header .logo span {color: #fff;font-size: 18px;margin-left: 15px;font-family: mo
 .landing-page .main-head {font-family: montserratregular;font-size: 48px;color: #00e3d8;word-wrap: break-word;}
 .landing-page .sub-head {font-family: montserratregular;font-size: 24px;color: #e5e5e6;word-wrap: break-word;}
 .landing-page .description {font-family: montserratregular;font-size: 14px;color: #b8b9bb;margin-top: 25px;word-wrap: break-word; padding: 0 20%;}
+.landing-page span{ font-size:inherit}
 .input-section{ width:65%; margin:50px auto 0 auto ;}
 .input-section input{ float:left;width: 43% !important; margin: 8px !important; border:2px solid #c4c4c6 !important; color:#fefeff; font-family:montserratregular; font-size:14px !important;}
 .input-section ::-webkit-input-placeholder {color: #c4c4c6;}

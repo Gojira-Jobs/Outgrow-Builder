@@ -13,7 +13,7 @@ declare var filepicker: any;
             <div class="col-md-6 col-sm-6 col-xs-12 logo">
                 <div id="image-outlay" >
                      <div id="logo" >
-                       <a href="{{data.config.attr.redirectUrl}}">             
+                       <a id='eg-init-on-link' href="{{data.config.attr.redirectUrl}}" (click)="setChanges()">             
                         <img id="edit" 
                             [froalaEditor]="options"
                             [ngStyle]="{'height':data.config.attr.height,
@@ -46,6 +46,7 @@ export class Logo extends Helper implements OnInit {
         this.options={
             imageResize:true,
             imageEditButtons:[ 'imageRemove', 'imageLink', 'linkOpen', 'linkEdit', 'imageAlt', 'imageSize'],
+           
             events:{
                 'froalaEditor.contentChanged' : function(e, editor) {
                     
@@ -83,5 +84,8 @@ export class Logo extends Helper implements OnInit {
             }, (FPError: any) => {
                 console.log(FPError.toString());
             });
+    }
+    setChanges(){
+        return false;
     }
 }

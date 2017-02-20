@@ -8,10 +8,12 @@ export class Helper {
     }
 
     public options:any = {
+         
         placeholderText: 'Edit Your Content Here!',
         toolbarInline: true,
         charCounterCount: false,
         events:{},
-        toolbarButtons: ['bold', 'italic','paragraphStyle', 'underline', 'color', 'html', 'clearFormatting', 'paragraphFormat'],
+        toolbarButtons: ['bold', 'italic', 'underline', 'color', 'html',
+         'clearFormatting', 'paragraphFormat'],
     };
 }

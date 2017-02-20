@@ -5,7 +5,7 @@ declare var jQuery:any;
     selector: 'og-header',
     template: `
     
-      <p class="main-head" [froalaEditor]="options"
+      <p  class="main-head" [froalaEditor]="options"
                     [(froalaModel)]="data.name" (froalaModelChange)="emitChanges($event)">
       </p>
      
@@ -23,13 +23,7 @@ export class Header extends Helper implements OnInit,OnChanges {
         super();
     }
 
-    ngOnInit() {
-        let self=this;
-     this.options.events={
-            'froalaEditor.contentChanged' : function(e, editor) {
-                console.log(jQuery(e.target).find('span'));
-            }
-        };
-    }
+    ngOnInit() {}
+    
 
 }
