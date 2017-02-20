@@ -1,4 +1,4 @@
-import {Control} from "./Control";
+
 import {Section} from "./Section";
 
 export class Page {
@@ -12,8 +12,6 @@ export class Page {
 	type: string = '';
 	visible: boolean = true;
 	sections: Section[] = [];
-
-    control: Control = {};
 
     constructor(type?: string, bgImage?: string) {
         this.pagetype = type;

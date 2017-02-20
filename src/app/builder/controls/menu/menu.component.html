@@ -1,0 +1,10 @@
+<nav id="main-menu" >
+    <div class="nav-bar" (click)="isVisible=!isVisible;" >
+        <span class="glyphicon glyphicon-user"></span>
+    </div>
+    <ul class="nav-bar" [@visibilityChanged]="isVisible">
+        <li class="nav-button-home"><a href=""></a></li>
+        <li class="nav-button-services"><a href=""></a></li>
+        <li class="nav-button-products"><a href=""></a></li>
+    </ul>
+</nav>
