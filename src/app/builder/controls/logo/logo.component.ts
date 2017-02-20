@@ -1,4 +1,4 @@
-import {Component, OnInit, Input,ViewEncapsulation,ElementRef} from "@angular/core";
+import {Component, OnInit, Input,ViewEncapsulation,ElementRef,ViewChild} from "@angular/core";
 import {Script} from "../../services/script.service";
 import {Helper} from "../helpers/helper";
 declare var jQuery: any
@@ -13,13 +13,13 @@ declare var filepicker: any;
             <div class="col-md-6 col-sm-6 col-xs-12 logo">
                 <div id="image-outlay" >
                      <div id="logo" >
-                       <a id='eg-init-on-link' href="{{data.config.attr.redirectUrl}}" (click)="setChanges()">             
+                       <a id='eg-init-on-link' href="{{data.config.attr.redirectUrl}}">             
                         <img id="edit" 
                             [froalaEditor]="options"
                             [ngStyle]="{'height':data.config.attr.height,
                             'width':data.config.attr.width}" 
                             #imgElement src="{{data.imageURL}}" alt="{{data.props.alt}}">
-                        <i class="fa fa-camera" (click)="uploadImage(imgElement)" aria-hidden="true"></i>
+                     <!--   <i class="fa fa-camera" aria-hidden="true"></i>-->
                     </a>
                     </div>
 
@@ -33,7 +33,7 @@ declare var filepicker: any;
 })
 export class Logo extends Helper implements OnInit {
     @Input() data: any = '';
-
+@ViewChild('imgElement') imageEle:ElementRef;
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
     constructor(private ele:ElementRef) {
@@ -41,12 +41,25 @@ export class Logo extends Helper implements OnInit {
     }
 
     ngOnInit() {
-       // console.log(this.data);
         let self=this;
+        jQuery.FroalaEditor.DefineIcon('replaceImage', {NAME: 'cloud-upload'});
+        jQuery.FroalaEditor.RegisterCommand('replaceImage', {
+        title: 'Replace Image',
+        focus: false,
+        undo: true,
+        refreshAfterCallback: true,
+        callback: function () {
+            self.uploadImage(self.imageEle.nativeElement);
+            this.events.focus();
+        
+            }
+        });
+       
         this.options={
             imageResize:true,
-            imageEditButtons:[ 'imageRemove', 'imageLink', 'linkOpen', 'linkEdit', 'imageAlt', 'imageSize'],
-           
+            imageEditButtons:[ 'replaceImage','imageRemove', 'imageLink', 'linkOpen', 'linkEdit', 'imageAlt', 'imageSize'],
+           theme: 'dark',
+           black:'#000',
             events:{
                 'froalaEditor.contentChanged' : function(e, editor) {
                     
@@ -58,12 +71,11 @@ export class Logo extends Helper implements OnInit {
                         let obj=jQuery(e.target).parent('a:first').attr('href');
                         self.data.config.attr.redirectUrl=obj;
                     }
-                    else{
-                        console.log("jdj");
-                    }
+                    else{}
                      self.emitChanges(e);
                 }
-            }
+            },
+            
         }
     }
 
