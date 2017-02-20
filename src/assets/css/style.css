@@ -1484,47 +1484,22 @@ header .logo span {
 
 #main-menu {
     position: absolute;
-    right: 0;
+    right: 20px;
     top: 5px;
 }
 
 #main-menu .nav-bar li {
-    display: inline;
-    padding: 0 10px;
+    display: inline-block;
+    padding: 0 5px;
 }
 
 #main-menu .nav-bar li a {
     text-decoration: none;
-    padding-left: 20px;
+    
     text-transform: uppercase;
     color: #333;
     text-shadow: 1px 1px 1px #ccc;
 }
-
-.nav-bar .nav-button-home a {
-    background: url("http://www.cheesetoast.co.uk/cheesepress/wp-content/uploads/2012/08/home.gif") no-repeat 0px -2px transparent;
-}
-
-.nav-bar .nav-button-services a {
-    background: url("http://www.cheesetoast.co.uk/cheesepress/wp-content/uploads/2012/08/services.gif") no-repeat 0px -2px transparent;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

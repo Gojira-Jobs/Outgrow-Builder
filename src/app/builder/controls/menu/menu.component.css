@@ -1,17 +1,17 @@
 
-#main-menu .nav-bar {
+/*#main-menu .nav-bar {
     list-style: none;
     margin-top: 40px;
 }
 
 #main-menu .nav-bar li {
     display: inline;
-    padding: 0 10px;
+    padding: 0 2px;
 }
 
 #main-menu .nav-bar li a {
     text-decoration: none;
-    padding-left: 25px;
+   
     text-transform: uppercase;
     color: #333;
     text-shadow: 1px 1px 1px #ccc;
@@ -30,4 +30,4 @@
 }
 
 /* Icons courtesy of Thom : http://pixelb.in/assorted-pixel-perfect-14px-icon-set-286/ */
-
+*/

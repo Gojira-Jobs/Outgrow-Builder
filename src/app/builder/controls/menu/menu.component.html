@@ -1,10 +1,12 @@
-<nav id="main-menu" >
-    <div class="nav-bar" (click)="isVisible=!isVisible;" >
+<div id="main-menu" >
+    <!--<div class="nav-bar"  >
         <span class="glyphicon glyphicon-user"></span>
-    </div>
-    <ul class="nav-bar" [@visibilityChanged]="isVisible">
-        <li class="nav-button-home"><a href=""></a></li>
-        <li class="nav-button-services"><a href=""></a></li>
-        <li class="nav-button-products"><a href=""></a></li>
+    </div>-->
+    <ul class="nav-bar">
+        <li (click)="isVisible=!isVisible;"><span class="glyphicon glyphicon-user"></span></li>
+        <li class="nav-button-home" [@visibilityChanged]="isVisible"><span class="glyphicon glyphicon-user"></span></li>
+        <li class="nav-button-services" [@visibilityChanged]="isVisible"><span class="glyphicon glyphicon-user"></span></li>
+        <li class="nav-button-products" [@visibilityChanged]="isVisible"><span class="glyphicon glyphicon-user"></span></li>
+        
     </ul>
-</nav>
+</div>
