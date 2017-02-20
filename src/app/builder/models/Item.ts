@@ -9,6 +9,7 @@ _id: string = '';
   formulaIndex: string = '';
   imageVisible: boolean = false;
   optionImageVisible: boolean = false;
+ 
   imageURL: string = 'https://cdn.filestackcontent.com/ueNrjSMReChnz2Ohiqwg';
   props: any = {
     title: '',
@@ -23,7 +24,8 @@ _id: string = '';
     steps: 1,
     scale: false,
     unit: '',
-    postfix: false
+    postfix: false,
+    alt:'Company logo'
   };
   config: any = {
     type: 'text',
@@ -32,9 +34,9 @@ _id: string = '';
     attr: {
       class: '',
       style: '',
-      width: '',
-      height: '',
-
+      width:'100px',
+      height:'100px',
+       redirectUrl:'hello'
     },
     validations: {
       required: {
