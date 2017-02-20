@@ -31,7 +31,7 @@ export class DefaultJSON {
 
         app.addPages(landingPage);
 
-        //    console.log(JSON.stringify(app));
+        // console.log(JSON.stringify(app));
         return app;
     }
 }
