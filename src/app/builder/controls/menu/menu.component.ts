@@ -6,6 +6,8 @@ import {Helper} from "../helpers/helper";
     templateUrl: './menu.component.html',
     animations: [
         trigger('visibilityChanged', [
+            state('true', style({opacity: 1})),
+            state('false', style({opacity: 0})),
             state('true', style({transform: 'translateX(0)'})),
             state('false', style({transform: 'translateX(100%)'})),
             transition('* => *', [
