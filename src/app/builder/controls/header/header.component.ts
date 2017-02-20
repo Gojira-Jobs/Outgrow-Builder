@@ -1,18 +1,19 @@
 import {Component, OnInit, Input, OnChanges,ViewEncapsulation} from "@angular/core";
 import {Helper} from "../helpers/helper";
+declare var jQuery:any;
 @Component({
     selector: 'og-header',
     template: `
     
-      <h1 class="main-head"  style="margin-top:0" [froalaEditor]="options"
+      <p class="main-head" [froalaEditor]="options"
                     [(froalaModel)]="data.name" (froalaModelChange)="emitChanges($event)">
-      </h1>
+      </p>
      
   `,
     encapsulation:ViewEncapsulation.None
 })
 export class Header extends Helper implements OnInit,OnChanges {
-
+    
     @Input() data: any;
 
     ngOnChanges() {
@@ -23,6 +24,12 @@ export class Header extends Helper implements OnInit,OnChanges {
     }
 
     ngOnInit() {
+        let self=this;
+     this.options.events={
+            'froalaEditor.contentChanged' : function(e, editor) {
+                console.log(jQuery(e.target).find('span'));
+            }
+        };
     }
 
 }

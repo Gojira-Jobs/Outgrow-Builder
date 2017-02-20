@@ -12,6 +12,7 @@ import {SavePage} from "./services/savePage.service";
 import { OnePageSliderComponent } from './components/pages/one-page-slider/one-page-slider.component';
 import {DefaultJSON} from './services/DefaultJSON.service';
 import {ControlsModule} from './controls/controls.module';
+//import {ScrollTo} from 'ng2-scroll-to';
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
         path: 'builder',
@@ -24,7 +25,8 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
         CommonModule,
         builderRouter,
         ControlsModule, FroalaEditorModule,
-        FroalaViewModule
+        FroalaViewModule,
+    
     ],
     declarations: [LeadGenerationComponent,
         QuestionComponent, WelcomeComponent,

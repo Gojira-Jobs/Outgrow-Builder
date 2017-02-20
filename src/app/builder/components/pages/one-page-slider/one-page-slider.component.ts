@@ -5,6 +5,7 @@ import {App} from "../../../models/App";
     selector: 'one-page-slider',
     templateUrl: './one-page-slider.component.html',
     styles:[`.landing-page {width: 100vw;display: table-cell;vertical-align: middle;height: 72vh;text-align:center;}
+          .pageSetter{margin-bottom:5px}
           `]
 })
 export class OnePageSliderComponent implements OnInit,OnChanges {
