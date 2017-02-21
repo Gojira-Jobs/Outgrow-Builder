@@ -1,19 +1,11 @@
+<form class="input-section" [formGroup]="leadform" novalidate>
+    <div *ngFor="let field of data.fields;let i=index">
+        <input #leadformInput type="{{field.type}}"
+               (click)="updateCaretAndPlaceholder(leadformInput,data,i)"
+               (blur)="leadformInput.value=''" (keyup)="setChanges(i,leadformInput.value)"
+               placeholder="{{field.placeholder}}" formControlName="{{field.name}}" required>
+    </div>
 
-       <form class="input-section"  [formGroup]="leadform" novalidate>
-            <div *ngFor="let field of data.fields;let i=index">
-       
-               
-                    <input #leadformInput type="{{field.type}}" 
-                      (click)="leadformInput.value = data.fields[i].placeholder"
-                      (blur)="leadformInput.value=''"
-                      (keyup)="setChanges(i,leadformInput.value)"
-                         
-                        placeholder="{{field.placeholder}}"
-                        formControlName="{{field.name}}"
-                        required>
-                
-            </div>
-
-       </form>
-       <div style="clear:both"></div>
+</form>
+<div style="clear:both"></div>
 
