@@ -53,25 +53,21 @@ export class BuilderComponent implements OnInit {
     }
 
     createPage(type: string) {
-
-        //check if app exists in local storage
         if (this.savePageService.getFromLocalStore()) {
             console.log('init second time');
             this.jsonTemplate = JSON.parse(this.savePageService.getFromLocalStore());
             this.jsonTemplate.pages = this.jsonTemplate.pages
-                .concat(this.serviceDefaultJSON.getJson("Landing").pages);
+                .concat(this.serviceDefaultJSON.getJson(type).pages);
         } else {
             console.log('init first time');
-            this.initializeViewContent();
+            this.initializeViewContent(type);
         }
         this.savePageService.notifyPageChanges(this.jsonTemplate);
     }
+    private initializeViewContent(type) {
+        this.jsonTemplate = this.serviceDefaultJSON.getJson(type);
 
-
-    private initializeViewContent() {
-        this.jsonTemplate = this.serviceDefaultJSON.getJson("Landing");
-
-        this.jsonTemplate.templateType = "Landing";
+        this.jsonTemplate.templateType =type;
         console.log(this.jsonTemplate);
     }
 

@@ -124,4 +124,17 @@ _id: string = '';
         this.type = type || '';
         this.name = name;
     }
+    public addFieldToCheckbox(addOptions: any[]){
+        let defaultOption = this.options[0];
+        this.options = [];
+        for (let option in addOptions) {
+          defaultOption.type = addOptions[option].type;
+          defaultOption.selected = addOptions[option].selected;
+          defaultOption.label = addOptions[option].label;
+          defaultOption.icon = addOptions[option].icon;
+          defaultOption.hashIndex = option;
+          this.options.push(Object.assign({}, defaultOption));
+        }
+    }
+
 }
