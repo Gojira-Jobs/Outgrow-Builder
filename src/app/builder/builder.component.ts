@@ -58,6 +58,7 @@ export class BuilderComponent implements OnInit {
             this.jsonTemplate = JSON.parse(this.savePageService.getFromLocalStore());
             this.jsonTemplate.pages = this.jsonTemplate.pages
                 .concat(this.serviceDefaultJSON.getJson(type).pages);
+                console.log(this.jsonTemplate);
         } else {
             console.log('init first time');
             this.initializeViewContent(type);

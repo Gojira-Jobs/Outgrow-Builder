@@ -13,6 +13,19 @@
            
         </div>
     </div>
+    
+    <div *ngIf="page.pagetype=='Question'" style="padding:70px">
+        <div class="questions">
+            <div  style="margin:auto;width:70%;background:white;box-shadow:1px 1px 0 #f2f2f2;" >
+                <div style="padding:20px">
+                    <div>
+                        <control  [page]="page" [data]="page.sections[0].items[0]" (controlOutput)="notifyChanges($event)"></control>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

@@ -1,6 +1,6 @@
 export class Item {
 _id: string = '';
-  order: number = 0;
+  order: number;
   type: string = '';
   name: string = '';
   visible: boolean = true;
