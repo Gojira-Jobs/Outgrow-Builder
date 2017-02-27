@@ -1,11 +1,19 @@
 <div id="main-menu">
-    <ul class="nav-bar">
-
-        <li class="nav-button-home" [@visibilityChanged]="isVisible"><span class="glyphicon glyphicon-user"></span></li>
-        <li class="nav-button-services" [@visibilityChanged]="isVisible"><span class="glyphicon glyphicon-user"></span></li>
-        <li class="nav-button-products" [@visibilityChanged]="isVisible"><span class="glyphicon glyphicon-user"></span></li>
-        <li (click)="isVisible=!isVisible;"><span class="glyphicon glyphicon-user"></span></li>
-        
-
+    <!--<div class="nav-bar"  >
+        <span class="glyphicon glyphicon-user"></span>
+    </div>-->
+    <ul class="nav-bar" *ngIf="page.pagetype=='Landing'">
+        <li class="nav-button-home" [@visibilityChanged]="isVisible">
+            <img src="../../assets/images/Settings.svg" style="width: 40px;height: 40px">
+        </li>
+        <li class="nav-button-services" [@visibilityChanged]="isVisible">
+            <img src="../../assets/images/Settings.svg" style="width: 40px;height: 40px">
+        </li>
+        <li class="nav-button-products" [@visibilityChanged]="isVisible">
+            <img src="../../assets/images/Settings.svg" style="width: 40px;height: 40px">
+        </li>
+        <li (click)="isVisible=!isVisible;">
+            <img src="../../assets/images/Settings.svg" style="width: 40px;height: 40px">
+        </li>
     </ul>
 </div>

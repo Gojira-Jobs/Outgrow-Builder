@@ -7,13 +7,12 @@ export class Helper {
         this.controlOutput.emit(event);
     }
 
-    public options:any = {
-         
+    public options: any = {
         placeholderText: 'Edit Your Content Here!',
         toolbarInline: true,
         charCounterCount: false,
-        events:{},
+        events: {},
         toolbarButtons: ['bold', 'italic', 'underline', 'color', 'html',
-         'clearFormatting', 'paragraphFormat'],
+            'clearFormatting', 'paragraphFormat'],
     };
 }

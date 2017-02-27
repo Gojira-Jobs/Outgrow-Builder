@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ViewEncapsulation, trigger, state, style, animate, transition} from '@angular/core';
+import {Component, OnInit, Input, ViewEncapsulation, trigger, state, style, animate, transition} from "@angular/core";
 import {Helper} from "../helpers/helper";
 
 @Component({
@@ -6,14 +6,11 @@ import {Helper} from "../helpers/helper";
     templateUrl: './menu.component.html',
     animations: [
         trigger('visibilityChanged', [
-            state('true', style({opacity: 1})),
-            state('false', style({opacity: 0})),
-            state('true', style({transform: 'translateX(0)'})),
-            state('false', style({transform: 'translateX(100%)'})),
+            state('false', style({transform: 'translateX(10%)', opacity: '0'})),
+            state('true', style({transform: 'translateX(-10%)', opacity: '1'})),
             transition('* => *', [
-                style({transform: 'translateX(-100%)'}),
-                animate(100)
-            ]),
+                animate('50ms ease-out')
+            ])
         ])
     ],
 
@@ -23,16 +20,17 @@ export class MenuComponent extends Helper implements OnInit {
 
     @Input()
     data: any;
-
     @Input()
-    isVisible: boolean
+    page: any;
+    @Input()
+    isVisible: boolean = false;
 
     constructor() {
         super();
     }
 
     ngOnInit() {
-        console.log('success');
+        console.log('success', this.page);
     }
 
 }
