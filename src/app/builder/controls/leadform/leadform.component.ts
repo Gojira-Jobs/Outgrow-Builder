@@ -34,18 +34,9 @@ export class LeadformComponent extends Helper implements OnInit {
         }
     }
 
-    setChanges(index: number, newValue: string) {
-        this.data.fields[index].placeholder = newValue;
-        this.leadform.valueChanges.debounceTime(200).subscribe((value) => {
-            //if(this.leadform.valid){
-            this.emitChanges('done');
-            // }
-        });
-    }
-
     updateCaretAndPlaceholder(leadformInput, data, i) {
-        leadformInput.value = data.fields[i].placeholder;
         let pos = this.getCaretPos(leadformInput);
+        leadformInput.value = data.fields[i].placeholder;
         this.setSelectionRange(leadformInput, pos, pos);
     }
 
