@@ -1,38 +1,39 @@
-import { Component, OnInit,Input,ViewEncapsulation } from '@angular/core';
-import {Helper} from '../helpers/helper';
+import {Component, OnInit, Input, ViewEncapsulation} from "@angular/core";
+import {Helper} from "../helpers/helper";
 @Component({
-  selector: 'click-button',
-  template: `
+    selector: 'click-button',
+    template: `
 
     <button class="btn prime-action"
     [innerHTML]="data.name"
     [froalaEditor]="options"></button>
     
   `,
-  encapsulation:ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None
 })
 export class Button extends Helper implements OnInit {
-@Input() data;
+    @Input() data;
 
-public options: Object ;
- ngOnInit() {
-   
-    let self=this;
-    this.options= {
-  placeholder: "Edit Me",
-  events : {
-    'froalaEditor.contentChanged' : function(e, editor) {
-     self.data.name=e.target.innerHTML;
-      console.log(self.data.name);
-      self.emitChanges('done');
+    public options: Object;
+
+    ngOnInit() {
+
+        let self = this;
+        this.options = {
+            placeholder: "Edit Me",
+            events: {
+                'froalaEditor.contentChanged': function (e, editor) {
+                    self.data.name = e.target.innerHTML;
+                    console.log(self.data.name);
+                    self.emitChanges('done');
+                }
+            }
+        }
     }
-  }
-}
-  }
-  constructor() { 
-    super();
-  }
 
- 
+    constructor() {
+        super();
+    }
+
 
 }

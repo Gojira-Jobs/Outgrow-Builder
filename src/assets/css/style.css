@@ -70,21 +70,95 @@ header .logo span {
 /*header section end*/
 
 /*Content section */
-.landing-page {width: 100vw;display: table-cell;vertical-align: middle;height: 72vh;text-align:center;}
-.landing-page .main-head {font-family: montserratregular;font-size: 48px;color: #00e3d8;word-wrap: break-word;}
-.landing-page .sub-head {font-family: montserratregular;font-size: 24px;color: #e5e5e6;word-wrap: break-word;}
-.landing-page .description {font-family: montserratregular;font-size: 14px;color: #b8b9bb;margin-top: 25px;word-wrap: break-word; padding: 0 20%;}
-.landing-page span{ font-size:inherit}
-.input-section{ width:65%; margin:50px auto 0 auto ;}
-.input-section input{ float:left;width: 43% !important; margin: 8px !important; border:2px solid #c4c4c6 !important; color:#fefeff; font-family:montserratregular; font-size:14px !important;}
-.input-section ::-webkit-input-placeholder {color: #c4c4c6;}
-.input-section :-moz-placeholder { /* Firefox 18- */ color: #c4c4c6;  }
-.input-section ::-moz-placeholder {  /* Firefox 19+ */color: #c4c4c6; }
-.input-section :-ms-input-placeholder {color: #c4c4c6;}
-.prime-action {font-family: montserratregular;font-size: 18px;color: #fff;margin-top: 20px; padding: 10px 4%;background: #00aea5;border-radius: 0 !important;}
-.btn.prime-action.focus,.btn.prime-action:focus,.btn.prime-action:hover {color: #fff; text-decoration: none;}
-.date{ padding-left:0 !important;}
-.pr0{ padding-right:0 !important;}
+.landing-page {
+    width: 100vw;
+    display: table-cell;
+    vertical-align: middle;
+    height: 72vh;
+    text-align: center;
+}
+
+.landing-page .main-head {
+    font-family: montserratregular;
+    font-size: 48px;
+    color: #00e3d8;
+    word-wrap: break-word;
+}
+
+.landing-page .sub-head {
+    font-family: montserratregular;
+    font-size: 24px;
+    color: #e5e5e6;
+    word-wrap: break-word;
+}
+
+.landing-page .description {
+    font-family: montserratregular;
+    font-size: 14px;
+    color: #b8b9bb;
+    margin-top: 25px;
+    word-wrap: break-word;
+    padding: 0 20%;
+}
+
+.landing-page span {
+    font-size: inherit
+}
+
+.input-section {
+    width: 65%;
+    margin: 50px auto 0 auto;
+}
+
+.input-section input {
+    float: left;
+    width: 43% !important;
+    margin: 8px !important;
+    border: 2px solid #c4c4c6 !important;
+    color: #fefeff;
+    font-family: montserratregular;
+    font-size: 14px !important;
+}
+
+.input-section ::-webkit-input-placeholder {
+    color: #c4c4c6;
+}
+
+.input-section :-moz-placeholder { /* Firefox 18- */
+    color: #c4c4c6;
+}
+
+.input-section ::-moz-placeholder { /* Firefox 19+ */
+    color: #c4c4c6;
+}
+
+.input-section :-ms-input-placeholder {
+    color: #c4c4c6;
+}
+
+.prime-action {
+    font-family: montserratregular;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 20px;
+    padding: 10px 4%;
+    background: #00aea5;
+    border-radius: 0 !important;
+}
+
+.btn.prime-action.focus, .btn.prime-action:focus, .btn.prime-action:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.date {
+    padding-left: 0 !important;
+}
+
+.pr0 {
+    padding-right: 0 !important;
+}
+
 /*Content section end*/
 
 .landing-page .main-head {
@@ -1433,16 +1507,28 @@ span {
     border-radius: 0 !important;
 }
 
-        #logo:hover i{
-            position: absolute;
-            top:40%;
-            left: 50%;
-            display: block;
-        }
-        header {padding: 0px;}
-        header .logo {float: left;padding: 15px 10px;}
-        header .logo span {color: #fff;font-size: 18px;margin-left: 15px;font-family: montserratregular;}
-  
+#logo:hover i {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    display: block;
+}
+
+header {
+    padding: 0px;
+}
+
+header .logo {
+    float: left;
+    padding: 15px 10px;
+}
+
+header .logo span {
+    color: #fff;
+    font-size: 18px;
+    margin-left: 15px;
+    font-family: montserratregular;
+}
 
 #logo {
     position: relative;
@@ -1479,7 +1565,7 @@ header .logo span {
 
 #main-menu .nav-bar {
     list-style: none;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 #main-menu {
@@ -1491,14 +1577,6 @@ header .logo span {
 #main-menu .nav-bar li {
     display: inline-block;
     padding: 0 5px;
-}
-
-#main-menu .nav-bar li a {
-    text-decoration: none;
-    
-    text-transform: uppercase;
-    color: #333;
-    text-shadow: 1px 1px 1px #ccc;
 }
 
 
