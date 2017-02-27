@@ -57,9 +57,8 @@ export class Logo extends Helper implements OnInit {
        
         this.options={
             imageResize:true,
+            
             imageEditButtons:[ 'replaceImage','imageRemove', 'imageLink', 'linkOpen', 'linkEdit', 'imageAlt', 'imageSize'],
-           theme: 'dark',
-           black:'#000',
             events:{
                 'froalaEditor.contentChanged' : function(e, editor) {
                     
