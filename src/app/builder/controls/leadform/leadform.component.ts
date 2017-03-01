@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, ViewEncapsulation} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Helper} from "../helpers/helper";
+
 @Component({
     selector: 'leadform',
     templateUrl: './leadform.component.html',
@@ -27,16 +28,21 @@ export class LeadformComponent extends Helper implements OnInit {
                     .pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/));
                 obj[item.name] = new FormControl('',
                     Validators.compose(validations));
-            })
+            });
             this.leadform = new FormGroup(obj);
             console.log(this.leadform.value);
-
         }
+    }
+
+    updateContent(index, control) {
+        this.data.fields[index].placeholder = control.value;
+        this.emitChanges(control);
     }
 
     updateCaretAndPlaceholder(leadformInput, data, i) {
         let pos = this.getCaretPos(leadformInput);
         leadformInput.value = data.fields[i].placeholder;
+        console.log(pos);
         this.setSelectionRange(leadformInput, pos, pos);
     }
 
