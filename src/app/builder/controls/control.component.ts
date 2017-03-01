@@ -7,8 +7,9 @@ import {Helper} from "./helpers/helper";
     <menu *ngIf="data.type=='menu'" [data]="data" [page]="page" (controlOutput)="emitChanges($event)"></menu>
     <og-header  *ngIf="data.type=='header'" [data]="data" (controlOutput)="emitChanges($event)"></og-header>
     <sub-header *ngIf="data.type=='sub-header'" [data]="data" (controlOutput)="emitChanges($event)"></sub-header>
-     <leadform *ngIf="data.type=='leadform'" [data]="data" [page]="page" (controlOutput)="emitChanges($event)"></leadform>
-     <click-button *ngIf="data.type=='click-button'" [data]="data" (controlOutput)="emitChanges($event)"></click-button>
+    <leadform *ngIf="data.type=='leadform'" [data]="data" [page]="page" (controlOutput)="emitChanges($event)"></leadform>
+    <click-button *ngIf="data.type=='click-button'" [data]="data" (controlOutput)="emitChanges($event)"></click-button>
+     <radiobutton *ngIf="data.type=='radio_button'" [data]="data" (controlOutput)="emitChanges($event)"></radiobutton>
      `,
     styles: []
 })

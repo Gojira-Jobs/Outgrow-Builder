@@ -299,7 +299,7 @@ header .logo span {
 .questions {
     padding-top: 7%;
 }
-
+.questions span{ font-size:inherit;}
 .questions-header header {
     background: #161a29;
     float: left;
@@ -615,17 +615,14 @@ input {
 
 }
 
-.radio-btn label {
+.radio-btn span {
     display: inline-block;
     line-height: 24px;
-    vertical-align: middle;
-    position: relative;
     padding-left: 30px;
-    cursor: pointer;
-    user-select: none;
+    cursor: text;
     color: #424242
 }
-
+/*
 .radio-btn label::after {
     position: absolute;
     content: "";
@@ -665,7 +662,7 @@ input {
     -o-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
     z-index: 1
-}
+}*/
 
 .radio-btn label:active::before {
     opacity: 0.3

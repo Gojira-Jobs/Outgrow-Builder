@@ -4,7 +4,6 @@ import {ControlComponent} from './control.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 import {CONTROLS} from './controls';
-import { RadiobuttonComponent } from './radiobutton/radiobutton.component';
 import { LeadformComponent } from './leadform/leadform.component';
 import { MenuComponent } from './menu/menu.component';
 @NgModule({
@@ -14,7 +13,7 @@ import { MenuComponent } from './menu/menu.component';
         FroalaViewModule,
         ReactiveFormsModule
   ],
-  declarations: [ControlComponent,CONTROLS, RadiobuttonComponent,
+  declarations: [ControlComponent,CONTROLS,
    LeadformComponent,
    MenuComponent],
   exports:[ControlComponent]

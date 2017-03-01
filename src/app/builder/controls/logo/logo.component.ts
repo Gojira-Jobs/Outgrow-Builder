@@ -1,4 +1,4 @@
-import {Component, OnInit, Input,ViewEncapsulation,ElementRef,ViewChild} from "@angular/core";
+import {Component, OnInit, Input,OnChanges,ViewEncapsulation,ElementRef,ViewChild} from "@angular/core";
 import {Script} from "../../services/script.service";
 import {Helper} from "../helpers/helper";
 declare var jQuery: any
@@ -13,13 +13,12 @@ declare var filepicker: any;
             <div class="col-md-6 col-sm-6 col-xs-12 logo">
                 <div id="image-outlay" >
                      <div id="logo" >
-                       <a id='eg-init-on-link' href="{{data.config.attr.redirectUrl}}">             
+                       <a id='eg-init-on-link' [href]="data.config.attr.redirectUrl" >             
                         <img id="edit" 
                             [froalaEditor]="options"
                             [ngStyle]="{'height':data.config.attr.height,
                             'width':data.config.attr.width}" 
-                            #imgElement src="{{data.imageURL}}" alt="{{data.props.alt}}">
-                     <!--   <i class="fa fa-camera" aria-hidden="true"></i>-->
+                            #imgElement [src]="data.imageURL" alt="{{data.props.alt}}">
                     </a>
                     </div>
 
@@ -31,7 +30,7 @@ declare var filepicker: any;
   `,
    encapsulation:ViewEncapsulation.None
 })
-export class Logo extends Helper implements OnInit {
+export class Logo extends Helper implements OnInit ,OnChanges{
     @Input() data: any = '';
 @ViewChild('imgElement') imageEle:ElementRef;
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
@@ -39,7 +38,9 @@ export class Logo extends Helper implements OnInit {
     constructor(private ele:ElementRef) {
         super();
     }
-
+    ngOnChanges(changes){
+        console.log(changes);
+    }
     ngOnInit() {
         let self=this;
         jQuery.FroalaEditor.DefineIcon('replaceImage', {NAME: 'cloud-upload'});
@@ -54,10 +55,10 @@ export class Logo extends Helper implements OnInit {
         
             }
         });
-       
+        
         this.options={
             imageResize:true,
-            
+        
             imageEditButtons:[ 'replaceImage','imageRemove', 'imageLink', 'linkOpen', 'linkEdit', 'imageAlt', 'imageSize'],
             events:{
                 'froalaEditor.contentChanged' : function(e, editor) {
@@ -65,12 +66,17 @@ export class Logo extends Helper implements OnInit {
                     self.data.config.attr.height=e.target.style.height;
                     self.data.config.attr.width=e.target.style.width;
                     self.data.props.alt=e.target.alt;
+                    console.log(e.target);
+                    console.log( e.target.src.length);
+                    self.data.imageURL=e.target.src;
                     console.log(jQuery(e.target).parent('a:first').length);
                     if(jQuery(e.target).parent('a:first').length>0){
                         let obj=jQuery(e.target).parent('a:first').attr('href');
+                        console.log(obj);
                         self.data.config.attr.redirectUrl=obj;
                     }
                     else{}
+                   
                      self.emitChanges(e);
                 }
             },
@@ -96,7 +102,8 @@ export class Logo extends Helper implements OnInit {
                 console.log(FPError.toString());
             });
     }
-    setChanges(){
-        return false;
+    setChanges(event:any){
+        console.log(event);
+        //return false;
     }
 }
