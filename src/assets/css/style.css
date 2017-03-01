@@ -615,14 +615,11 @@ input {
 
 }
 
-.radio-btn label {
+.radio-btn span {
     display: inline-block;
     line-height: 24px;
-    vertical-align: middle;
-    position: relative;
     padding-left: 30px;
-    cursor: pointer;
-    user-select: none;
+    cursor: text;
     color: #424242
 }
 /*

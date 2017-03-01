@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, OnChanges} from "@angular/core";
 import {SavePage} from "../../../services/savePage.service";
 import {App} from "../../../models/App";
+import {Helper} from '../../../controls/helpers/helper';
 @Component({
     selector: 'one-page-slider',
     templateUrl: './one-page-slider.component.html',
@@ -8,15 +9,24 @@ import {App} from "../../../models/App";
           .pageSetter{margin-bottom:5px}
           `]
 })
-export class OnePageSliderComponent implements OnInit,OnChanges {
+export class OnePageSliderComponent extends Helper implements OnInit,OnChanges {
     ngOnChanges() {
+        //console.log("Something Changess........");
     }
+    types=[{label:'Single Select',value:'radio_button'},
+            {label:'Text input',value:'text_input'},
+            {label:'Multi Select',value:'checkbox'},
+            {label:'Drop Down',value:'dropdown'},
+            {label:'Numeric Slider',value:'numeric-slider'}];
+    
+
+    
 
     @Input()
     jsonTemplate: App;
 
     constructor(private savePageService: SavePage) {
-
+        super();
     }
 
     ngOnInit() {
