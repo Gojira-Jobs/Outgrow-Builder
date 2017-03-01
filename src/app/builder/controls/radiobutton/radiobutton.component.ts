@@ -4,9 +4,7 @@ import {Helper} from '../helpers/helper';
     selector: 'radiobutton',
     template: `<div>
               <div class="question-section">
-               <!--<div  *ngFor="let radiobtn of data.options;let i=index" class="radio-btn">
-                    <input type="radio"  name="grp" ><span style="cursor:text" [(froalaModel)]="data.options[i].label" [froalaEditor]="options" ></span>
-                </div>-->
+               
                  <div class="row" *ngFor="let radiobtn of data.options;let i=index">
                     <div class="col-md-1"><input type="radio"  name="grp" ></div>
                     <div class="col-md-11"><span style="cursor:text" [(froalaModel)]="data.options[i].label" [froalaEditor]="options" ></span></div>

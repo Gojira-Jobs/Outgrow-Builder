@@ -9,10 +9,8 @@ import {Helper} from '../../../controls/helpers/helper';
           .pageSetter{margin-bottom:5px}
           `]
 })
-export class OnePageSliderComponent extends Helper implements OnInit,OnChanges {
-    ngOnChanges() {
-        //console.log("Something Changess........");
-    }
+export class OnePageSliderComponent extends Helper implements OnInit {
+    
     types=[{label:'Single Select',value:'radio_button'},
             {label:'Text input',value:'text_input'},
             {label:'Multi Select',value:'checkbox'},

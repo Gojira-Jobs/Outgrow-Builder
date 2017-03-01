@@ -4,18 +4,29 @@ import {Helper} from '../helpers/helper';
   selector: 'text-input',
   template: `
     <input #text type="text"
-               (click)="updateCaretAndPlaceholder(text,data)"
+               (click)="updateCaretAndPlaceholder(text)"
+               (keyup)="updateContent(text) "
                (blur)="text.value=''"
-               placeholder="{{data.config.placeholder}}">
+               [placeholder]="data?.config.placeholder">
   `,
   styles: []
 })
 export class TextInput extends Helper implements OnInit {
 @Input() data:any;
   constructor() { super(); }
-updateCaretAndPlaceholder(text, data) {
+updateContent(control) {
+    if(this.data!=undefined){
+        this.data.config.placeholder = control.value;
+        this.emitChanges(control);
+    }
+        
+    }
+
+    updateCaretAndPlaceholder(text) {
+        
         let pos = this.getCaretPos(text);
-        text.value = data.config.placeholder;
+        (this.data!=undefined)?text.value = this.data.config.placeholder:console.log("hiig");
+        console.log(pos);
         this.setSelectionRange(text, pos, pos);
     }
 
@@ -38,8 +49,7 @@ updateCaretAndPlaceholder(text, data) {
             range.moveStart('character', selectionStart);
             range.select();
         }
-    }
-  ngOnInit() {
-  }
+    }  
+    ngOnInit() {}
 
 }

@@ -20,8 +20,9 @@
             <div  style="margin:auto;width:70%;background:white;box-shadow:1px 1px 0 #f2f2f2;" >
                 <div style="padding:15px;position: relative;">
                     <div style="position:absolute;right:20px;top:20px;">
-                        <select class="form-control" #selection (change)="page.sections[0].items[0].type=selection.value;">
-                            <option *ngFor="let type of types" [value]="type.value">{{type.label}}</option>
+                        <select class="form-control" #selection (change)="page.sections[0].items[0].type=selection.value;notifyChanges($event)">
+                            <option *ngFor="let type of types"
+                             [value]="type.value" #opt [attr.selected]="page.sections[0].items[0].type==opt.value?true:null">{{type.label }}</option>
                         </select>
                     </div>
                     <div>
