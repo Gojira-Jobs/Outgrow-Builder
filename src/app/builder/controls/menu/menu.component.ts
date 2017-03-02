@@ -13,7 +13,6 @@ import {Helper} from "../helpers/helper";
             ])
         ])
     ],
-
     encapsulation: ViewEncapsulation.None
 })
 export class MenuComponent extends Helper implements OnInit {

@@ -1,3 +1,4 @@
+
 import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
@@ -15,14 +16,15 @@ import { Component, OnInit,Input } from '@angular/core';
   </div>
 
   `,
-  styles: []
+    styles: []
 })
 export class DropDownList implements OnInit {
 @Input() data:any;
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

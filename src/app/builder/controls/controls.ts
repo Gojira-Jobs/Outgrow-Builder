@@ -8,7 +8,8 @@ import {Checkbox} from './checkbox/checkbox.component';
 import {TextInput} from './text-input/text-input.component';
 import {DropDownList} from './drop-down-list/drop-down-list.component';
 import {NmSlider} from './nm-slider/nm-slider.component';
-export const CONTROLS:any[]=[
+
+export const CONTROLS: any[] = [
     Header,
     Logo,
     Button,

@@ -32,9 +32,9 @@ export class BuilderComponent implements OnInit {
     ngOnInit() {
         console.log('creating');
         //load filepicker script
-        this.script.load('filepicker').then(data => {
+        this.script.load('filepicker','rangeSlider').then(data => {
             console.log('script loaded ', data);
-        }).catch(error => console.log(error));
+        }).catch(error => console.log('jkj',error));
 
         this.jsonTemplate = new App();
 

@@ -1,11 +1,10 @@
-import { Component, OnInit,Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Helper} from '../helpers/helper';
 
 @Component({
-  selector: 'checkbox',
-  template: `
+    selector: 'checkbox',
+    template: `
     <div>
-    dhhdd
               <div class="question-section">
                
                  <div class="row" *ngFor="let radiobtn of data.options;let i=index">
@@ -16,20 +15,23 @@ import {Helper} from '../helpers/helper';
 
       </div>
   `,
-  styles: []
+    styles: []
 })
 export class Checkbox extends Helper implements OnInit {
-@Input() data:any;
-  constructor() { super(); }
+    @Input() data: any;
 
-  ngOnInit() {
-    let self=this;
-        this.options.events={
-             'froalaEditor.contentChanged' : function(e, editor){
-                 console.log('changed');
-                 self.emitChanges('done');
-             }
+    constructor() {
+        super();
+    }
+
+    ngOnInit() {
+        let self = this;
+        this.options.events = {
+            'froalaEditor.contentChanged': function (e, editor) {
+                console.log('changed');
+                self.emitChanges('done');
+            }
         }
-  }
+    }
 
 }

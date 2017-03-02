@@ -1,10 +1,8 @@
-import { Component, OnInit,Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
-  selector: 'poweredby',
-  template: `
-  
-  
+    selector: 'poweredby',
+    template: `
 			<div class=" powered-by">
 				<span>BUILT WITH</span>
 				<a href="{{url}}" target="_blank">
@@ -13,13 +11,15 @@ import { Component, OnInit,Input } from '@angular/core';
 			</div>
 	
   `,
-  styles: []
+    styles: []
 })
 export class Poweredby implements OnInit {
-@Input() data;
-  constructor() { }
+    @Input() data;
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
 
 }
