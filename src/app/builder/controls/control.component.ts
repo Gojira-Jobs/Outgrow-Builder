@@ -10,9 +10,8 @@ import {Helper} from "./helpers/helper";
     <leadform *ngIf="data.type=='leadform'" [data]="data" [page]="page" (controlOutput)="emitChanges($event)"></leadform>
     <click-button *ngIf="data.type=='click-button'" [data]="data" (controlOutput)="emitChanges($event)"></click-button>
      <radiobutton *ngIf="data.type=='radio_button'" [data]="data" (controlOutput)="emitChanges($event)"></radiobutton>
-     <text-input  *ngIf="data.type=='text_input'" [data]="data" (controlOutput)="emitChanges($event)"><text-input>
+     <text-input  *ngIf="data.type=='text_input'" [data]="data" (controlOutput)="emitChanges($event)"></text-input>
     <checkbox *ngIf="data.type=='checkbox'" [data]="data" (controlOutput)="emitChanges($event)"></checkbox>
-     
      `,
     styles: []
 })

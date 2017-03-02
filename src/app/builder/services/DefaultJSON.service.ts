@@ -3,15 +3,13 @@ import {Item} from "../models/Item";
 import {App} from "../models/App";
 import {Page} from "../models/PageModel";
 
-
 export class DefaultJSON {
 
     getJson(template: string): App {
         let app = new App("outgrow builder");
-        var landingPage = new Page(template, 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
-        var QuestionPage = new Page(template, 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
 
-        if (template == 'Landing') {
+        if (template === 'Landing') {
+            let landingPage = new Page(template, 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
 
             let sectionHead = new Section('Logo Heading');
             let logoItem = new Item('logo');
@@ -33,7 +31,8 @@ export class DefaultJSON {
 
             app.addPages(landingPage);
         }
-        if (template == 'Question') {
+        else if (template === 'Question') {
+            let QuestionPage = new Page(template, 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
             let section1 = new Section('Your Lifestyle');
 
             let item1 = new Item('radio_button', 'Do you smoke?');
@@ -43,6 +42,11 @@ export class DefaultJSON {
             section1.addItems(item1);
             QuestionPage.addSections(section1);
             app.addPages(QuestionPage);
+        }
+        else if (template === 'Result') {
+            let ResultPage = new Page(template, 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
+
+            app.addPages(ResultPage);
         }
         return app;
     }
