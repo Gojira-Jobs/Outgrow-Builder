@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {SavePage} from "../../../services/savePage.service";
 import {App} from "../../../models/App";
-import {Helper} from '../../../controls/helpers/helper';
+import {Helper} from "../../../controls/helpers/helper";
 @Component({
     selector: 'one-page-slider',
     templateUrl: './one-page-slider.component.html',

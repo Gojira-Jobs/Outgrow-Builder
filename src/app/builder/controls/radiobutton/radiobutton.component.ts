@@ -1,5 +1,5 @@
-import {Component, OnInit,Input} from '@angular/core';
-import {Helper} from '../helpers/helper';
+import {Component, OnInit, Input} from "@angular/core";
+import {Helper} from "../helpers/helper";
 @Component({
     selector: 'radiobutton',
     template: `<div>

@@ -1,6 +1,6 @@
-import {Component, OnInit, Input, OnChanges,ViewEncapsulation} from "@angular/core";
+import {Component, OnInit, Input, OnChanges, ViewEncapsulation} from "@angular/core";
 import {Helper} from "../helpers/helper";
-declare var jQuery:any;
+declare var jQuery: any;
 @Component({
     selector: 'og-header',
     template: `
@@ -10,10 +10,10 @@ declare var jQuery:any;
       </p>
      
   `,
-    encapsulation:ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None
 })
 export class Header extends Helper implements OnInit,OnChanges {
-    
+
     @Input() data: any;
 
     ngOnChanges() {
@@ -23,7 +23,8 @@ export class Header extends Helper implements OnInit,OnChanges {
         super();
     }
 
-    ngOnInit() {}
-    
+    ngOnInit() {
+    }
+
 
 }
