@@ -9,7 +9,6 @@ export class QuestionComponent implements OnInit {
         toolbarInline: true,
         charCounterCount: false,
         toolbarButtons: ['bold', 'italic', 'underline']
-
     }
 
     constructor() {
