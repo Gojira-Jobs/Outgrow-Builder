@@ -19,7 +19,7 @@ export class OnePageSliderComponent extends Helper implements OnInit {
     
     @Input()
     jsonTemplate: App;
-
+    
     constructor(private savePageService: SavePage) {
         super();
     }

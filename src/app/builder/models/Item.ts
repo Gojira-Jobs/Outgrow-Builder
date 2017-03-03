@@ -17,7 +17,7 @@ export class Item {
         postTitle: '',
         currentValue: '',
         currentLabel: '',
-        defaultValue: '',
+        defaultValue: 20,
         helpText: '',
         minVal: 10,
         maxVal: 500,
@@ -121,6 +121,7 @@ export class Item {
     ];
 
     constructor(type?: string, name?: string) {
+        this._id= 'q_' + Math.floor(Math.random() * (100000 - 2 + 1)) + 2;
         this.type = type || '';
         this.name = name;
     }
