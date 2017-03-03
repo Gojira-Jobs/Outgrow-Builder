@@ -36,7 +36,7 @@ export class BuilderComponent implements OnInit {
             console.log('script loaded ', data);
 
             this.obj.notifyChanges("scriptLoaded");
-        }).catch(error => console.log('jkj',error));
+        }).catch(error => console.log(error));
 
         this.jsonTemplate = new App();
 
