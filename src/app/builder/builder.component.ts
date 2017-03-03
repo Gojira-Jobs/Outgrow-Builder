@@ -4,7 +4,7 @@ import {App} from "./models/App";
 import {SavePage} from "./services/savePage.service";
 import {Subscription} from "rxjs";
 import {Script} from "./services/script.service";
-
+import {Emitter} from "./services/emitter.service";
 @Component({
     selector: 'app-builder',
     templateUrl: './builder.component.html',
@@ -26,7 +26,7 @@ export class BuilderComponent implements OnInit {
     pageChangeSubscription: Subscription;
 
     constructor(private serviceDefaultJSON: DefaultJSON, private savePageService: SavePage,
-                private script: Script) {
+                private script: Script,private obj:Emitter) {
     }
 
     ngOnInit() {
@@ -34,6 +34,8 @@ export class BuilderComponent implements OnInit {
         //load filepicker script
         this.script.load('filepicker','rangeSlider').then(data => {
             console.log('script loaded ', data);
+
+            this.obj.notifyChanges("scriptLoaded");
         }).catch(error => console.log('jkj',error));
 
         this.jsonTemplate = new App();
@@ -53,6 +55,8 @@ export class BuilderComponent implements OnInit {
     }
 
     createPage(type: string) {
+        
+            
         if (this.savePageService.getFromLocalStore()) {
             console.log('init second time');
             this.jsonTemplate = JSON.parse(this.savePageService.getFromLocalStore());
@@ -64,6 +68,8 @@ export class BuilderComponent implements OnInit {
             this.initializeViewContent(type);
         }
         this.savePageService.notifyPageChanges(this.jsonTemplate);
+
+
     }
     private initializeViewContent(type) {
         this.jsonTemplate = this.serviceDefaultJSON.getJson(type);

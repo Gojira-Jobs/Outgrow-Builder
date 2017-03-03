@@ -1,6 +1,7 @@
 
 import { Component, OnInit,Input,AfterViewInit,OnChanges, trigger, state, style, animate, transition} from '@angular/core';
 import {Helper} from '../helpers/helper'; 
+import {Emitter} from '../../services/emitter.service';
 declare var jQuery:any;
 @Component({
   selector: 'nm-slider',
@@ -9,7 +10,7 @@ declare var jQuery:any;
                             <button class="btn bmd-btn-icon dropdown-toggle" type="button" id="ex1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="material-icons">more_vert</i>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="ex1">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="ex1">
                                 <div *ngFor="let obj of specifier">
                                    
                                     <input #inputValue [placeholder]="obj.placeholder" style="margin:5px;width:90%;height:20px"
@@ -46,6 +47,8 @@ export class NmSlider extends Helper implements OnInit,AfterViewInit{
   specifier:Array<Object>=[];
   @Input() isVisible: boolean = false;
   @Input() data:any;
+  constructor(private _confirmation:Emitter) { super(); }
+
   ngOnInit() {
     this.specifier=[
       {key:"from",dataValue:"defaultValue",placeholder:"Default Value",visible:false},
@@ -55,11 +58,13 @@ export class NmSlider extends Helper implements OnInit,AfterViewInit{
     ]
   }
 ngAfterViewInit(){
+  
   let self=this;
-    let id=this.data._id;
-      setTimeout(function() {
-        
-        jQuery("#"+id).ionRangeSlider({
+  let id=this.data._id;
+  this._confirmation.get('scriptLoaded').subscribe((data)=>{
+    console.log(data,"khkhk");
+
+     jQuery("#"+id).ionRangeSlider({
                 hide_min_max: false,keyboard: false,min:self.data.props.minVal,
                 max: self.data.props.maxVal,from: self.data.props.defaultValue,
                 type: 'single',step: self.data.props.steps,prefix: "$",
@@ -72,13 +77,16 @@ ngAfterViewInit(){
                               console.log("onUpdate",data);
                           }
 
-          });
-      },100);
+          });  
+  })
+  setTimeout(function() {
+      
+       
+      },1000);
 
 
   
 }
-constructor() { super(); }
 
   updateSlider(key:string,dataUpdater:string,currentTag){
     let id=this.data._id;
@@ -93,7 +101,7 @@ constructor() { super(); }
     console.log(this.data)
    //this.data.props[dataUpdater]=newValue;
     this.emitChanges("done");
-    currentTag.value='';
+   
   }
     
 

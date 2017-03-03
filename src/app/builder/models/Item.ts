@@ -34,8 +34,8 @@ export class Item {
         attr: {
             class: '',
             style: '',
-            width: '100px',
-            height: '100px',
+            width: '150px',
+            height: '80px',
             redirectUrl: 'hello'
         },
         validations: {

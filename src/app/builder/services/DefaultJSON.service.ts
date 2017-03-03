@@ -13,7 +13,7 @@ export class DefaultJSON {
 
             let sectionHead = new Section('Logo Heading');
             let logoItem = new Item('logo');
-            logoItem.imageURL = 'https://www.filestackapi.com/api/file/jJx4Amp9SjiYVGsOA1uK';
+            logoItem.imageURL = 'https://www.filestackapi.com/api/file/lEX2H5eTeU1rPkNa4fWw';
             let menu = new Item("menu");
             sectionHead.addItems(logoItem, menu);
 
