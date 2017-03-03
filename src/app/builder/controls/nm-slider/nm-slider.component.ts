@@ -61,7 +61,7 @@ ngAfterViewInit(){
   
   let self=this;
   let id=this.data._id;
-  this._confirmation.get('scriptLoaded').subscribe((data)=>{
+  this._confirmation.get().subscribe((data)=>{
     console.log(data,"khkhk");
 
      jQuery("#"+id).ionRangeSlider({

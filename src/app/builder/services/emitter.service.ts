@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {EmitterStore} from "./emitter.store";
 import {EventEmitter} from '@angular/core';
-import {BehaviorSubject,Observable} from 'rxjs';
+import {BehaviorSubject,Observable,ReplaySubject} from 'rxjs';
 @Injectable()
 export class Emitter {
        // [name: string]: any;
@@ -15,10 +15,10 @@ export class Emitter {
     //  static get(ID:string):EventEmitter<any>{
     //     return this.emitters[ID];
     // } 
-      private _emitters: BehaviorSubject<any> = new BehaviorSubject("hello");
+      private _emitters: ReplaySubject<any> = new ReplaySubject(2);
     // Set a new event in the store with a given ID
     // as key
-     get(ID: string): Observable<any> {
+     get(): Observable<any> {
         return this._emitters.asObservable();
     }
 
