@@ -24,7 +24,7 @@ export class Emitter {
 
     notifyChanges(ID) {
         console.log("done dana dan");
-            this._emitters.next("done");
+            this._emitters.next(ID);
     }
 
 

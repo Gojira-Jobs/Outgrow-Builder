@@ -33,8 +33,9 @@
                         <div class="question-subhead" [froalaEditor]="options"
                              [(froalaModel)]="page.sections[0].items[0].name"
                              (froalaModelChange)="notifyChanges($event)"></div>
-                        <control [page]="page" [data]="page.sections[0].items[0]"
+                        <control  [page]="page" [data]="page.sections[0].items[0]"
                                  (controlOutput)="notifyChanges($event)"></control>
+                                 
                     </div>
 
                 </div>

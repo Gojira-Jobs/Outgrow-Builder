@@ -7,7 +7,7 @@ import {Helper} from '../helpers/helper';
     <div>
               <div class="question-section">
                
-                 <div class="row" *ngFor="let radiobtn of data.options;let i=index">
+                 <div class="row radio-outer" *ngFor="let radiobtn of data.options;let i=index">
                     <div class="col-md-1"><input type="checkbox"></div>
                     <div class="col-md-11"><span style="cursor:text" [(froalaModel)]="data.options[i].label" [froalaEditor]="options" ></span></div>
                  </div>
