@@ -1,11 +1,10 @@
-
-import { Component, OnInit,Input,AfterViewInit,OnChanges, trigger, state, style, animate, transition} from '@angular/core';
-import {Helper} from '../helpers/helper'; 
-import {Emitter} from '../../services/emitter.service';
-declare var jQuery:any;
+import {Component, OnInit, Input, AfterViewInit, trigger, state, style, animate, transition} from "@angular/core";
+import {Helper} from "../helpers/helper";
+import {Emitter} from "../../services/emitter.service";
+declare var jQuery: any;
 @Component({
-  selector: 'nm-slider',
-  template: `
+    selector: 'nm-slider',
+    template: `
     <div class="dropdown" style="position:absolute;left:20px;top:20px;">
                             <button class="btn bmd-btn-icon dropdown-toggle" type="button" id="ex1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="material-icons">more_vert</i>
@@ -32,7 +31,7 @@ declare var jQuery:any;
     <div style="clear:both"></div>
    
  `,
- animations: [
+    animations: [
         trigger('visibilityChanged', [
             state('false', style({transform: 'translateX(10%)', opacity: '0'})),
             state('true', style({transform: 'translateX(-10%)', opacity: '1'})),
@@ -43,66 +42,67 @@ declare var jQuery:any;
     ],
     styles: []
 })
-export class NmSlider extends Helper implements OnInit,AfterViewInit{
-  specifier:Array<Object>=[];
-  @Input() isVisible: boolean = false;
-  @Input() data:any;
-  constructor(private _confirmation:Emitter) { super(); }
+export class NmSlider extends Helper implements OnInit,AfterViewInit {
+    specifier: Array<Object> = [];
+    @Input() isVisible: boolean = false;
+    @Input() data: any;
 
-  ngOnInit() {
-    this.specifier=[
-      {key:"from",dataValue:"defaultValue",placeholder:"Default Value",visible:false},
-      {key:"min",dataValue:"minVal",placeholder:"Min Value",visible:false},
-      {key:"max",dataValue:"maxVal",placeholder:"Max Value",visible:false},
-      {key:"step",dataValue:"steps",placeholder:"Steps",visible:false},
-    ]
-  }
-ngAfterViewInit(){
-  
-  let self=this;
-  let id=this.data._id;
-  this._confirmation.get().subscribe((data)=>{
-    console.log(data,"khkhk");
+    constructor(private _confirmation: Emitter) {
+        super();
+    }
 
-     jQuery("#"+id).ionRangeSlider({
-                hide_min_max: false,keyboard: false,min:self.data.props.minVal,
-                max: self.data.props.maxVal,from: self.data.props.defaultValue,
-                type: 'single',step: self.data.props.steps,prefix: "$",
-                grid:true,
+    ngOnInit() {
+        this.specifier = [
+            {key: "from", dataValue: "defaultValue", placeholder: "Default Value", visible: false},
+            {key: "min", dataValue: "minVal", placeholder: "Min Value", visible: false},
+            {key: "max", dataValue: "maxVal", placeholder: "Max Value", visible: false},
+            {key: "step", dataValue: "steps", placeholder: "Steps", visible: false},
+        ]
+    }
+
+    ngAfterViewInit() {
+
+        let self = this;
+        let id = this.data._id;
+        this._confirmation.getAsObservables().subscribe((data) => {
+
+            jQuery("#" + id).ionRangeSlider({
+                hide_min_max: false, keyboard: false, min: self.data.props.minVal,
+                max: self.data.props.maxVal, from: self.data.props.defaultValue,
+                type: 'single', step: self.data.props.steps, prefix: "$",
+                grid: true,
                 onFinish: function (data) {
-                              this.startValue=data.from;
-                              console.log("onFinish",data);
-                          },
+                    this.startValue = data.from;
+                    console.log("onFinish", data);
+                },
                 onUpdate: function (data) {
-                              console.log("onUpdate",data);
-                          }
+                    console.log("onUpdate", data);
+                }
 
-          });  
-  })
-  setTimeout(function() {
-      
-       
-      },1000);
+            });
+        })
+        setTimeout(function () {
 
 
-  
-}
+        }, 1000);
 
-  updateSlider(key:string,dataUpdater:string,currentTag){
-    let id=this.data._id;
-    let a=jQuery("#"+id).data('ionRangeSlider');
-    console.log(key);
-    var data={};
-    data[key]=currentTag.value;
-    a.update(data);
-    this.data.props[dataUpdater]=currentTag.value;
-    console.log(dataUpdater);
-    console.log(this.data.props[dataUpdater]);
-    console.log(this.data)
-   //this.data.props[dataUpdater]=newValue;
-    this.emitChanges("done");
-   
-  }
-    
+
+    }
+
+    updateSlider(key: string, dataUpdater: string, currentTag) {
+        let id = this.data._id;
+        let a = jQuery("#" + id).data('ionRangeSlider');
+        console.log(key);
+        var data = {};
+        data[key] = currentTag.value;
+        a.update(data);
+        this.data.props[dataUpdater] = currentTag.value;
+        console.log(dataUpdater);
+        console.log(this.data.props[dataUpdater]);
+        console.log(this.data)
+        this.emitChanges("done");
+
+    }
+
 
 }

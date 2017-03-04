@@ -264,7 +264,7 @@
 
 
         /**
-         * get and validate config
+         * getAsObservables and validate config
          */
         var $inp = this.$cache.input,
             val = $inp.prop("value"),

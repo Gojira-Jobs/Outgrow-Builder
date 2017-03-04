@@ -16,7 +16,7 @@ export class Helper {
             'imageManager', 'inlineStyle', 'lineBreaker', 'link', 'lists', 'paragraphFormat', 'paragraphStyle',
             'quote', 'save', ' table', 'url', 'video', 'wordPaste'],
 
-        toolbarButtons: ['bold', 'italic', 'underline', 'color', 'html',
+        toolbarButtons: ['bold', 'italic', 'underline', 'color',
             'clearFormatting', 'paragraphFormat'],
     };
 }
