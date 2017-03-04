@@ -61,7 +61,6 @@ export class NmSlider extends Helper implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit() {
-
         let self = this;
         let id = this.data._id;
         this._confirmation.getAsObservables().subscribe((data) => {
@@ -80,29 +79,19 @@ export class NmSlider extends Helper implements OnInit,AfterViewInit {
                 }
 
             });
-        })
-        setTimeout(function () {
-
-
-        }, 1000);
-
-
+        });
     }
 
     updateSlider(key: string, dataUpdater: string, currentTag) {
         let id = this.data._id;
         let a = jQuery("#" + id).data('ionRangeSlider');
         console.log(key);
-        var data = {};
+        let data = {};
         data[key] = currentTag.value;
         a.update(data);
         this.data.props[dataUpdater] = currentTag.value;
-        console.log(dataUpdater);
         console.log(this.data.props[dataUpdater]);
-        console.log(this.data)
+        console.log(this.data);
         this.emitChanges("done");
-
     }
-
-
 }

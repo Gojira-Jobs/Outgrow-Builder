@@ -26,16 +26,16 @@ export class BuilderComponent implements OnInit {
     pageChangeSubscription: Subscription;
 
     constructor(private serviceDefaultJSON: DefaultJSON, private savePageService: SavePage,
-                private script: Script,private obj:Emitter) {
+                private script: Script, private emitterService: Emitter) {
     }
 
     ngOnInit() {
         console.log('creating');
         //load filepicker script
-        this.script.load('filepicker','rangeSlider').then(data => {
+        this.script.load('filepicker', 'rangeSlider').then(data => {
             console.log('script loaded ', data);
 
-            this.obj.notifyChanges("scriptLoaded");
+            this.emitterService.notifyChanges("scriptLoaded");
         }).catch(error => console.log(error));
 
         this.jsonTemplate = new App();
@@ -55,28 +55,24 @@ export class BuilderComponent implements OnInit {
     }
 
     createPage(type: string) {
-        
-            
+
         if (this.savePageService.getFromLocalStore()) {
             console.log('init second time');
             this.jsonTemplate = JSON.parse(this.savePageService.getFromLocalStore());
             this.jsonTemplate.pages = this.jsonTemplate.pages
                 .concat(this.serviceDefaultJSON.getJson(type).pages);
-                console.log(this.jsonTemplate);
+            console.log(this.jsonTemplate);
         } else {
             console.log('init first time');
             this.initializeViewContent(type);
         }
         this.savePageService.notifyPageChanges(this.jsonTemplate);
-
-
     }
+
     private initializeViewContent(type) {
         this.jsonTemplate = this.serviceDefaultJSON.getJson(type);
 
-        this.jsonTemplate.templateType =type;
+        this.jsonTemplate.templateType = type;
         console.log(this.jsonTemplate);
     }
-
-
 }
