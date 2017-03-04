@@ -25,7 +25,7 @@ export class Item {
         scale: false,
         unit: '',
         postfix: false,
-        alt: 'Company logo'
+        alt: 'Company logo',
     };
     config: any = {
         type: 'text',
@@ -120,10 +120,11 @@ export class Item {
         }
     ];
 
-    constructor(type?: string, name?: string) {
-        this._id= 'q_' + Math.floor(Math.random() * (100000 - 2 + 1)) + 2;
+    constructor(type?: string, name?: string, defaultClass?: string) {
+        this._id = 'q_' + Math.floor(Math.random() * (100000 - 2 + 1)) + 2;
         this.type = type || '';
         this.name = name;
+        this.defaultClass = defaultClass;
     }
 
     public addFieldToCheckbox(addOptions: any[]) {

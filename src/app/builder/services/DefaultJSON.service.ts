@@ -19,7 +19,7 @@ export class DefaultJSON {
 
             // content area of LANDING page
             let contentSection = new Section('Content Area');
-            let header = new Item('header', `Where to build your Startup?`);
+            let header = new Item('header', `Where to build your Startup?`, "main-head");
             let subHeader = new Item('sub-header', `See which emerging tech hub you should head to!`);
             let leadform = new Item('leadform', 'Let’s Find Out');
             let button = new Item('click-button', 'Get Started');
@@ -49,7 +49,7 @@ export class DefaultJSON {
             //header section
             let headerSection = new Section("heading");
             headerSection.addItems(new Item("header",
-                `YOUR HEADING GOES HERE`));
+                `YOUR HEADING GOES HERE`, "result-head"));
 
             // result section
             let resultSection1 = new Section("Result1");
