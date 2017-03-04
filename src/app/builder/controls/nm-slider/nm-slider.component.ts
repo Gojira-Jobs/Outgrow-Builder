@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, AfterViewInit, trigger, state, style, animate, transition} from "@angular/core";
+import {Component, OnInit, Input, AfterViewInit} from "@angular/core";
 import {Helper} from "../helpers/helper";
 import {Emitter} from "../../services/emitter.service";
 declare var jQuery: any;
@@ -6,40 +6,24 @@ declare var jQuery: any;
     selector: 'nm-slider',
     template: `
     <div class="dropdown" style="position:absolute;left:20px;top:20px;">
-                            <button class="btn bmd-btn-icon dropdown-toggle" type="button" id="ex1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn bmd-btn-icon dropdown-toggle btn-edits" type="button" id="ex1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="material-icons">more_vert</i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="ex1">
                                 <div *ngFor="let obj of specifier">
                                    
-                                    <input #inputValue [placeholder]="obj.placeholder" style="margin:5px;width:90%;height:20px"
+                                    <input class="dropdown-item" #inputValue [placeholder]="obj.placeholder" style="margin:5px;width:90%;height:20px"
                                      (blur)="updateSlider(obj.key,obj.dataValue,inputValue)">
                                 </div>
                             </div>
     </div>
     <div style="position:relative">
       <input type="text" id="{{data._id}}" name="example_name" value="" />
-     <!-- <div style="float:left" *ngFor="let obj of specifier">
-        <div (click)="obj.visible=!obj.visible;" style="margin-top:20px">
-          <img src="../../assets/images/Settings.svg" style="width: 40px;height: 40px"> 
-        </div>
-        <input #inputValue style="" [placeholder]="obj.placeholder"
-         [@visibilityChanged]="obj.visible" (blur)="updateSlider(obj.key,obj.dataValue,inputValue.value)">
-      </div> --> 
-    </div> 
+     </div> 
     <br/>
     <div style="clear:both"></div>
    
  `,
-    animations: [
-        trigger('visibilityChanged', [
-            state('false', style({transform: 'translateX(10%)', opacity: '0'})),
-            state('true', style({transform: 'translateX(-10%)', opacity: '1'})),
-            transition('* => *', [
-                animate('50ms ease-out')
-            ])
-        ])
-    ],
     styles: []
 })
 export class NmSlider extends Helper implements OnInit,AfterViewInit {
