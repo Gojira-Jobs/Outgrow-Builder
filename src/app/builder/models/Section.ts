@@ -22,8 +22,9 @@ export class Section {
 	items: Item[] = [];
 
 
-    constructor(title?: string) {
+    constructor(title?: string, defaultClass?: string) {
         this.title = title;
+        this.defaultClass=defaultClass;
     }
 
     //add items to page

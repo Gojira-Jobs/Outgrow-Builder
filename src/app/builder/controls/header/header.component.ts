@@ -5,7 +5,7 @@ declare var jQuery: any;
     selector: 'og-header',
     template: `
     
-      <p  class="main-head" [froalaEditor]="options"
+      <p  [class]="data.defaultClass" [froalaEditor]="options"
                     [(froalaModel)]="data.name" (froalaModelChange)="emitChanges($event)">
       </p>
      

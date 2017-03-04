@@ -28,7 +28,7 @@ export class ControlComponent extends Helper implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.data);
+        console.log(this.page);
     }
 
 }

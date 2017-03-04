@@ -20,7 +20,7 @@ export class DefaultJSON {
             // content area of LANDING page
             let contentSection = new Section('Content Area');
             let header = new Item('header', `Where to build your Startup?`, "main-head");
-            let subHeader = new Item('sub-header', `See which emerging tech hub you should head to!`);
+            let subHeader = new Item('sub-header', `See which emerging tech hub you should head to!`,'sub-head');
             let leadform = new Item('leadform', 'Let’s Find Out');
             let button = new Item('click-button', 'Get Started');
             contentSection.addItems(header, subHeader, leadform, button);
@@ -52,19 +52,21 @@ export class DefaultJSON {
                 `YOUR HEADING GOES HERE`, "result-head"));
 
             // result section
-            let resultSection1 = new Section("Result1");
+            let resultSection1 = new Section("Result1",'result-inn');
             let resultOutput1 = new Item('result_output', `{R1}`);
-            let resultHeader = new Item('sub-header', 'FOR TOP NOTCH HDTV QUALITY');
+            let resultHeader = new Item('sub-header', 'FOR TOP NOTCH HDTV QUALITY','result-heading');
             let resultContent = new Item('sub-header',
-                'Using the same camera and crew that shot Gravity and Avtar!');
-            resultSection1.addItems(resultOutput1, resultHeader, resultContent);
+                'Using the same camera and crew that shot Gravity and Avtar!','result-desc');
+                
+            let button = new Item('click-button', 'Build Similar Calculator');
+            resultSection1.addItems(resultOutput1, resultHeader, resultContent,button);
 
             //add button section
-            let sectionButton = new Section("ButtonSection");
-            let button = new Item('click-button', 'Build Similar Calculator');
-            sectionButton.addItems(button);
+            // let sectionButton = new Section("ButtonSection");
+            // let button = new Item('click-button', 'Build Similar Calculator');
+            // sectionButton.addItems(button);
 
-            resultPage.addSections(headerSection, resultSection1, sectionButton);
+            resultPage.addSections(headerSection, resultSection1);
             app.addPages(resultPage);
         }
         return app;

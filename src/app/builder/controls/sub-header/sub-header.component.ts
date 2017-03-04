@@ -4,9 +4,9 @@ import {Helper} from "../helpers/helper";
     selector: 'sub-header',
     template: `
     
-      <h2 class="sub-head" [froalaEditor]="options"
+      <p [class]="data.defaultClass" [froalaEditor]="options"
                     [(froalaModel)]="data.name" (froalaModelChange)="emitChanges($event)">
-      </h2>
+      </p>
   `,
     encapsulation: ViewEncapsulation.None
 })

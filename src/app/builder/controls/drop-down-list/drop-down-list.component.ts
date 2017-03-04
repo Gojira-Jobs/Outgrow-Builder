@@ -22,11 +22,9 @@ import { Component, OnInit,Input } from '@angular/core';
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="ex1">
-
                     <button class="dropdown-item" type="button" (click)="edit(selection?.value,'new')">New</button>
                     <button class="dropdown-item" type="button" (click)="edit(selection?.value,'delete')">Delete</button>
                     <button class="dropdown-item" type="button" (click)="edit(selection?.value,'edit')">edit</button>
-                    
                 </div>
             </div>
     </div>

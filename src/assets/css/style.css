@@ -4,6 +4,35 @@ body {
     font-size: 14px;
     background: #f2f2f2;
 }
+.result-head{
+    font-size: 26px;
+    float: left;
+    width: 80%;
+    margin-bottom: 0px;
+    color: #f7da64;
+}
+.result-inn{
+    float: left;
+    width: 95%;
+    background: #fff;
+    min-height: 200px;
+    padding: 40px;
+    padding-top: 32px;
+    padding-bottom: 36px;
+    box-shadow: 0 2px 9px 2px rgba(0,0,0,0.4);
+    position: relative;
+    padding-right: 0;
+}
+.result-heading{
+        font-family: 'Montserrat-Bold';
+            font-weight: 700;
+}
+.result-desc{
+    font-size: 13px !important;
+}
+
+
+    
 .radio-outer {
     
     border: 1px solid #d9dad3;
