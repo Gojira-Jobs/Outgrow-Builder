@@ -7,7 +7,7 @@ import { Component, OnInit,Input } from '@angular/core';
   <div class="row">
       <div class="col-md-1 col-xs-1">&nbsp;</div>
       <div class="dropdown" class="col-md-10 col-xs-10">
-          <select #selection class="form-control" (change)="iseditable=false" >
+          <select #selection class="form-control" (change)="iseditable=false" [class.hide]="iseditable" >
               <option *ngFor="let option of data.options;let i=index;"
                     [value]="i" #opt >{{i}}{{option?.label }}</option>
           </select>
