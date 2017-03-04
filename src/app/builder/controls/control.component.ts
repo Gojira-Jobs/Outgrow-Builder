@@ -14,6 +14,8 @@ import {Helper} from "./helpers/helper";
     <checkbox *ngIf="data.type=='checkbox'" [data]="data" (controlOutput)="emitChanges($event)"></checkbox>
      <drop-down-list *ngIf="data.type=='dropdown'" [data]="data"></drop-down-list>
      <nm-slider *ngIf="data.type=='numeric-slider'" [data]="data" (controlOutput)="emitChanges($event)"></nm-slider>
+     
+    <result-output *ngIf="data.type==='result_output'" [data]="data"></result-output>
      `,
     styles: []
 })

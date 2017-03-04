@@ -13,12 +13,12 @@
 
         </div>
     </div>
-    
+
     <div *ngIf="page?.pagetype=='Question'" style="padding:70px;margin-bottom:5px;position: relative;">
         <div class="questions">
             <div style="margin:auto;width:70%;background:white;box-shadow:1px 1px 0 #f2f2f2;">
                 <div style="padding:15px;position: relative;">
-                    
+
                     <div style="position:absolute;right:20px;top:20px;">
                         <select class="form-control" #selection
                                 (change)="page.sections[0].items[0].type=selection.value;notifyChanges($event)">
@@ -42,8 +42,16 @@
         </div>
     </div>
 
-    <div *ngIf="page.pagetype=='Result'" style="padding:100px;margin-bottom:5px;position: relative;">
-        <result></result>
+    <div *ngIf="page?.pagetype=='Result'" style="padding:100px;margin-bottom:5px;position: relative;">
+        <div *ngFor="let section of page.sections;let sec_index=index">
+            <div [ngClass]="{'container':page.sections[sec_index].title!='Logo Heading' && page.sections[sec_index].title!='Footer'}">
+                <div>
+                    <div *ngFor="let control of page.sections[sec_index].items;let item_index=index">
+                        <control [page]="page" [data]="control" (controlOutput)="notifyChanges($event)">
+                        </control>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 

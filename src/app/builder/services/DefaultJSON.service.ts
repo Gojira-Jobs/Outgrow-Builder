@@ -44,11 +44,40 @@ export class DefaultJSON {
             app.addPages(QuestionPage);
         }
         else if (template === 'Result') {
-            let ResultPage = new Page(template, 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
+            let resultPage = new Page(template, 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
 
-            app.addPages(ResultPage);
+            //header section
+            let headerSection = new Section("heading");
+            headerSection.addItems(new Item("header",
+                `YOUR HEADING GOES HERE`));
+
+            // result section
+            let resultSection1 = new Section("Result1");
+            let resultOutput1 = new Item('result_output', `{R1}`);
+            let resultHeader = new Item('sub-header', 'FOR TOP NOTCH HDTV QUALITY');
+            let resultContent = new Item('sub-header',
+                'Using the same camera and crew that shot Gravity and Avtar!');
+            resultSection1.addItems(resultOutput1, resultHeader, resultContent);
+
+            //add button section
+            let sectionButton = new Section("ButtonSection");
+            let button = new Item('click-button', 'Build Similar Calculator');
+            sectionButton.addItems(button);
+
+            resultPage.addSections(headerSection, resultSection1, sectionButton);
+            app.addPages(resultPage);
         }
         return app;
+    }
+
+    private createResultSection(): Section {
+        let resultSection = new Section("Result1");
+        let resultOutput = new Item('result_output', `{R1}`);
+        let resultHeader = new Item('sub-header', 'FOR TOP NOTCH HDTV QUALITY');
+        let resultContent = new Item('sub-header',
+            'Using the same camera and crew that shot Gravity and Avtar!');
+        resultSection.addItems(resultOutput, resultHeader, resultContent);
+        return resultSection;
     }
 
 }
