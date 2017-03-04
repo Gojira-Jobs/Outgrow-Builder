@@ -12,7 +12,7 @@ import {Helper} from "./helpers/helper";
      <radiobutton *ngIf="data.type=='radio_button'" [data]="data" (controlOutput)="emitChanges($event)"></radiobutton>
      <text-input  *ngIf="data.type=='text_input'" [data]="data" (controlOutput)="emitChanges($event)"></text-input>
     <checkbox *ngIf="data.type=='checkbox'" [data]="data" (controlOutput)="emitChanges($event)"></checkbox>
-     <drop-down-list *ngIf="data.type=='dropdown'" [data]="data"></drop-down-list>
+     <drop-down-list *ngIf="data.type=='dropdown'" [data]="data" (controlOutput)="emitChanges($event)"></drop-down-list>
      <nm-slider *ngIf="data.type=='numeric-slider'" [data]="data" (controlOutput)="emitChanges($event)"></nm-slider>
      
     <result-output *ngIf="data.type==='result_output'" [data]="data"></result-output>

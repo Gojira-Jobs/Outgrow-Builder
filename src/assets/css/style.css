@@ -4,7 +4,34 @@ body {
     font-size: 14px;
     background: #f2f2f2;
 }
-
+.radio-outer {
+    
+    border: 1px solid #d9dad3;
+    border-bottom: 0;
+    width: 100%;
+    float: left;
+    margin-bottom: 2px;
+    margin-top: -3px;
+    margin-left: -1px;
+    padding: 3px;
+    box-shadow: 0 0 0 1px #f7f6f6;
+    outline: none;
+}
+.radio-outer:hover {
+    background: #f1f3f3;
+}
+.radio-outer:last-child {
+    border: 1px solid #d9dad3 !important;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 1px #f7f6f6;
+}
+.radio-outer {
+    font-family: 'Montserrat';
+    font-family: 'Montserrat-Light';
+}
+.btn-edits{
+    background-color: transparent;
+}
 input:not([type]),
 input[type=text],
 input[type=password],
@@ -383,7 +410,6 @@ header .logo span {
 
 .questions .question-section {
     width: 100%;
-    border: 3px solid #dcdddf;
     display: inline-block;
     padding: 30px 40px;
     background: #fff;
@@ -1755,6 +1781,35 @@ header .logo span {
     width: 100%;
 }
 
+/* items displays from dropdown*/
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.87);
+  text-align: inherit;
+  white-space: nowrap;
+  background: none;
+  border: 0; }
+  .dropdown-item:focus, .dropdown-item:hover {
+    color: rgba(0, 0, 0, 0.87);
+    text-decoration: none;
+    background-color: #f5f5f5; }
+  .dropdown-item.active, .dropdown-item.active:focus, .dropdown-item.active:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #009688;
+    outline: 0; }
+  .dropdown-item.disabled, .dropdown-item.disabled:focus, .dropdown-item.disabled:hover {
+    color: rgba(0, 0, 0, 0.26); }
+  .dropdown-item.disabled:focus, .dropdown-item.disabled:hover {
+    text-decoration: none;
+    cursor: not-allowed;
+    background-color: transparent;
+    background-image: none;
+    filter: "progid:DXImageTransform.Microsoft.gradient(enabled = false)"; }
 
 
 
