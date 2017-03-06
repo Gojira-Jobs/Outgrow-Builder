@@ -1,6 +1,6 @@
-import {Component, OnInit, Input,OnChanges,ViewEncapsulation,ElementRef,ViewChild} from "@angular/core";
-import {Script} from "../../services/script.service";
+import {Component, OnInit, Input, OnChanges, ViewEncapsulation, ElementRef, ViewChild} from "@angular/core";
 import {Helper} from "../helpers/helper";
+import {setTimeout} from "timers";
 declare var jQuery: any
 declare var filepicker: any;
 @Component({
@@ -14,7 +14,7 @@ declare var filepicker: any;
                 <div id="image-outlay" >
                      <div id="logo" >
                        <a id='eg-init-on-link' [href]="data.config.attr.redirectUrl" >             
-                        <img id="edit" 
+                        <img id="edit" (click)="adjustSettings()"
                             [froalaEditor]="options"
                             [ngStyle]="{'height':data.config.attr.height,
                             'width':data.config.attr.width}" 
@@ -28,59 +28,70 @@ declare var filepicker: any;
         
     </header>
   `,
-   encapsulation:ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None
 })
-export class Logo extends Helper implements OnInit ,OnChanges{
+export class Logo extends Helper implements OnInit,OnChanges {
     @Input() data: any = '';
-@ViewChild('imgElement') imageEle:ElementRef;
+    @ViewChild('imgElement') imageEle: ElementRef;
     filePickerKey: any = "A4VUUCqJTBKGi5JXFxPZ3z";
 
-    constructor(private ele:ElementRef) {
+    adjustSettings() {
+        setTimeout(() => {
+            let obj = jQuery(document).find('.fr-image-resizer');
+            console.log(obj);
+        }, 1000);
+
+    }
+
+    constructor(private ele: ElementRef) {
         super();
     }
-    ngOnChanges(changes){
+
+    ngOnChanges(changes) {
         console.log(changes);
     }
+
     ngOnInit() {
-        let self=this;
+        let self = this;
         jQuery.FroalaEditor.DefineIcon('replaceImage', {NAME: 'cloud-upload'});
         jQuery.FroalaEditor.RegisterCommand('replaceImage', {
-        title: 'Replace Image',
-        focus: false,
-        undo: true,
-        refreshAfterCallback: true,
-        callback: function () {
-            self.uploadImage(self.imageEle.nativeElement);
-            this.events.focus();
-        
+            title: 'Replace Image',
+            focus: false,
+            undo: true,
+            refreshAfterCallback: true,
+            callback: function () {
+                self.uploadImage(self.imageEle.nativeElement);
+                this.events.focus();
+
             }
         });
-        
-        this.options={
-            imageResize:true,
-        
-            imageEditButtons:[ 'replaceImage','imageRemove', 'imageLink', 'linkOpen', 'linkEdit', 'imageAlt', 'imageSize'],
-            events:{
-                'froalaEditor.contentChanged' : function(e, editor) {
-                    
-                    self.data.config.attr.height=e.target.style.height;
-                    self.data.config.attr.width=e.target.style.width;
-                    self.data.props.alt=e.target.alt;
+
+        this.options = {
+            imageResize: true,
+
+            imageEditButtons: ['replaceImage', 'imageRemove', 'imageLink', 'linkOpen', 'linkEdit', 'imageAlt', 'imageSize'],
+            events: {
+                'froalaEditor.contentChanged': function (e, editor) {
+
+                    self.data.config.attr.height = e.target.style.height;
+                    self.data.config.attr.width = e.target.style.width;
+                    self.data.props.alt = e.target.alt;
                     console.log(e.target);
-                    console.log( e.target.src.length);
-                    self.data.imageURL=e.target.src;
+                    console.log(e.target.src.length);
+                    self.data.imageURL = e.target.src;
                     console.log(jQuery(e.target).parent('a:first').length);
-                    if(jQuery(e.target).parent('a:first').length>0){
-                        let obj=jQuery(e.target).parent('a:first').attr('href');
+                    if (jQuery(e.target).parent('a:first').length > 0) {
+                        let obj = jQuery(e.target).parent('a:first').attr('href');
                         console.log(obj);
-                        self.data.config.attr.redirectUrl=obj;
+                        self.data.config.attr.redirectUrl = obj;
                     }
-                    else{}
-                   
-                     self.emitChanges(e);
+                    else {
+                    }
+
+                    self.emitChanges(e);
                 }
             },
-            
+
         }
     }
 
@@ -102,7 +113,8 @@ export class Logo extends Helper implements OnInit ,OnChanges{
                 console.log(FPError.toString());
             });
     }
-    setChanges(event:any){
+
+    setChanges(event: any) {
         console.log(event);
         //return false;
     }
