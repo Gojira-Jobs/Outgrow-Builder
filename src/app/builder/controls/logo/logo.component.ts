@@ -27,7 +27,7 @@ declare var filepicker: any;
         
     </header>
   `,
-   encapsulation:ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None
 })
 export class Logo extends Helper implements OnInit{
     @Input() data: any = '';
@@ -45,8 +45,9 @@ export class Logo extends Helper implements OnInit{
                 obj[0].style.top=newTop;
        },100);
     }
+
     ngOnInit() {
-        let self=this;
+        let self = this;
         jQuery.FroalaEditor.DefineIcon('replaceImage', {NAME: 'cloud-upload'});
         jQuery.FroalaEditor.RegisterCommand('replaceImage', {
         title: 'Replace Image',
@@ -68,11 +69,10 @@ export class Logo extends Helper implements OnInit{
                     self.data.props.alt=e.target.alt;
                     console.log(e.target);
                     self.data.imageURL=e.target.src;
-                    console.log(jQuery(e.target).parent('a:first').length);
-                    if(jQuery(e.target).parent('a:first').length>0){
-                        let obj=jQuery(e.target).parent('a:first').attr('href');
+                    if (jQuery(e.target).parent('a:first').length > 0) {
+                        let obj = jQuery(e.target).parent('a:first').attr('href');
                         console.log(obj);
-                        self.data.config.attr.redirectUrl=obj;
+                        self.data.config.attr.redirectUrl = obj;
                     }
                     self.emitChanges(e);
                 }
