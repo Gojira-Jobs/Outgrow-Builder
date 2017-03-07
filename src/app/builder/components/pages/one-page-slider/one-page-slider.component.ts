@@ -56,7 +56,8 @@ export class OnePageSliderComponent extends Helper implements OnInit {
     }
     addQuestion(pageIndex,secIndex,control,index){
         console.log(pageIndex,secIndex,control,index);
-        this.jsonTemplate.pages[pageIndex].sections[secIndex].items.splice(index+1,0,control);
+        let newObj = Object.create(control);
+        this.jsonTemplate.pages[pageIndex].sections[secIndex].items.splice(index+1,0,newObj);
         console.log(this.jsonTemplate.pages[pageIndex].sections[secIndex]);
         this.notifyChanges("data changed");
     }
