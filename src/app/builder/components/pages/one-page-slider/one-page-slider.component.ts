@@ -11,7 +11,7 @@ import {DOCUMENT} from "@angular/platform-browser";
           .pageSetter{margin-bottom:5px}
           `]
 })
-export class OnePageSliderComponent extends Helper implements OnInit,AfterViewInit {
+export class OnePageSliderComponent extends Helper implements OnInit {
 
     @ViewChild('content')
     private myScrollContainer: ElementRef;
@@ -43,30 +43,21 @@ export class OnePageSliderComponent extends Helper implements OnInit,AfterViewIn
         }
     }
 
-    onLoad() {
-
-    }
-
-    ngAfterViewInit(): void {
-
-    }
-
-    ngAfterViewChecked(): void {
-        //       if (this.jsonTemplate.pages.length && this.jsonTemplate.pages.length > 0) {
-        //         let page = this.jsonTemplate.pages[this.jsonTemplate.pages.length - 1];
-        //       let element = this.document.getElementById(page._id);
-        //    console.log("navigation to latest addded page", element);
-        //element.scrollIntoView(false);
-
-        // }
-        //   setTimeout(() => this.scrollToBottom(), 1000);
-    }
-
-
-
+   ChangeSelection(pageIndex,secIndex,index,value){
+       console.log(pageIndex,secIndex,index,value);
+       console.log(this.jsonTemplate.pages[pageIndex].sections[secIndex].items[index]);
+       this.jsonTemplate.pages[pageIndex].sections[secIndex].items[index].type=value;
+       console.log(this.jsonTemplate);
+   }
     notifyChanges(event) {
         console.log('changes made');
+        console.log(this.jsonTemplate.pages[0].sections);
         this.savePageService.notifyPageChanges(this.jsonTemplate);
     }
-
+    addQuestion(pageIndex,secIndex,control,index){
+        console.log(pageIndex,secIndex,control,index);
+        this.jsonTemplate.pages[pageIndex].sections[secIndex].items.splice(index+1,0,control);
+        console.log(this.jsonTemplate.pages[pageIndex].sections[secIndex]);
+        this.notifyChanges("data changed");
+    }
 }

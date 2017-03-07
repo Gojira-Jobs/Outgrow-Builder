@@ -58,6 +58,7 @@ export class Logo extends Helper implements OnInit{
                 self.uploadImage(self.imageEle.nativeElement);
                 this.events.focus();
             }
+            
         });
         this.options={
             imageResize:true,

@@ -4,6 +4,12 @@ body {
     font-size: 14px;
     background: #f2f2f2;
 }
+.question-back{
+    margin:auto;
+    width:70%;
+    background:white;
+    box-shadow:1px 1px 0 #f2f2f2;
+}
 .result-head{
     font-size: 26px;
     float: left;
