@@ -60,7 +60,7 @@ export class BuilderComponent implements OnInit {
             let page = this.jsonTemplate.pages[this.jsonTemplate.pages.length - 1];
 
             setTimeout(() => {
-                let element = this.elementRef.nativeElement.querySelector('#'+page._id);
+                let element = this.elementRef.nativeElement.querySelector('#' + page._id);
                 if (element)
                     element.scrollIntoView(element);
             }, 250);

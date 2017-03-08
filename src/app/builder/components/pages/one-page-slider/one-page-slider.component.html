@@ -15,12 +15,13 @@
     </div>
 
     <div *ngIf="page?.pagetype=='Question'" [id]="page?._id" style="padding:70px;margin-bottom:5px;position: relative;">
-        <div class="questions" >
-            <div class="question-back" style="margin-top:50px " *ngFor="let control of page.sections[0].items;let i=index">
+        <div class="questions">
+            <div class="question-back" style="margin-top:50px "
+                 *ngFor="let control of page.sections[0].items;let i=index">
                 <div style="padding:15px;position: relative;">
                     <div style="position:absolute;right:20px;top:20px;">{{i}}
                         <select class="form-control" #selection
-                                (change)="ChangeSelection(page_index,0,i,selection.value);">
+                                (change)="onSelectionChange(page_index,0,i,selection.value);">
                             <option *ngFor="let type of types"
                                     [value]="type.value" #opt
                                     [attr.selected]="page.sections[0].items[i].type==opt.value?true:null">{{type.label}}
@@ -35,8 +36,9 @@
                                  (controlOutput)="notifyChanges($event)"></control>
                     </div>
                 </div>
-                <div  style="position: absolute;left:50%;font-size:35px"><i class="fa fa-plus-circle" aria-hidden="true" 
-                    (click)="addQuestion(page_index,0,control,i);"></i></div>
+                <div style="position: absolute;left:50%;font-size:35px"><i class="fa fa-plus-circle" aria-hidden="true"
+                                                                           (click)="addQuestion(page_index,0,i);"></i>
+                </div>
             </div>
         </div>
     </div>

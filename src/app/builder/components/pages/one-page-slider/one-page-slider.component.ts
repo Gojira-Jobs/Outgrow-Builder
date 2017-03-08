@@ -1,8 +1,9 @@
-import {Component, Input, Inject, ViewChild, ElementRef, OnInit, AfterViewInit} from "@angular/core";
+import {Component, Input, Inject, ViewChild, ElementRef, OnInit} from "@angular/core";
 import {SavePage} from "../../../services/savePage.service";
 import {App} from "../../../models/App";
 import {Helper} from "../../../controls/helpers/helper";
 import {DOCUMENT} from "@angular/platform-browser";
+import {Item} from "../../../../../../Outgrow-Builder/src/app/builder/models/Item";
 
 @Component({
     selector: 'one-page-slider',
@@ -39,26 +40,29 @@ export class OnePageSliderComponent extends Helper implements OnInit {
                 console.log("navigation to latest addded page", element);
                 element.scrollIntoView(element);
             }
-            //element.scrollIntoView(false);
+
         }
     }
 
-   ChangeSelection(pageIndex,secIndex,index,value){
-       console.log(pageIndex,secIndex,index,value);
-       console.log(this.jsonTemplate.pages[pageIndex].sections[secIndex].items[index]);
-       this.jsonTemplate.pages[pageIndex].sections[secIndex].items[index].type=value;
-       console.log(this.jsonTemplate);
-   }
+    onSelectionChange(pageIndex, secIndex, index, value) {
+        console.log(pageIndex, secIndex, index, value);
+        console.log(this.jsonTemplate.pages[pageIndex].sections[secIndex].items[index]);
+        this.jsonTemplate.pages[pageIndex].sections[secIndex].items[index].type = value;
+    }
+
     notifyChanges(event) {
         console.log('changes made');
         console.log(this.jsonTemplate.pages[0].sections);
         this.savePageService.notifyPageChanges(this.jsonTemplate);
     }
-    addQuestion(pageIndex,secIndex,control,index){
-        console.log(pageIndex,secIndex,control,index);
-        let newObj = Object.create(control);
-        this.jsonTemplate.pages[pageIndex].sections[secIndex].items.splice(index+1,0,newObj);
-        console.log(this.jsonTemplate.pages[pageIndex].sections[secIndex]);
+
+    addQuestion(pageIndex, secIndex, index) {
+        let questionItem = new Item('radio_button', 'Do you smoke?');
+        questionItem.addFieldToCheckbox([{label: 'Never touched a cigarette', icon: ''},
+            {label: 'Once in a while', icon: ''},
+            {label: 'A pack a day', icon: ''}]);
+
+        this.jsonTemplate.pages[pageIndex].sections[secIndex].items.splice(index + 1, 0, questionItem);
         this.notifyChanges("data changed");
     }
 }
