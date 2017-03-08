@@ -3,7 +3,8 @@ import {SavePage} from "../../../services/savePage.service";
 import {App} from "../../../models/App";
 import {Helper} from "../../../controls/helpers/helper";
 import {DOCUMENT} from "@angular/platform-browser";
-import {Item} from "../../../../../../Outgrow-Builder/src/app/builder/models/Item";
+import {Item} from "../../../models/Item";
+
 
 @Component({
     selector: 'one-page-slider',
