@@ -3,7 +3,7 @@ import {SavePage} from "../../../services/savePage.service";
 import {App} from "../../../models/App";
 import {Helper} from "../../../controls/helpers/helper";
 import {DOCUMENT} from "@angular/platform-browser";
-import {Item} from "../../../../../../Outgrow-Builder/src/app/builder/models/Item";
+import {Item} from "../../../models/Item";
 
 @Component({
     selector: 'one-page-slider',
@@ -48,7 +48,8 @@ export class OnePageSliderComponent extends Helper implements OnInit {
         console.log(pageIndex, secIndex, index, value);
         console.log(this.jsonTemplate.pages[pageIndex].sections[secIndex].items[index]);
         this.jsonTemplate.pages[pageIndex].sections[secIndex].items[index].type = value;
-    }
+        this.notifyChanges("changes done");
+}
 
     notifyChanges(event) {
         console.log('changes made');

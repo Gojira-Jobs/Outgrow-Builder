@@ -21,7 +21,7 @@ import {Emitter} from "./services/emitter.service";
     `]
 })
 export class BuilderComponent implements OnInit {
-
+    CalculatorOn=true;
     jsonTemplate: App;
     pageChangeSubscription: Subscription;
 

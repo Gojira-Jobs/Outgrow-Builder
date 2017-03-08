@@ -19,12 +19,12 @@
             <div class="question-back" style="margin-top:50px "
                  *ngFor="let control of page.sections[0].items;let i=index">
                 <div style="padding:15px;position: relative;">
-                    <div style="position:absolute;right:20px;top:20px;">{{i}}
+                    <div style="position:absolute;right:20px;top:20px;">
                         <select class="form-control" #selection
                                 (change)="onSelectionChange(page_index,0,i,selection.value);">
                             <option *ngFor="let type of types"
                                     [value]="type.value" #opt
-                                    [attr.selected]="page.sections[0].items[i].type==opt.value?true:null">{{type.label}}
+                                    [attr.selected]="control.type==opt.value?true:null">{{type.label}}
                             </option>
                         </select>
                     </div>

@@ -1,6 +1,14 @@
 <one-page-slider [jsonTemplate]="jsonTemplate"></one-page-slider>
 <div class="container-fluid">
     <div class="row main-section bg-style text-center">
+        <div class="col-xs-6 col-sm-6">
+            <div class="linkCard" (click)='CalculatorOn=true'>Calculator Components</div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+            <div class="linkCard" (click)='CalculatorOn=false'>Media Components</div>
+        </div>
+    </div>
+    <div *ngIf="CalculatorOn" class="row main-section bg-style text-center">
         <div class="col-xs-4 col-sm-4">
             <div class="linkCard" (click)='createPage("Landing")'> welcome Page</div>
         </div>
@@ -11,6 +19,16 @@
             <div class="linkCard"> Result Page</div>
         </div>
     </div>
+    <div *ngIf="!CalculatorOn" class="row main-section bg-style text-center">
+        <div class="col-xs-4 col-sm-4">
+            <div class="linkCard" (click)='createPage("Landing")'> Forms</div>
+        </div>
+        <div class="col-xs-4 col-sm-4">
+            <div class="linkCard" (click)="createPage('Question')">Graphs</div>
+        </div>
+        <div class="col-xs-4 col-sm-4" (click)="createPage('Result')">
+            <div class="linkCard">Videos</div>
+        </div>
+    </div>
 </div>
-
 
