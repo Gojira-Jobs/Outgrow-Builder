@@ -14,6 +14,7 @@ import { OnePageSliderComponent } from './components/pages/one-page-slider/one-p
 import {DefaultJSON} from './services/DefaultJSON.service';
 import {ControlsModule} from './controls/controls.module';
 import { ResultComponent } from './components/pages/result/result.component';
+import { UrlSafePipe } from './url-safe.pipe';
 //import {ScrollTo} from 'ng2-scroll-to';
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
@@ -35,7 +36,8 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
         QuestionComponent, WelcomeComponent,
         BuilderComponent,
         OnePageSliderComponent,
-        ResultComponent],
+        ResultComponent,
+        UrlSafePipe],
     providers: [Script,
     DefaultJSON, SavePage,Emitter]
 })

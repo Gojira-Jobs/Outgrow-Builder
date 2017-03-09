@@ -22,6 +22,9 @@ import {Emitter} from "./services/emitter.service";
 })
 export class BuilderComponent implements OnInit {
     CalculatorOn=true;
+    srcElement="../../assets/images/bg-new.jpg";
+    openForm=false;
+    showDiv=false;
     jsonTemplate: App;
     pageChangeSubscription: Subscription;
 
