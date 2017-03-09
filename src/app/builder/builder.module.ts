@@ -1,6 +1,6 @@
 import {NgModule, ModuleWithProviders} from "@angular/core";
-import {MaterialModule} from '@angular/material';
-import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
+import {MaterialModule} from "@angular/material";
+import {FroalaEditorModule, FroalaViewModule} from "angular2-froala-wysiwyg";
 import {CommonModule} from "@angular/common";
 import {LeadGenerationComponent} from "./components/pages/lead-generation/lead-generation.component";
 import {QuestionComponent} from "./components/pages/question/question.component";
@@ -9,12 +9,13 @@ import {RouterModule} from "@angular/router";
 import {BuilderComponent} from "./builder.component";
 import {Script} from "./services/script.service";
 import {SavePage} from "./services/savePage.service";
-import {Emitter} from './services/emitter.service';
-import {OnePageSliderComponent} from './components/pages/one-page-slider/one-page-slider.component';
-import {DefaultJSON} from './services/DefaultJSON.service';
-import {ControlsModule} from './controls/controls.module';
-import {ResultComponent} from './components/pages/result/result.component';
+import {Emitter} from "./services/emitter.service";
+import {OnePageSliderComponent} from "./components/pages/one-page-slider/one-page-slider.component";
+import {DefaultJSON} from "./services/DefaultJSON.service";
+import {ControlsModule} from "./controls/controls.module";
+import {ResultComponent} from "./components/pages/result/result.component";
 import {ChartsModule} from "ng2-charts";
+import {UrlSafePipe} from "./url-safe.pipe";
 //import {ScrollTo} from 'ng2-scroll-to';
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
@@ -36,7 +37,9 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
         QuestionComponent, WelcomeComponent,
         BuilderComponent,
         OnePageSliderComponent,
-        ResultComponent],
+        ResultComponent,
+        UrlSafePipe],
+
     providers: [Script,
         DefaultJSON, SavePage, Emitter]
 })

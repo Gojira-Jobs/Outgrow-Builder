@@ -21,7 +21,7 @@
     </div>
     <div *ngIf="!calculatorOn" class="row main-section bg-style text-center">
         <div class="col-xs-4 col-sm-4">
-            <div class="linkCard" (click)='createPage("Landing")'> Forms</div>
+            <div class="linkCard" (click)='openForm=true'> Forms</div>
         </div>
         <div class="col-xs-4 col-sm-4">
             <div class="linkCard" (click)="showGraph()">Graphs</div>
@@ -43,4 +43,14 @@
         </div>
     </div>
 </div>
-
+<div *ngIf="openForm">
+<input #in type="text" >
+<button (click)="srcElement=in.value;showDiv=true">create</button>
+</div>
+<div *ngIf="showDiv" class="container-fluid">
+    <object [data]='getUrl()' width="600" height="400">
+        <embed [src]='getUrl()' width="600" height="400"> 
+        Error: Embedded data could not be displayed.
+    </object>
+    <!--<iframe width="600px" height="600px" [src]="srcElement | urlSafe"></iframe>-->
+</div>

@@ -5,6 +5,7 @@ import {SavePage} from "./services/savePage.service";
 import {Subscription} from "rxjs";
 import {Script} from "./services/script.service";
 import {Emitter} from "./services/emitter.service";
+import {DomSanitizer} from '@angular/platform-browser';
 @Component({
     selector: 'app-builder',
     templateUrl: './builder.component.html',
@@ -21,7 +22,10 @@ import {Emitter} from "./services/emitter.service";
     `]
 })
 export class BuilderComponent implements OnInit {
-    calculatorOn = true;
+    calculatorOn=true;
+    srcElement="../../assets/images/bg-new.jpg";
+    openForm=false;
+    showDiv=false;
     graphVisible: boolean = false;
     jsonTemplate: App;
     pageChangeSubscription: Subscription;
@@ -31,15 +35,8 @@ export class BuilderComponent implements OnInit {
 
     constructor(private serviceDefaultJSON: DefaultJSON, private savePageService: SavePage,
                 private script: Script, private emitterService: Emitter,
-                private elementRef: ElementRef, private renderer: Renderer) {
-    }
-
-    public chartClicked(e: any): void {
-        console.log(e);
-    }
-
-    public chartHovered(e: any): void {
-        console.log(e);
+                private elementRef: ElementRef, private renderer: Renderer,
+                private sanitizer: DomSanitizer) {
     }
 
     ngOnInit() {
@@ -100,6 +97,10 @@ export class BuilderComponent implements OnInit {
 
         this.jsonTemplate.templateType = type;
         console.log(this.jsonTemplate);
+    }
+
+    getUrl(){
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.srcElement);
     }
 
     showGraph() {
