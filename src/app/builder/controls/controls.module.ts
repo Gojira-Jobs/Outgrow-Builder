@@ -6,7 +6,8 @@ import {FroalaEditorModule, FroalaViewModule} from "angular2-froala-wysiwyg";
 import {CONTROLS} from "./controls";
 import {LeadformComponent} from "./leadform/leadform.component";
 import {MenuComponent} from "./menu/menu.component";
-
+import { LoadFrameComponent } from './load-frame/load-frame.component';
+import {UrlSafePipe} from './pipes/url-safe.pipe';
 @NgModule({
     imports: [
         CommonModule,
@@ -16,7 +17,8 @@ import {MenuComponent} from "./menu/menu.component";
     ],
     declarations: [ControlComponent, CONTROLS,
         LeadformComponent,
-        MenuComponent],
+        MenuComponent,
+        LoadFrameComponent,UrlSafePipe],
     exports: [ControlComponent]
 })
 export class ControlsModule {

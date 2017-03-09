@@ -9,7 +9,7 @@ export class Item {
     formulaIndex: string = '';
     imageVisible: boolean = false;
     optionImageVisible: boolean = false;
-
+    url:string='';
     imageURL: string = 'https://cdn.filestackcontent.com/ueNrjSMReChnz2Ohiqwg';
     props: any = {
         title: '',

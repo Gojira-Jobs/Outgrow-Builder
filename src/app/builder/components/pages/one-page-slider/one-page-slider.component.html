@@ -56,3 +56,16 @@
         </div>
     </div>
 
+    <div *ngIf="page?.pagetype=='MediaContents'">
+        <div *ngFor="let section of page.sections;let i=index">
+           <div class="container" style="padding: 20px"> 
+                <div [class]="section.defaultClass">
+                    <div *ngFor="let control of section.items">
+                        <control [data]='control' (controlOutput)="notifyChanges($event)"></control>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+
+</div>
