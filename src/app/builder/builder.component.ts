@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, Renderer} from "@angular/core";
+import {Component, OnInit, ElementRef, Renderer, Input} from "@angular/core";
 import {DefaultJSON} from "./services/DefaultJSON.service";
 import {App} from "./models/App";
 import {SavePage} from "./services/savePage.service";
@@ -21,13 +21,25 @@ import {Emitter} from "./services/emitter.service";
     `]
 })
 export class BuilderComponent implements OnInit {
-    CalculatorOn=true;
+    calculatorOn = true;
+    graphVisible: boolean = false;
     jsonTemplate: App;
     pageChangeSubscription: Subscription;
+    public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+    public pieChartData: number[] = [300, 500, 100];
+    public pieChartType: string = 'pie';
 
     constructor(private serviceDefaultJSON: DefaultJSON, private savePageService: SavePage,
                 private script: Script, private emitterService: Emitter,
                 private elementRef: ElementRef, private renderer: Renderer) {
+    }
+
+    public chartClicked(e: any): void {
+        console.log(e);
+    }
+
+    public chartHovered(e: any): void {
+        console.log(e);
     }
 
     ngOnInit() {
@@ -88,5 +100,9 @@ export class BuilderComponent implements OnInit {
 
         this.jsonTemplate.templateType = type;
         console.log(this.jsonTemplate);
+    }
+
+    showGraph() {
+        this.graphVisible = true;
     }
 }

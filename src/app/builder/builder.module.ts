@@ -10,10 +10,11 @@ import {BuilderComponent} from "./builder.component";
 import {Script} from "./services/script.service";
 import {SavePage} from "./services/savePage.service";
 import {Emitter} from './services/emitter.service';
-import { OnePageSliderComponent } from './components/pages/one-page-slider/one-page-slider.component';
+import {OnePageSliderComponent} from './components/pages/one-page-slider/one-page-slider.component';
 import {DefaultJSON} from './services/DefaultJSON.service';
 import {ControlsModule} from './controls/controls.module';
-import { ResultComponent } from './components/pages/result/result.component';
+import {ResultComponent} from './components/pages/result/result.component';
+import {ChartsModule} from "ng2-charts";
 //import {ScrollTo} from 'ng2-scroll-to';
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
@@ -28,8 +29,8 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
         builderRouter,
         ControlsModule, FroalaEditorModule,
         FroalaViewModule,
-        MaterialModule
-    
+        MaterialModule,
+        ChartsModule
     ],
     declarations: [LeadGenerationComponent,
         QuestionComponent, WelcomeComponent,
@@ -37,7 +38,7 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
         OnePageSliderComponent,
         ResultComponent],
     providers: [Script,
-    DefaultJSON, SavePage,Emitter]
+        DefaultJSON, SavePage, Emitter]
 })
 export class BuilderModule {
 
