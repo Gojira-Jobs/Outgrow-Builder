@@ -36,9 +36,9 @@
 <button (click)="srcElement=in.value;showDiv=true">create</button>
 </div>
 <div *ngIf="showDiv" class="container-fluid">
-    <!--<object data='{{ srcElement | urlSafe}}' width="600" height="400">
-        <embed [src]='srcElement | urlSafe' width="600" height="400"> 
+    <object [data]='getUrl()' width="600" height="400">
+        <embed [src]='getUrl()' width="600" height="400"> 
         Error: Embedded data could not be displayed.
-    </object>-->
-    <iframe width="600px" height="600px" [src]="srcElement | urlSafe"></iframe>
+    </object>
+    <!--<iframe width="600px" height="600px" [src]="srcElement | urlSafe"></iframe>-->
 </div>

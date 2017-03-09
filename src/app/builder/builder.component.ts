@@ -5,6 +5,7 @@ import {SavePage} from "./services/savePage.service";
 import {Subscription} from "rxjs";
 import {Script} from "./services/script.service";
 import {Emitter} from "./services/emitter.service";
+import {DomSanitizer} from '@angular/platform-browser';
 @Component({
     selector: 'app-builder',
     templateUrl: './builder.component.html',
@@ -30,7 +31,8 @@ export class BuilderComponent implements OnInit {
 
     constructor(private serviceDefaultJSON: DefaultJSON, private savePageService: SavePage,
                 private script: Script, private emitterService: Emitter,
-                private elementRef: ElementRef, private renderer: Renderer) {
+                private elementRef: ElementRef, private renderer: Renderer,
+                private sanitizer: DomSanitizer) {
     }
 
     ngOnInit() {
@@ -91,5 +93,9 @@ export class BuilderComponent implements OnInit {
 
         this.jsonTemplate.templateType = type;
         console.log(this.jsonTemplate);
+    }
+
+    getUrl(){
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.srcElement);
     }
 }
