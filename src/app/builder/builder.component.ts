@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, Renderer} from "@angular/core";
+import {Component, OnInit, ElementRef, Renderer, Input} from "@angular/core";
 import {DefaultJSON} from "./services/DefaultJSON.service";
 import {App} from "./models/App";
 import {SavePage} from "./services/savePage.service";
@@ -22,12 +22,16 @@ import {DomSanitizer} from '@angular/platform-browser';
     `]
 })
 export class BuilderComponent implements OnInit {
-    CalculatorOn=true;
+    calculatorOn=true;
     srcElement="../../assets/images/bg-new.jpg";
     openForm=false;
     showDiv=false;
+    graphVisible: boolean = false;
     jsonTemplate: App;
     pageChangeSubscription: Subscription;
+    public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+    public pieChartData: number[] = [300, 500, 100];
+    public pieChartType: string = 'pie';
 
     constructor(private serviceDefaultJSON: DefaultJSON, private savePageService: SavePage,
                 private script: Script, private emitterService: Emitter,
@@ -97,5 +101,9 @@ export class BuilderComponent implements OnInit {
 
     getUrl(){
         return this.sanitizer.bypassSecurityTrustResourceUrl(this.srcElement);
+    }
+
+    showGraph() {
+        this.graphVisible = true;
     }
 }

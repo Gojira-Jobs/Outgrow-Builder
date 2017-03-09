@@ -14,9 +14,6 @@ import {Item} from "../../../models/Item";
 })
 export class OnePageSliderComponent extends Helper implements OnInit {
 
-    @ViewChild('content')
-    private myScrollContainer: ElementRef;
-
     types = [{label: 'Single Select', value: 'radio_button'},
         {label: 'Text input', value: 'text_input'},
         {label: 'Multi Select', value: 'checkbox'},

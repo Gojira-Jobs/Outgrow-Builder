@@ -2,13 +2,13 @@
 <div class="container-fluid">
     <div class="row main-section bg-style text-center">
         <div class="col-xs-6 col-sm-6">
-            <div class="linkCard" (click)='CalculatorOn=true'>Calculator Components</div>
+            <div class="linkCard" (click)='calculatorOn=true'>Calculator Components</div>
         </div>
         <div class="col-xs-6 col-sm-6">
-            <div class="linkCard" (click)='CalculatorOn=false'>Media Components</div>
+            <div class="linkCard" (click)='calculatorOn=false'>Media Components</div>
         </div>
     </div>
-    <div *ngIf="CalculatorOn" class="row main-section bg-style text-center">
+    <div *ngIf="calculatorOn" class="row main-section bg-style text-center">
         <div class="col-xs-4 col-sm-4">
             <div class="linkCard" (click)='createPage("Landing")'> welcome Page</div>
         </div>
@@ -19,15 +19,28 @@
             <div class="linkCard"> Result Page</div>
         </div>
     </div>
-    <div *ngIf="!CalculatorOn" class="row main-section bg-style text-center">
+    <div *ngIf="!calculatorOn" class="row main-section bg-style text-center">
         <div class="col-xs-4 col-sm-4">
             <div class="linkCard" (click)="createPage('MediaForms')"> Forms</div>
         </div>
         <div class="col-xs-4 col-sm-4">
+
             <div class="linkCard" (click)="createPage('MediaGraphs')">Graphs</div>
         </div>
         <div class="col-xs-4 col-sm-4" (click)="createPage('MediaVideos')">
             <div class="linkCard">Videos</div>
+        </div>
+    </div>
+
+    <div *ngIf="graphVisible">
+        <div style="display: block">
+            <canvas baseChart
+                    [data]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [chartType]="pieChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"
+            ></canvas>
         </div>
     </div>
 </div>
