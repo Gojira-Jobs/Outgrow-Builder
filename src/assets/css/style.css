@@ -4,6 +4,15 @@ body {
     font-size: 14px;
     background: #f2f2f2;
 }
+.media-page{
+    width: 95%;
+    background: #fff;
+    padding: 40px;
+    padding-top: 32px;
+    padding-bottom: 36px;
+    position: relative;
+    padding-right: 0;      
+}
 .question-back{
     margin:auto;
     width:70%;

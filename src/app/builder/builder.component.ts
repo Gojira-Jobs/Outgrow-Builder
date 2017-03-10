@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, Renderer} from "@angular/core";
+import {Component, OnInit, ElementRef, Renderer, Input} from "@angular/core";
 import {DefaultJSON} from "./services/DefaultJSON.service";
 import {App} from "./models/App";
 import {SavePage} from "./services/savePage.service";
@@ -64,7 +64,11 @@ import {Emitter} from "./services/emitter.service";
     `]
 })
 export class BuilderComponent implements OnInit {
-    CalculatorOn=true;
+    calculatorOn=true;
+    srcElement="../../assets/images/bg-new.jpg";
+    openForm=false;
+    showDiv=false;
+    graphVisible: boolean = false;
     jsonTemplate: App;
     color=true;
     val:boolean= false;

@@ -60,14 +60,18 @@ export class DefaultJSON {
                 
             let button = new Item('click-button', 'Build Similar Calculator');
             resultSection1.addItems(resultOutput1, resultHeader, resultContent,button);
-
-            //add button section
-            // let sectionButton = new Section("ButtonSection");
-            // let button = new Item('click-button', 'Build Similar Calculator');
-            // sectionButton.addItems(button);
-
             resultPage.addSections(headerSection, resultSection1);
             app.addPages(resultPage);
+        }
+        else if(template == 'MediaForms' || template == 'MediaVideos' || template == 'MediaGraphs'){
+            let name;
+            (template=='MediaForms' || template=='MediaVideos')?name='load_frame':name='load_graph';
+            let mediaPage = new Page("MediaContents", 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
+            let mediaSection= new Section(template,"media-page");
+            let item1=new Item(name);
+            mediaSection.addItems(item1);
+            mediaPage.addSections(mediaSection);
+            app.addPages(mediaPage);
         }
         return app;
     }

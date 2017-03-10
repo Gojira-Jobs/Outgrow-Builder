@@ -6,6 +6,7 @@ import {RouterModule} from "@angular/router";
 import {AppComponent} from "./app.component";
 import {HomeComponent} from "./home/home.component";
 import {BuilderModule} from "./builder/builder.module";
+import {ChartsModule} from 'ng2-charts';
 
 const rootRoute: ModuleWithProviders = RouterModule.forRoot([{
     path: '',
@@ -15,13 +16,14 @@ const rootRoute: ModuleWithProviders = RouterModule.forRoot([{
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        rootRoute, BuilderModule
+        BuilderModule,
+        rootRoute
     ],
     providers: [],
     bootstrap: [AppComponent]
