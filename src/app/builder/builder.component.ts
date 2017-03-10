@@ -5,6 +5,7 @@ import {SavePage} from "./services/savePage.service";
 import {Subscription} from "rxjs";
 import {Script} from "./services/script.service";
 import {Emitter} from "./services/emitter.service";
+
 @Component({
     selector: 'app-builder',
     templateUrl: './builder.component.html',
@@ -14,15 +15,61 @@ import {Emitter} from "./services/emitter.service";
         padding:70px;
     }
     .linkCard{
-        border: 2px solid white;
+        border: 1px solid white;
         padding:20px 10px;
-        border-radius: 6px
+        background-color: gray;
+        
+    }
+    .mouse
+    {
+        cursor: pointer;
+    }
+    .shadow
+    {
+       font-size: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.6);
+         -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+          -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+        -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+        background: white; 
+        
+        border: 1px solid cornflowerblue;
+        color: black;
+        height: 300px;
+        width: 50%;
+        left: 50%;
+        margin-top: 20px; 
+}
+.colshadow
+{
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+         -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+          -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+        -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+        background: white; 
+        text-align: center;
+
+}
+.row1
+{
+    height: 20%;
+    
+}
+.col
+{
+   
+    height: 100%;
+}
     }
     `]
 })
 export class BuilderComponent implements OnInit {
     CalculatorOn=true;
     jsonTemplate: App;
+    color=true;
+    val:boolean= false;
+    hr: boolean =false;
+    icon :string= "fa fa-plus-circle";
     pageChangeSubscription: Subscription;
 
     constructor(private serviceDefaultJSON: DefaultJSON, private savePageService: SavePage,
@@ -88,5 +135,23 @@ export class BuilderComponent implements OnInit {
 
         this.jsonTemplate.templateType = type;
         console.log(this.jsonTemplate);
+    }
+    show(){
+        if(this.val == false)
+        {
+           this.val=true;
+           this.icon = "fa fa-minus-circle";
+        }
+        else
+        {
+           this.val = false;
+           this.icon = "fa fa-plus-circle";
+        }
+    }
+    showhr(){
+        if(this.hr == false)
+           this.hr=true;
+        else
+           this.hr = false;
     }
 }

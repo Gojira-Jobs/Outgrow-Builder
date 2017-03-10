@@ -1,34 +1,50 @@
 <one-page-slider [jsonTemplate]="jsonTemplate"></one-page-slider>
-<div class="container-fluid">
-    <div class="row main-section bg-style text-center">
-        <div class="col-xs-6 col-sm-6">
-            <div class="linkCard" (click)='CalculatorOn=true'>Calculator Components</div>
-        </div>
-        <div class="col-xs-6 col-sm-6">
-            <div class="linkCard" (click)='CalculatorOn=false'>Media Components</div>
-        </div>
+ 
+<div class="container shadow"  [class.hidden]="!val">
+
+    <div class="row row1">
+                <div class="col-md-6 col" [style.background] = "!color ? 'lightblue' : 'white'">
+                       <div  (click)='CalculatorOn=true; color=true' style="cursor: pointer; height: 100%; margin-top: 10px; text-align: center;" >Calculator Components</div>
+                </div>
+                <div class="col-md-6" [style.background] = "color ? 'lightblue' : 'white'" style="height: 100%;">
+                       <div  (click)='CalculatorOn=false; color=false' style="cursor:pointer; height: 100%; margin-top: 10px; text-align: center;">Media Components</div>
+                </div>
     </div>
-    <div *ngIf="CalculatorOn" class="row main-section bg-style text-center">
-        <div class="col-xs-4 col-sm-4">
-            <div class="linkCard" (click)='createPage("Landing")'> welcome Page</div>
+       <div *ngIf="CalculatorOn" class="row"  style="margin-top: 10%; ">
+                        <div class="col-xs-4 col-sm-4 colshadow">
+                                <div class="" (click)='createPage("Landing")'> welcome Page</div>
+                         </div>
+                        <div class="col-xs-4 col-sm-4 colshadow">
+                                <div class="" (click)="createPage('Question')">Question Page</div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4  colshadow" (click)="createPage('Result')">
+                                <div class=""> Result Page</div>
+                        </div>
         </div>
-        <div class="col-xs-4 col-sm-4">
-            <div class="linkCard" (click)="createPage('Question')">Question Page</div>
+        <div *ngIf="!CalculatorOn" class="row" style="margin-top: 10%;">
+                        <div class="col-xs-4 col-sm-4 colshadow">
+                                <div class="" (click)='createPage("Landing")'> Forms</div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 colshadow">
+                                <div class="" (click)="createPage('Question')">Graphs</div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 colshadow" (click)="createPage('Result')">
+                                <div class="">Videos</div>
+                        </div>
         </div>
-        <div class="col-xs-4 col-sm-4" (click)="createPage('Result')">
-            <div class="linkCard"> Result Page</div>
-        </div>
-    </div>
-    <div *ngIf="!CalculatorOn" class="row main-section bg-style text-center">
-        <div class="col-xs-4 col-sm-4">
-            <div class="linkCard" (click)='createPage("Landing")'> Forms</div>
-        </div>
-        <div class="col-xs-4 col-sm-4">
-            <div class="linkCard" (click)="createPage('Question')">Graphs</div>
-        </div>
-        <div class="col-xs-4 col-sm-4" (click)="createPage('Result')">
-            <div class="linkCard">Videos</div>
-        </div>
-    </div>
+
+        
+
 </div>
+
+
+
+<div   style="position: relative; font-size: 50px; color:black; margin-bottom: 40px;">
+   <hr [class.hidden]="!hr" style="height: 30px; top: -30px; box-shadow: 0 0 8px rgba(0,0,0,.05); background:rgba(70,186,249,.55);">  
+    
+      <div style="position: absolute; left: 50%; top: 5%;">
+           <i class="{{icon}} mouse" (click)="show()"  (mouseenter)="showhr()" (mouseleave)="showhr()" aria-hidden="true"></i>
+       </div>   
+</div>
+
 
