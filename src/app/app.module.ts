@@ -6,7 +6,6 @@ import {RouterModule} from "@angular/router";
 import {AppComponent} from "./app.component";
 import {HomeComponent} from "./home/home.component";
 import {BuilderModule} from "./builder/builder.module";
-import {ChartsModule} from 'ng2-charts';
 
 const rootRoute: ModuleWithProviders = RouterModule.forRoot([{
     path: '',

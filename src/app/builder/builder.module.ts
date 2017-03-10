@@ -15,7 +15,7 @@ import {OnePageSliderComponent} from "./components/pages/one-page-slider/one-pag
 import {DefaultJSON} from "./services/DefaultJSON.service";
 import {ControlsModule} from "./controls/controls.module";
 import {ResultComponent} from "./components/pages/result/result.component";
-import {ChartsModule} from "ng2-charts"
+
 const builderRouter: ModuleWithProviders = RouterModule.forChild([
     {
         path: 'builder',
@@ -30,7 +30,6 @@ const builderRouter: ModuleWithProviders = RouterModule.forChild([
         ControlsModule, FroalaEditorModule,
         FroalaViewModule,
         MaterialModule,
-        ChartsModule
     ],
     declarations: [LeadGenerationComponent,
         QuestionComponent, WelcomeComponent,
