@@ -33,14 +33,18 @@ export class DefaultJSON {
         }
         else if (template === 'Question') {
             let QuestionPage = new Page(template, 'https://cdn.filestackcontent.com/0sHxFZL9T9qyI3Vf6jcO');
-            let section1 = new Section('Your Lifestyle');
 
+            let sectionHead1 = new Section('Logo Heading');
+            let menu = new Item("menu");
+            sectionHead1.addItems( menu);
+
+            let section1 = new Section('Your Lifestyle');
             let item1 = new Item('radio_button', 'Do you smoke?');
             item1.addFieldToCheckbox([{label: 'Never touched a cigarette', icon: ''},
                 {label: 'Once in a while', icon: ''},
                 {label: 'A pack a day', icon: ''}]);
             section1.addItems(item1);
-            QuestionPage.addSections(section1);
+            QuestionPage.addSections(sectionHead1, section1);
             app.addPages(QuestionPage);
         }
         else if (template === 'Result') {

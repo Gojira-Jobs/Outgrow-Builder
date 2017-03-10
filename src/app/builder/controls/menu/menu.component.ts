@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, ViewEncapsulation, trigger, state, style, animate, transition} from "@angular/core";
 import {Helper} from "../helpers/helper";
+declare var filepicker: any;
 
 @Component({
     selector: 'menu',
@@ -23,13 +24,34 @@ export class MenuComponent extends Helper implements OnInit {
     page: any;
     @Input()
     isVisible: boolean = false;
-
+    filePickerKey: any = 'Ap8ETk3FYQOlT98dMyXpNz';
     constructor() {
         super();
     }
 
     ngOnInit() {
         console.log('success', this.page);
+    }
+
+    changeWallpaper(){
+        console.log("Changing wallpaper");
+        filepicker.setKey(this.filePickerKey);
+    var options = { 
+        mimetypes: ['image/*'],
+        container: 'modal',
+        services: ['COMPUTER', 'FACEBOOK', 'INSTAGRAM', 'GOOGLE_DRIVE', 'DROPBOX', 'CONVERT']
+    };
+    filepicker.pick(
+      options,
+      (InkBlob: any) => {
+        console.log(InkBlob);
+        this.page.bgImage=InkBlob.url;
+        this.emitChanges("Changed the wallpaper");
+      },
+      (FPError: any) => {
+        console.log(FPError.toString());
+      }
+    );
     }
 
 }

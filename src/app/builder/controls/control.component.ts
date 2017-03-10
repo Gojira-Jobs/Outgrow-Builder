@@ -15,7 +15,7 @@ import {Helper} from "./helpers/helper";
      <drop-down-list *ngIf="data.type=='dropdown'" [data]="data" (controlOutput)="emitChanges($event)"></drop-down-list>
      <nm-slider *ngIf="data.type=='numeric-slider'" [data]="data" (controlOutput)="emitChanges($event)"></nm-slider>
     <result-output *ngIf="data.type==='result_output'" [data]="data" (controlOutput)="emitChanges($event)"></result-output>
-     <load-frame *ngIf="data.type==='load_frame'" [data]="data" (controlOutput)="emitChanges($event)"></load-frame>
+     <load-frame *ngIf="data.type==='load_frame'" [data]="data" [page]="page" (controlOutput)="emitChanges($event)"></load-frame>
      `,
     styles: []
 })

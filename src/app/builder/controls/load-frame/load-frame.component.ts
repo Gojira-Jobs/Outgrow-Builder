@@ -17,7 +17,7 @@ import {Helper} from '../helpers/helper';
     <div [class.hidden]="!showFrame" class="row">
       <div class="col-sm-2 col-xs-2"></div>
       <div class="col-sm-8 col-xs-8">
-        <iframe onload="window.parent.scrollTo(0,0)" allowtransparency="true" [src]="data.url | urlSafe"  style="width:100%; height:1200px; border:none;" scrolling="no">
+        <iframe onload="window.parent.scrollTo(0,0)" allowtransparency="true" [src]="data.url | urlSafe"  style="width:100%; height:{{pageHeight}}px; border:none;" scrolling="no">
               <p>Your browser does not support iframes.</p>
         </iframe> 
       </div>
@@ -29,13 +29,18 @@ import {Helper} from '../helpers/helper';
 })
 export class LoadFrameComponent extends Helper implements OnInit {
 @Input() data:any;
+@Input() page: any;
 @ViewChild('urlValue') urlEmbed; 
 showFrame:Boolean=false;
+pageHeight: number=1200;
   constructor() { super();}
 
   ngOnInit() {
     if(this.data.url){
       this.showFrame=true;
+    }
+    if(this.page.sections[0].title=='MediaVideos'){
+      this.pageHeight=600;
     }
   }
 
