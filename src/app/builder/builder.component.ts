@@ -70,7 +70,7 @@ export class BuilderComponent implements OnInit {
     showDiv=false;
     graphVisible: boolean = false;
     jsonTemplate: App;
-    color=true;
+    color=false;
     val:boolean= false;
     hr: boolean =false;
     icon :string= "fa fa-plus-circle";
