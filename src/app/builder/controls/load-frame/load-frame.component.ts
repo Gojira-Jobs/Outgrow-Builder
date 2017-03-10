@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,ViewChild } from '@angular/core';
 import {Helper} from '../helpers/helper';
 @Component({
   selector: 'load-frame',
@@ -11,13 +11,13 @@ import {Helper} from '../helpers/helper';
     <div class="row" [class.hidden]="showFrame">
       <div class="col-sm-2 col-xs-2"></div>
       <div class="col-sm-6 col-xs-6"><input  type="text" #urlValue class="form-control" style="width:100%;height:100%"></div>
-      <div class="col-sm-2 col-xs-2"><button class="btn btn-default btn-lg" (click)="showFrame=true" >See it</button></div>
+      <div class="col-sm-2 col-xs-2"><button class="btn btn-default btn-lg" (click)="linkSet()" >See it</button></div>
       <div class="col-sm-2 col-xs-2"></div>
     </div>
     <div [class.hidden]="!showFrame" class="row">
       <div class="col-sm-2 col-xs-2"></div>
       <div class="col-sm-8 col-xs-8">
-        <iframe [src]="urlValue.value | urlSafe" width="100%" height="600px">
+        <iframe onload="window.parent.scrollTo(0,0)" allowtransparency="true" [src]="data.url | urlSafe"  style="width:100%; height:1200px; border:none;" scrolling="no">
               <p>Your browser does not support iframes.</p>
         </iframe> 
       </div>
@@ -29,10 +29,20 @@ import {Helper} from '../helpers/helper';
 })
 export class LoadFrameComponent extends Helper implements OnInit {
 @Input() data:any;
+@ViewChild('urlValue') urlEmbed; 
 showFrame:Boolean=false;
   constructor() { super();}
 
   ngOnInit() {
+    if(this.data.url){
+      this.showFrame=true;
+    }
+  }
+
+  linkSet(){
+    this.showFrame=true;
+    this.data.url=this.urlEmbed.nativeElement.value;
+    this.emitChanges("Embed link successfully set");
   }
 
 }
