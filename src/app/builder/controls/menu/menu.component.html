@@ -1,15 +1,15 @@
 <div id="main-menu">
-    <ul class="nav-bar" *ngIf="page.pagetype=='Landing'">
-        <li class="nav-button-home" [@visibilityChanged]="isVisible">
+    <ul class="nav-bar" *ngIf="page.pagetype=='Landing'" >
+        <li class="nav-button-home" [@visibilityChanged]="isVisible" style="background-color: white">
             <img src="../../assets/images/Settings.svg" style="width: 40px;height: 40px">
         </li>
-        <li class="nav-button-services" [@visibilityChanged]="isVisible">
+        <li class="nav-button-services" [@visibilityChanged]="isVisible" style="background-color: white">
             <img src="../../assets/images/Settings.svg" style="width: 40px;height: 40px">
         </li>
-        <li class="nav-button-products" [@visibilityChanged]="isVisible">
+        <li class="nav-button-products" [@visibilityChanged]="isVisible" style="background-color: white">
             <img src="../../assets/images/Settings.svg" style="width: 40px;height: 40px">
         </li>
-        <li (click)="isVisible=!isVisible;">
+        <li (click)="isVisible=!isVisible;" style="background-color:#00a99d; cursor: pointer">
             <img src="../../assets/images/Settings.svg" style="width: 40px;height: 40px">
         </li>
     </ul>
